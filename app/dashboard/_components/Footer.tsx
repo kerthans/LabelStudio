@@ -6,8 +6,8 @@ import type { DashboardFooterProps } from '@/types/dashboard/dashboard';
 const { Footer } = Layout;
 
 const DashboardFooter: React.FC<DashboardFooterProps> = ({
-  companyName = 'Magnify AI',
-  teamName = 'Magnify Team',
+  companyName = 'LabelStudio',
+  teamName = 'LabelStudio Team',
   year,
   style,
 }) => {

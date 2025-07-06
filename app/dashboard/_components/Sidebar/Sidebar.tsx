@@ -10,6 +10,13 @@ import {
   DashboardOutlined,
   SettingOutlined,
   VideoCameraOutlined,
+  DatabaseOutlined,
+  EditOutlined,
+  HighlightOutlined,
+  SafetyCertificateOutlined,
+  ExperimentOutlined,
+  BarChartOutlined,
+  ExportOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import type { MenuItem } from '@/types/dashboard/dashboard';
@@ -34,6 +41,13 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   VideoCameraOutlined: <VideoCameraOutlined />,
   FileOutlined: <FileOutlined />,
   SettingOutlined: <SettingOutlined />,
+  DatabaseOutlined: <DatabaseOutlined />,
+  EditOutlined: <EditOutlined />,
+  HighlightOutlined: <HighlightOutlined />,
+  SafetyCertificateOutlined: <SafetyCertificateOutlined />,
+  ExperimentOutlined: <ExperimentOutlined />,
+  BarChartOutlined: <BarChartOutlined />,
+  ExportOutlined: <ExportOutlined />,
 };
 
 // 将数据配置转换为包含 React 组件的配置
@@ -146,7 +160,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ collapsed, onCollap
       style={SIDEBAR_STYLES.sider}
     >
       <div style={logoStyle}>
-        {collapsed ? 'MA' : 'Magnify AI'}
+        {collapsed ? 'LS' : 'LabelStudio'}
       </div>
       
       <Menu 
