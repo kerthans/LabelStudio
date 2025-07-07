@@ -16,7 +16,7 @@ import {
   HighlightOutlined,
   CheckOutlined,
   CloseOutlined,
-  SkipNextOutlined,
+  StepForwardOutlined,
   SaveOutlined,
   UndoOutlined,
 } from '@ant-design/icons';
@@ -132,7 +132,7 @@ const LabelingPage: React.FC = () => {
                 提交
               </Button>
               <Button 
-                icon={<SkipNextOutlined />}
+                icon={<StepForwardOutlined />}
                 onClick={handleSkip}
               >
                 跳过
