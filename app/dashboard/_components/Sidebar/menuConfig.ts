@@ -20,6 +20,7 @@ export const MENU_CONFIG_DATA: MenuConfigData[] = [
     iconType: "EditOutlined",
     path: "/dashboard/annotation",
     children: [
+      { key: "annotation-page", label: "标注任务管理", path: "/dashboard/annotation" },
       { key: "my-tasks", label: "我的任务", path: "/dashboard/annotation/my-tasks" },
       { key: "task-history", label: "历史任务", path: "/dashboard/annotation/task-history" },
       { key: "task-progress", label: "进度跟踪", path: "/dashboard/annotation/task-progress" },
