@@ -1,3 +1,9 @@
+pnpm browserslist
+
+- 复制 .env.example 为 .env.local
+- 填入实际的配置值
+- 生产环境使用 .env.production
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

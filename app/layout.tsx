@@ -1,22 +1,12 @@
+import AntiDebug from "@/components/security/AntiDebug";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider } from 'antd';
+import ClientLayout from "./ClientLayout";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Magnify AI",
-  description: "AI-powered application",
+  title: "腾升·千江 AI",
+  description: "工程项管 AI 平台，赋能基建数字化蝶变",
 };
 
 export default function RootLayout({
@@ -26,13 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased font-sans">
+        {/* Anti-debug component */}
+        <AntiDebug />
         <AntdRegistry>
-          <ConfigProvider>
+          <ClientLayout>
             {children}
-          </ConfigProvider>
+          </ClientLayout>
         </AntdRegistry>
       </body>
     </html>

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Result, Button } from 'antd';
-import { HomeOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
+import { ArrowLeftOutlined, HomeOutlined } from "@ant-design/icons";
+import { Button, Result } from "antd";
+import { useRouter } from "next/navigation";
 
 export default function NotFound() {
   const router = useRouter();
 
   const handleGoHome = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const handleGoBack = () => {
@@ -24,15 +24,15 @@ export default function NotFound() {
           subTitle="抱歉，您访问的页面不存在。"
           extra={
             <div className="space-x-4">
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
                 icon={<HomeOutlined />}
                 onClick={handleGoHome}
                 size="large"
               >
                 返回首页
               </Button>
-              <Button 
+              <Button
                 icon={<ArrowLeftOutlined />}
                 onClick={handleGoBack}
                 size="large"

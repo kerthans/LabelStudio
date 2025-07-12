@@ -4,6 +4,7 @@ import React from 'react';
 export interface DashboardSidebarProps {
   collapsed: boolean;
   onCollapse: (collapsed: boolean) => void;
+  isMobile?: boolean; // 添加移动端标识
 }
 
 // 菜单配置类型

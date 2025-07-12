@@ -1,0 +1,16 @@
+# 桌面端浏览器支持
+# 现代浏览器，不支持移动端
+Chrome >= 90
+Firefox >= 88
+Safari >= 14
+Edge >= 90
+Opera >= 76
+
+# 排除移动端和过时浏览器
+not dead
+not ie 11
+not op_mini all
+not android 4.4.3-4.4.4
+not ios_saf < 14
+not chrome < 90
+not firefox < 88

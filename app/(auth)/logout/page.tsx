@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React, { useEffect } from 'react';
-import { Card, Button, Typography, Space } from 'antd';
-import { useRouter } from 'next/navigation';
-import { LogoutOutlined, HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, LogoutOutlined } from "@ant-design/icons";
+import { Button, Card, Space, Typography } from "antd";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const { Title, Text } = Typography;
 
@@ -13,15 +13,15 @@ export default function LogoutPage() {
   useEffect(() => {
     // 这里可以添加实际的登出逻辑
     // 比如清除 token、清除本地存储等
-    console.log('用户已登出');
+    console.log("用户已登出");
   }, []);
 
   const handleBackToHome = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const handleBackToLogin = () => {
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
@@ -30,7 +30,7 @@ export default function LogoutPage() {
         <div className="text-6xl text-blue-500 mb-4">
           <LogoutOutlined />
         </div>
-        
+
         <div>
           <Title level={3} className="mb-2">
             您已成功登出
@@ -51,7 +51,7 @@ export default function LogoutPage() {
           >
             重新登录
           </Button>
-          
+
           <Button
             size="large"
             icon={<HomeOutlined />}

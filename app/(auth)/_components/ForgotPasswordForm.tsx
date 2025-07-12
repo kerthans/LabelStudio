@@ -1,17 +1,15 @@
-'use client'
+"use client";
 
-import React from 'react';
 import {
+  MailOutlined,
+} from "@ant-design/icons";
+import {
+  Button,
   Form,
   Input,
-  Button,
   Typography,
-  message
-} from 'antd';
-import {
-  MailOutlined
-} from '@ant-design/icons';
-import Link from 'next/link';
+} from "antd";
+import Link from "next/link";
 
 interface ForgotPasswordForm {
   email: string;
@@ -48,8 +46,8 @@ export default function ForgotPasswordForm({ loading, onSubmit }: ForgotPassword
           name="email"
           label="邮箱地址"
           rules={[
-            { required: true, message: '请输入邮箱地址' },
-            { type: 'email', message: '请输入有效的邮箱地址' }
+            { required: true, message: "请输入邮箱地址" },
+            { type: "email", message: "请输入有效的邮箱地址" },
           ]}
         >
           <Input

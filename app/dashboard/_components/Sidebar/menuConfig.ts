@@ -3,99 +3,80 @@ export interface MenuConfigData {
   label: string;
   iconType: string; // 图标类型名称
   path: string;
-  children?: Omit<MenuConfigData, 'iconType' | 'children'>[];
+  children?: Omit<MenuConfigData, "iconType" | "children">[];
 }
 
 // 纯数据配置
 export const MENU_CONFIG_DATA: MenuConfigData[] = [
   {
-    key: 'dashboard',
-    label: '仪表板',
-    iconType: 'DashboardOutlined',
-    path: '/dashboard',
+    key: "dashboard",
+    label: "仪表盘",
+    iconType: "DashboardOutlined",
+    path: "/dashboard",
   },
   {
-    key: 'datasets',
-    label: '数据集管理',
-    iconType: 'DatabaseOutlined',
-    path: '/dashboard/datasets',
+    key: "tender-projects",
+    label: "招标项目",
+    iconType: "ProjectOutlined",
+    path: "/dashboard/tender-projects",
+  },
+  {
+    key: "bid-analysis",
+    label: "标书分析",
+    iconType: "FileSearchOutlined",
+    path: "/dashboard/bid-analysis",
+  },
+  {
+    key: "qualification",
+    label: "资质管理",
+    iconType: "SafetyCertificateOutlined",
+    path: "/dashboard/qualification",
+  },
+  {
+    key: "evaluation",
+    label: "评标辅助",
+    iconType: "CheckCircleOutlined",
+    path: "/dashboard/evaluation",
+  },
+  {
+    key: "documents",
+    label: "文档库",
+    iconType: "FileOutlined",
+    path: "/dashboard/documents",
+  },
+  {
+    key: "reports",
+    label: "报告中心",
+    iconType: "BarChartOutlined",
+    path: "/dashboard/reports",
+  },
+  {
+    key: "system",
+    label: "系统管理",
+    iconType: "SettingOutlined",
+    path: "/dashboard/settings",
     children: [
-      { key: 'dataset-list', label: '数据集列表', path: '/dashboard/datasets' },
-      { key: 'dataset-upload', label: '数据上传', path: '/dashboard/datasets/upload' },
-      { key: 'dataset-import', label: '数据导入', path: '/dashboard/datasets/import' },
+      { key: "users", label: "用户管理", path: "/dashboard/users" },
+      { key: "data-collection", label: "数据采集", path: "/dashboard/data-collection" },
+      { key: "security", label: "安全管理", path: "/dashboard/security" },
+      { key: "audit-logs", label: "审计日志", path: "/dashboard/audit-logs" },
     ],
   },
   {
-    key: 'annotation',
-    label: '标注任务',
-    iconType: 'EditOutlined',
-    path: '/dashboard/annotation',
+    key: "profile",
+    label: "个人中心",
+    iconType: "UserOutlined",
+    path: "/dashboard/profile",
+  },
+  {
+    key: "help",
+    label: "帮助支持",
+    iconType: "QuestionCircleOutlined",
+    path: "/dashboard/help",
     children: [
-      { key: 'task-list', label: '任务列表', path: '/dashboard/annotation/tasks' },
-      { key: 'task-create', label: '创建任务', path: '/dashboard/annotation/create' },
-      { key: 'task-templates', label: '标注模板', path: '/dashboard/annotation/templates' },
+      { key: "notifications", label: "消息通知", path: "/dashboard/notifications" },
+      { key: "feedback", label: "意见反馈", path: "/dashboard/feedback" },
+      { key: "about", label: "关于系统", path: "/dashboard/about" },
     ],
-  },
-  {
-    key: 'labeling',
-    label: '标注工作台',
-    iconType: 'HighlightOutlined',
-    path: '/dashboard/labeling',
-  },
-  {
-    key: 'quality',
-    label: '质量控制',
-    iconType: 'SafetyCertificateOutlined',
-    path: '/dashboard/quality',
-    children: [
-      { key: 'quality-review', label: '标注审核', path: '/dashboard/quality/review' },
-      { key: 'quality-metrics', label: '质量指标', path: '/dashboard/quality/metrics' },
-      { key: 'quality-reports', label: '质量报告', path: '/dashboard/quality/reports' },
-    ],
-  },
-  {
-    key: 'models',
-    label: '模型训练',
-    iconType: 'ExperimentOutlined',
-    path: '/dashboard/models',
-    children: [
-      { key: 'model-list', label: '模型列表', path: '/dashboard/models' },
-      { key: 'model-training', label: '训练任务', path: '/dashboard/models/training' },
-      { key: 'model-evaluation', label: '模型评估', path: '/dashboard/models/evaluation' },
-    ],
-  },
-  {
-    key: 'analytics',
-    label: '数据分析',
-    iconType: 'BarChartOutlined',
-    path: '/dashboard/analytics',
-    children: [
-      { key: 'progress-stats', label: '进度统计', path: '/dashboard/analytics/progress' },
-      { key: 'performance-stats', label: '性能分析', path: '/dashboard/analytics/performance' },
-      { key: 'export-reports', label: '导出报告', path: '/dashboard/analytics/export' },
-    ],
-  },
-  {
-    key: 'team',
-    label: '团队管理',
-    iconType: 'TeamOutlined',
-    path: '/dashboard/team',
-    children: [
-      { key: 'members', label: '成员管理', path: '/dashboard/team/members' },
-      { key: 'roles', label: '角色权限', path: '/dashboard/team/roles' },
-      { key: 'workload', label: '工作量分配', path: '/dashboard/team/workload' },
-    ],
-  },
-  {
-    key: 'export',
-    label: '数据导出',
-    iconType: 'ExportOutlined',
-    path: '/dashboard/export',
-  },
-  {
-    key: 'settings',
-    label: '系统设置',
-    iconType: 'SettingOutlined',
-    path: '/dashboard/settings',
   },
 ];
