@@ -5,8 +5,8 @@ import ClientLayout from "./ClientLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "腾升·千江 AI",
-  description: "工程项管 AI 平台，赋能基建数字化蝶变",
+  title: "LableStudio",
+  description: "Label Studio is an powerfuldata labeling tool.",
 };
 
 export default function RootLayout({
