@@ -173,20 +173,20 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
           <div style={{
             height: "48px",
             margin: "8px 16px",
-            background: theme === "dark" ? "rgba(255, 255, 255, 0.1)" : "#364452", // light主题使用指定颜色
+            background: theme === "dark" ? "rgba(255, 255, 255, 0.1)" : "#364452",
             borderRadius: 6,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "white", // 确保文字为白色
+            color: "white",
             fontWeight: "bold",
           }}>
             <span className="text-base font-bold">
-              <span className="text-white/90">
-                腾升·千江
+              <span className="bg-gradient-to-r from-slate-200 via-gray-100 to-slate-200 bg-clip-text text-transparent">
+                Label
               </span>
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold ml-1">
-                AI
+              <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent font-bold">
+                Studio
               </span>
             </span>
           </div>
@@ -272,19 +272,20 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
       <div style={logoStyle}>
         {collapsed ? (
           <span className="text-sm font-bold">
-            <span className="text-white/90">
-              腾升
+            <span className="bg-gradient-to-r from-slate-200 via-gray-100 to-slate-200 bg-clip-text text-transparent">
+              L
+            </span>
+            <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent font-bold">
+              S
             </span>
           </span>
         ) : (
           <span className="text-base font-bold">
-            <span className="text-white/90">
-              腾升·千江
+            <span className="bg-gradient-to-r from-slate-200 via-gray-100 to-slate-200 bg-clip-text text-transparent">
+              Label
             </span>
-            <span>
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold ml-1">
-                AI
-              </span>
+            <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent font-bold">
+              Studio
             </span>
           </span>
         )}

@@ -29,15 +29,15 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           <div className="w-full max-w-md lg:max-w-lg">
             <div className="text-center mb-6 sm:mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
-                <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                  腾升·千江
+                <span className="bg-gradient-to-r from-slate-700 via-gray-800 to-slate-700 dark:from-slate-200 dark:via-gray-100 dark:to-slate-200 bg-clip-text text-transparent">
+                  Label
                 </span>
-                <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 dark:from-blue-400 dark:via-blue-500 dark:to-indigo-500 bg-clip-text text-transparent font-bold ml-1">
-                  AI
+                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent font-bold">
+                  Studio
                 </span>
               </h1>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium px-4">
-                工程项管 AI 平台，赋能基建数字化蝶变
+                智能数据标注平台，精准训练 AI 模型
               </p>
             </div>
 
