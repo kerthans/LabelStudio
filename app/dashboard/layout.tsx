@@ -79,13 +79,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className={`${isMobile
             ? "px-2" // 移动端更小的内边距
             : "container-responsive" // 桌面端使用响应式容器
-          }`}>
+            }`}>
             {children}
           </div>
         </Content>
         <DashboardFooter
-          companyName="腾升·千江AI"
-          teamName="四川腾升建设工程项目管理有限公司"
+          companyName="LabelStudio"
+          teamName="Clint"
           isMobile={isMobile}
         />
       </Layout>

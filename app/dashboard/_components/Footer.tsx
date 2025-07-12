@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
-import { Layout, theme } from "antd";
-import { CopyrightOutlined } from "@ant-design/icons";
 import type { DashboardFooterProps } from "@/types/dashboard/dashboard";
+import { CopyrightOutlined } from "@ant-design/icons";
+import { Layout, theme } from "antd";
+import React from "react";
 
 const { Footer } = Layout;
 
 const DashboardFooter: React.FC<DashboardFooterProps> = ({
-  companyName = "腾升·千江AI",
-  teamName = "四川腾升建设工程项目管理有限公司",
+  companyName = "LabelStudio",
+  teamName = "Clint",
   year,
   style,
 }) => {

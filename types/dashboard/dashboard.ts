@@ -101,6 +101,7 @@ export interface DashboardFooterProps {
   teamName?: string;
   year?: number;
   style?: React.CSSProperties;
+  isMobile?: boolean;
 }
 
 // 招标项目数据类型

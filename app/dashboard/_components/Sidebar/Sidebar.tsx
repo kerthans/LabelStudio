@@ -12,14 +12,15 @@ import {
   BarChartOutlined,
   CheckCircleOutlined,
   DashboardOutlined,
-  FileOutlined,
-  FileSearchOutlined,
+  DatabaseOutlined,
+  EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ProjectOutlined,
   QuestionCircleOutlined,
-  SafetyCertificateOutlined,
   SettingOutlined,
+  TeamOutlined,
+  UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Drawer, Layout, Menu } from "antd"; // 添加 Drawer
@@ -32,12 +33,13 @@ const { Sider } = Layout;
 // 图标映射表
 const ICON_MAP: Record<string, React.ReactNode> = {
   DashboardOutlined: <DashboardOutlined />,
+  EditOutlined: <EditOutlined />,
   ProjectOutlined: <ProjectOutlined />,
-  FileSearchOutlined: <FileSearchOutlined />,
-  SafetyCertificateOutlined: <SafetyCertificateOutlined />,
+  UnorderedListOutlined: <UnorderedListOutlined />,
+  DatabaseOutlined: <DatabaseOutlined />,
   CheckCircleOutlined: <CheckCircleOutlined />,
-  FileOutlined: <FileOutlined />,
   BarChartOutlined: <BarChartOutlined />,
+  TeamOutlined: <TeamOutlined />,
   SettingOutlined: <SettingOutlined />,
   UserOutlined: <UserOutlined />,
   QuestionCircleOutlined: <QuestionCircleOutlined />,
@@ -99,7 +101,7 @@ const transformToMenuItems = (configs: MenuConfig[]): MenuItem[] => {
 // 样式常量
 const SIDEBAR_STYLES: SidebarStyles = {
   sider: {
-    overflow: "auto",
+    overflow: "hidden", // 改为 hidden，让内部 Menu 处理滚动
     height: "100vh",
     position: "fixed",
     left: 0,
@@ -120,6 +122,9 @@ const SIDEBAR_STYLES: SidebarStyles = {
   },
   menu: {
     borderRight: 0,
+    height: "calc(100vh - 160px)", // 计算可用高度
+    overflowY: "auto", // 启用滚动
+    overflowX: "hidden",
   },
 };
 
