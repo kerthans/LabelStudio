@@ -2,7 +2,7 @@
 
 import {
   Alert,
-  message
+  message,
 } from "antd";
 import { Suspense, useCallback, useState } from "react";
 import ForgotPasswordForm from "../_components/ForgotPasswordForm";
@@ -30,7 +30,7 @@ function ForgotPasswordContent() {
     console.error("Forgot password error:", error);
 
     let errorMessage = "操作失败，请稍后重试";
-    let details = "";
+    const details = "";
 
     if (error instanceof Error) {
       errorMessage = error.message;

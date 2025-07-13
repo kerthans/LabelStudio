@@ -46,11 +46,11 @@ export default function PhoneLoginForm({ loading, onSubmit, onSendCode }: PhoneL
 
   const handleSendCode = async () => {
     try {
-      const phone = form.getFieldValue('phone');
+      const phone = form.getFieldValue("phone");
       if (!phone) {
         form.setFields([{
-          name: 'phone',
-          errors: ['请先输入手机号']
+          name: "phone",
+          errors: ["请先输入手机号"],
         }]);
         return;
       }
@@ -59,8 +59,8 @@ export default function PhoneLoginForm({ loading, onSubmit, onSendCode }: PhoneL
       const phoneRegex = /^1[3-9]\d{9}$/;
       if (!phoneRegex.test(phone)) {
         form.setFields([{
-          name: 'phone',
-          errors: ['请输入正确的手机号格式']
+          name: "phone",
+          errors: ["请输入正确的手机号格式"],
         }]);
         return;
       }
@@ -69,7 +69,7 @@ export default function PhoneLoginForm({ loading, onSubmit, onSendCode }: PhoneL
       await onSendCode(phone);
       setCountdown(60); // 60秒倒计时
     } catch (error) {
-      console.error('发送验证码失败:', error);
+      console.error("发送验证码失败:", error);
     } finally {
       setSendingCode(false);
     }
@@ -128,7 +128,7 @@ export default function PhoneLoginForm({ loading, onSubmit, onSendCode }: PhoneL
                 className="rounded-lg h-10 sm:h-12 w-full text-xs sm:text-sm"
                 type="default"
               >
-                {countdown > 0 ? `${countdown}s后重发` : sendingCode ? '发送中...' : '获取验证码'}
+                {countdown > 0 ? `${countdown}s后重发` : sendingCode ? "发送中..." : "获取验证码"}
               </Button>
             </Col>
           </Row>

@@ -26,9 +26,9 @@ export default function LogoutPage() {
     console.log("用户已登出");
 
     // 清除可能的认证信息
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       sessionStorage.clear();
     }
   }, []);
