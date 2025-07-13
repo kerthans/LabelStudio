@@ -9,7 +9,7 @@ import {
   PlusOutlined,
   ReloadOutlined,
   SettingOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -26,7 +26,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -391,10 +391,10 @@ const AnnotationPage: React.FC = () => {
   const totalTasks = taskData.length;
   const activeTasks = taskData.filter((task) => task.status === "进行中").length;
   const completedTasks = taskData.filter(
-    (task) => task.status === "已完成"
+    (task) => task.status === "已完成",
   ).length;
   const pendingTasks = taskData.filter(
-    (task) => task.status === "待开始"
+    (task) => task.status === "待开始",
   ).length;
 
   return (

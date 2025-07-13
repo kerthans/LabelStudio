@@ -7,7 +7,7 @@ import {
   PlayCircleOutlined,
   ReloadOutlined,
   StopOutlined,
-  SyncOutlined
+  SyncOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -245,7 +245,7 @@ const TaskMonitor: React.FC = () => {
       // 模拟API调用
       await new Promise((resolve) => setTimeout(resolve, 1000));
       message.success("数据已刷新");
-    } catch (error) {
+    } catch (_error) {
       message.error("刷新失败");
     } finally {
       setRefreshing(false);
@@ -264,8 +264,8 @@ const TaskMonitor: React.FC = () => {
 
     setTasks(prev =>
       prev.map(task =>
-        task.id === taskId ? { ...task, status: newStatus as any } : task
-      )
+        task.id === taskId ? { ...task, status: newStatus as any } : task,
+      ),
     );
 
     message.success(`任务已${action}`);
@@ -275,8 +275,8 @@ const TaskMonitor: React.FC = () => {
   const handleStopTask = (taskId: string) => {
     setTasks(prev =>
       prev.map(task =>
-        task.id === taskId ? { ...task, status: "paused" as any } : task
-      )
+        task.id === taskId ? { ...task, status: "paused" as any } : task,
+      ),
     );
     message.success("任务已停止");
   };

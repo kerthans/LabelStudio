@@ -5,7 +5,7 @@ import {
   LockOutlined,
   MailOutlined,
   PhoneOutlined,
-  SafetyOutlined
+  SafetyOutlined,
 } from "@ant-design/icons";
 import {
   Anchor,
@@ -14,7 +14,7 @@ import {
   Divider,
   Row,
   Space,
-  Typography
+  Typography,
 } from "antd";
 import React from "react";
 
@@ -53,7 +53,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 { key: "rights", href: "#rights", title: "用户权利" },
                 { key: "cookies", href: "#cookies", title: "Cookie政策" },
                 { key: "changes", href: "#changes", title: "政策变更" },
-                { key: "contact", href: "#contact", title: "联系我们" }
+                { key: "contact", href: "#contact", title: "联系我们" },
               ]}
             />
           </Card>
@@ -69,8 +69,8 @@ const PrivacyPolicyPage: React.FC = () => {
                 政策概述
               </Title>
               <Paragraph>
-                智能标注平台（以下简称"我们"或"平台"）深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。
-                我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息：
+                {"智能标注平台（以下简称\"我们\"或\"平台\"）深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。"}
+                {"我们致力于维持您对我们的信任，恪守以下原则，保护您的个人信息："}
               </Paragraph>
               <ul>
                 <li><strong>权责一致原则</strong>：我们将按照法律法规要求，采取相应的安全保护措施</li>
@@ -257,13 +257,13 @@ const PrivacyPolicyPage: React.FC = () => {
               <Paragraph>
                 如果您对本隐私政策有任何疑问、意见或建议，请通过以下方式联系我们：
               </Paragraph>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <MailOutlined style={{ color: '#1890ff' }} />
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <MailOutlined style={{ color: "#1890ff" }} />
                   <Text>邮箱：privacy@labelstudio.com</Text>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <PhoneOutlined style={{ color: '#52c41a' }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <PhoneOutlined style={{ color: "#52c41a" }} />
                   <Text>电话：400-123-4567</Text>
                 </div>
                 <div>

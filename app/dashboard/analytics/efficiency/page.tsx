@@ -11,7 +11,7 @@ import {
   LineChartOutlined,
   PieChartOutlined,
   RocketOutlined,
-  ThunderboltOutlined
+  ThunderboltOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -26,7 +26,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -76,7 +76,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
     efficiencyImprovement: 12.5,
     timeUtilization: 87.2,
     qualityEfficiencyBalance: 92.1,
-    bottleneckReduction: 8.3
+    bottleneckReduction: 8.3,
   };
 
   // 个人效率数据
@@ -92,12 +92,12 @@ const EfficiencyAnalysisPage: React.FC = () => {
         annotation: 75,
         review: 15,
         correction: 8,
-        break: 2
+        break: 2,
       },
       efficiencyTrend: "up",
       efficiencyChange: 15.2,
       bottleneckType: "none",
-      improvementPotential: 8.5
+      improvementPotential: 8.5,
     },
     {
       id: "eff_002",
@@ -110,12 +110,12 @@ const EfficiencyAnalysisPage: React.FC = () => {
         annotation: 68,
         review: 20,
         correction: 10,
-        break: 2
+        break: 2,
       },
       efficiencyTrend: "stable",
       efficiencyChange: 2.1,
       bottleneckType: "quality",
-      improvementPotential: 12.3
+      improvementPotential: 12.3,
     },
     {
       id: "eff_003",
@@ -128,13 +128,13 @@ const EfficiencyAnalysisPage: React.FC = () => {
         annotation: 60,
         review: 25,
         correction: 13,
-        break: 2
+        break: 2,
       },
       efficiencyTrend: "down",
       efficiencyChange: -5.7,
       bottleneckType: "speed",
-      improvementPotential: 18.9
-    }
+      improvementPotential: 18.9,
+    },
   ];
 
   // 任务类型效率数据
@@ -145,7 +145,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       standardTime: 6.0,
       efficiencyRate: 115.4,
       difficultyLevel: "easy",
-      completionCount: 1247
+      completionCount: 1247,
     },
     {
       taskType: "目标检测",
@@ -153,7 +153,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       standardTime: 15.0,
       efficiencyRate: 117.2,
       difficultyLevel: "medium",
-      completionCount: 856
+      completionCount: 856,
     },
     {
       taskType: "语义分割",
@@ -161,7 +161,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       standardTime: 25.0,
       efficiencyRate: 87.7,
       difficultyLevel: "hard",
-      completionCount: 324
+      completionCount: 324,
     },
     {
       taskType: "文本标注",
@@ -169,8 +169,8 @@ const EfficiencyAnalysisPage: React.FC = () => {
       standardTime: 10.0,
       efficiencyRate: 112.4,
       difficultyLevel: "medium",
-      completionCount: 1089
-    }
+      completionCount: 1089,
+    },
   ];
 
   const getBottleneckColor = (type: string) => {
@@ -178,7 +178,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       speed: "#ff4d4f",
       quality: "#faad14",
       focus: "#722ed1",
-      none: "#52c41a"
+      none: "#52c41a",
     };
     return colors[type as keyof typeof colors] || "#d9d9d9";
   };
@@ -188,7 +188,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       speed: "速度瓶颈",
       quality: "质量瓶颈",
       focus: "专注度",
-      none: "无瓶颈"
+      none: "无瓶颈",
     };
     return texts[type as keyof typeof texts] || "未知";
   };
@@ -198,7 +198,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       easy: "#52c41a",
       medium: "#1890ff",
       hard: "#faad14",
-      expert: "#ff4d4f"
+      expert: "#ff4d4f",
     };
     return colors[level as keyof typeof colors] || "#d9d9d9";
   };
@@ -208,7 +208,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       easy: "简单",
       medium: "中等",
       hard: "困难",
-      expert: "专家级"
+      expert: "专家级",
     };
     return texts[level as keyof typeof texts] || "未知";
   };
@@ -232,7 +232,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
           <div style={{ fontWeight: 600, marginBottom: 4 }}>{record.annotatorName}</div>
           <Text type="secondary" style={{ fontSize: 12 }}>{record.department}</Text>
         </div>
-      )
+      ),
     },
     {
       title: "效率指标",
@@ -251,7 +251,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
             <Text type="secondary" style={{ fontSize: 12 }}> 分钟/项</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "质效比",
@@ -268,7 +268,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
             format={() => `${value}%`}
           />
         </div>
-      )
+      ),
     },
     {
       title: "时间分配",
@@ -316,7 +316,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
             </div>
           </div>
         );
-      }
+      },
     },
     {
       title: "效率趋势",
@@ -330,13 +330,13 @@ const EfficiencyAnalysisPage: React.FC = () => {
           <Text
             style={{
               fontSize: 12,
-              color: record.efficiencyTrend === "up" ? "#52c41a" : record.efficiencyTrend === "down" ? "#ff4d4f" : "#1890ff"
+              color: record.efficiencyTrend === "up" ? "#52c41a" : record.efficiencyTrend === "down" ? "#ff4d4f" : "#1890ff",
             }}
           >
             {record.efficiencyChange > 0 ? "+" : ""}{record.efficiencyChange}%
           </Text>
         </div>
-      )
+      ),
     },
     {
       title: "瓶颈分析",
@@ -351,8 +351,8 @@ const EfficiencyAnalysisPage: React.FC = () => {
             <Text type="secondary">提升空间: {record.improvementPotential}%</Text>
           </div>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   const taskTypeColumns: ColumnsType<TaskTypeEfficiency> = [
@@ -363,7 +363,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
       width: 120,
       render: (taskType) => (
         <Text strong>{taskType}</Text>
-      )
+      ),
     },
     {
       title: "难度等级",
@@ -374,7 +374,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
         <Tag color={getDifficultyColor(level)}>
           {getDifficultyText(level)}
         </Tag>
-      )
+      ),
     },
     {
       title: "平均用时",
@@ -390,7 +390,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
             <Text type="secondary">标准: {record.standardTime} 分钟</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "效率率",
@@ -407,21 +407,21 @@ const EfficiencyAnalysisPage: React.FC = () => {
           <Text
             style={{
               fontSize: 12,
-              color: value >= 110 ? "#52c41a" : value >= 100 ? "#1890ff" : "#ff4d4f"
+              color: value >= 110 ? "#52c41a" : value >= 100 ? "#1890ff" : "#ff4d4f",
             }}
           >
             {value}%
           </Text>
         </div>
-      )
+      ),
     },
     {
       title: "完成数量",
       dataIndex: "completionCount",
       key: "completionCount",
       width: 100,
-      render: (value) => <Text strong>{value}</Text>
-    }
+      render: (value) => <Text strong>{value}</Text>,
+    },
   ];
 
   return (
@@ -638,7 +638,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />
@@ -651,7 +651,7 @@ const EfficiencyAnalysisPage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />

@@ -7,7 +7,7 @@ import {
   MessageOutlined,
   ReloadOutlined,
   SearchOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -27,7 +27,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -245,8 +245,8 @@ const TaskReview: React.FC = () => {
     // 更新任务状态为审核中
     setTasks(prev =>
       prev.map(t =>
-        t.id === task.id ? { ...t, status: "reviewing", reviewer: "当前用户" } : t
-      )
+        t.id === task.id ? { ...t, status: "reviewing", reviewer: "当前用户" } : t,
+      ),
     );
   };
 
@@ -263,8 +263,8 @@ const TaskReview: React.FC = () => {
             reviewTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
             comments: reviewComment,
           }
-          : task
-      )
+          : task,
+      ),
     );
 
     setReviewDrawerVisible(false);
@@ -289,8 +289,8 @@ const TaskReview: React.FC = () => {
             comments: reviewComment,
             reviewer: "当前用户",
           }
-          : task
-      )
+          : task,
+      ),
     );
 
     setBatchReviewModalVisible(false);
@@ -411,7 +411,7 @@ const TaskReview: React.FC = () => {
         <div>
           <div>{dayjs(time).format("MM-DD HH:mm")}</div>
           <Text type="secondary" style={{ fontSize: 12 }}>
-            {dayjs(time).format('YYYY-MM-DD HH:mm:ss')}
+            {dayjs(time).format("YYYY-MM-DD HH:mm:ss")}
           </Text>
         </div>
       ),

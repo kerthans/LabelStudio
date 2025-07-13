@@ -7,7 +7,7 @@ import {
   PlusOutlined,
   ReloadOutlined,
   SettingOutlined,
-  SyncOutlined
+  SyncOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -24,7 +24,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import React, { useState } from "react";
 
@@ -35,9 +35,9 @@ const { Option } = Select;
 interface Integration {
   id: string;
   name: string;
-  type: 'webhook' | 'api' | 'database' | 'storage' | 'notification';
+  type: "webhook" | "api" | "database" | "storage" | "notification";
   description: string;
-  status: 'active' | 'inactive' | 'error';
+  status: "active" | "inactive" | "error";
   endpoint: string;
   apiKey: string;
   secretKey?: string;
@@ -56,7 +56,7 @@ const IntegrationsPage: React.FC = () => {
   const [integrationModalVisible, setIntegrationModalVisible] = useState(false);
   const [testModalVisible, setTestModalVisible] = useState(false);
   const [editingIntegration, setEditingIntegration] = useState<Integration | null>(null);
-  const [showSecrets, setShowSecrets] = useState<Record<string, boolean>>({});
+  const [_showSecrets, _setShowSecrets] = useState<Record<string, boolean>>({});
   const [form] = Form.useForm();
 
   // 模拟集成数据
@@ -64,83 +64,83 @@ const IntegrationsPage: React.FC = () => {
     {
       id: "int_001",
       name: "标注结果推送",
-      type: 'webhook',
+      type: "webhook",
       description: "将标注完成的数据推送到下游系统",
-      status: 'active',
+      status: "active",
       endpoint: "https://api.example.com/webhook/annotations",
       apiKey: "ak_1234567890abcdef",
       secretKey: "sk_abcdef1234567890",
       config: {
         timeout: 30000,
         retryCount: 3,
-        batchSize: 100
+        batchSize: 100,
       },
       lastSync: "2024-01-15 16:30:25",
       syncCount: 15680,
       errorCount: 12,
       createdAt: "2023-12-01",
-      updatedAt: "2024-01-15"
+      updatedAt: "2024-01-15",
     },
     {
       id: "int_002",
       name: "数据库同步",
-      type: 'database',
+      type: "database",
       description: "同步标注数据到企业数据仓库",
-      status: 'active',
+      status: "active",
       endpoint: "postgresql://db.company.com:5432/warehouse",
       apiKey: "db_user_annotation",
       secretKey: "db_pass_secure123",
       config: {
         syncInterval: 3600,
         tableName: "annotation_results",
-        batchSize: 1000
+        batchSize: 1000,
       },
       lastSync: "2024-01-15 15:00:00",
       syncCount: 8920,
       errorCount: 3,
       createdAt: "2023-11-15",
-      updatedAt: "2024-01-14"
+      updatedAt: "2024-01-14",
     },
     {
       id: "int_003",
       name: "云存储备份",
-      type: 'storage',
+      type: "storage",
       description: "自动备份标注数据到云存储",
-      status: 'error',
+      status: "error",
       endpoint: "s3://company-backup/annotations/",
       apiKey: "AKIA1234567890ABCDEF",
       secretKey: "abcdef1234567890+ABCDEF/1234567890abcdef",
       config: {
         region: "us-west-2",
         encryption: true,
-        compressionLevel: 6
+        compressionLevel: 6,
       },
       lastSync: "2024-01-14 23:45:12",
       syncCount: 12450,
       errorCount: 156,
       createdAt: "2023-10-20",
-      updatedAt: "2024-01-14"
+      updatedAt: "2024-01-14",
     },
     {
       id: "int_004",
       name: "质量报告推送",
-      type: 'notification',
+      type: "notification",
       description: "定期推送质量报告到管理层邮箱",
-      status: 'inactive',
+      status: "inactive",
       endpoint: "smtp://mail.company.com:587",
       apiKey: "quality_report@company.com",
       secretKey: "email_pass_secure456",
       config: {
         schedule: "0 9 * * 1",
         recipients: ["manager@company.com", "quality@company.com"],
-        template: "weekly_quality_report"
+        template: "weekly_quality_report",
       },
       lastSync: "2024-01-08 09:00:00",
       syncCount: 24,
       errorCount: 0,
       createdAt: "2024-01-01",
-      updatedAt: "2024-01-08"
-    }
+      updatedAt: "2024-01-08",
+    },
   ]);
 
   const typeOptions = [
@@ -170,52 +170,52 @@ const IntegrationsPage: React.FC = () => {
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'webhook': return <ApiOutlined />;
-      case 'api': return <SyncOutlined />;
-      case 'database': return <SettingOutlined />;
-      case 'storage': return <ReloadOutlined />;
-      case 'notification': return <CheckCircleOutlined />;
+      case "webhook": return <ApiOutlined />;
+      case "api": return <SyncOutlined />;
+      case "database": return <SettingOutlined />;
+      case "storage": return <ReloadOutlined />;
+      case "notification": return <CheckCircleOutlined />;
       default: return <SettingOutlined />;
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'webhook': return 'blue';
-      case 'api': return 'green';
-      case 'database': return 'purple';
-      case 'storage': return 'orange';
-      case 'notification': return 'cyan';
-      default: return 'default';
+      case "webhook": return "blue";
+      case "api": return "green";
+      case "database": return "purple";
+      case "storage": return "orange";
+      case "notification": return "cyan";
+      default: return "default";
     }
   };
 
   const getTypeText = (type: string) => {
     switch (type) {
-      case 'webhook': return 'Webhook';
-      case 'api': return 'API接口';
-      case 'database': return '数据库';
-      case 'storage': return '存储服务';
-      case 'notification': return '通知服务';
-      default: return '未知';
+      case "webhook": return "Webhook";
+      case "api": return "API接口";
+      case "database": return "数据库";
+      case "storage": return "存储服务";
+      case "notification": return "通知服务";
+      default: return "未知";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'success';
-      case 'inactive': return 'default';
-      case 'error': return 'error';
-      default: return 'default';
+      case "active": return "success";
+      case "inactive": return "default";
+      case "error": return "error";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'active': return '正常';
-      case 'inactive': return '停用';
-      case 'error': return '异常';
-      default: return '未知';
+      case "active": return "正常";
+      case "inactive": return "停用";
+      case "error": return "异常";
+      default: return "未知";
     }
   };
 
@@ -228,14 +228,14 @@ const IntegrationsPage: React.FC = () => {
       endpoint: integration.endpoint,
       apiKey: integration.apiKey,
       secretKey: integration.secretKey,
-      status: integration.status
+      status: integration.status,
     });
     setIntegrationModalVisible(true);
   };
 
   const handleDelete = (integration: Integration) => {
     Modal.confirm({
-      title: '确认删除',
+      title: "确认删除",
       content: `确定要删除集成 "${integration.name}" 吗？此操作不可恢复。`,
       onOk: () => {
         message.success(`集成 "${integration.name}" 已删除`);
@@ -248,7 +248,7 @@ const IntegrationsPage: React.FC = () => {
     setTestModalVisible(true);
     // 模拟测试
     setTimeout(() => {
-      message.success('连接测试成功');
+      message.success("连接测试成功");
       setTestModalVisible(false);
     }, 2000);
   };
@@ -320,7 +320,7 @@ const IntegrationsPage: React.FC = () => {
             <Card
               hoverable
               styles={{
-                body: { padding: "20px" }
+                body: { padding: "20px" },
               }}
               actions={[
                 <Tooltip title="测试连接" key="test">
@@ -335,21 +335,21 @@ const IntegrationsPage: React.FC = () => {
               ]}
             >
               <div style={{ marginBottom: 16 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{
                       width: 32,
                       height: 32,
-                      borderRadius: '50%',
-                      background: getTypeColor(integration.type) === 'blue' ? '#1890ff' :
-                        getTypeColor(integration.type) === 'green' ? '#52c41a' :
-                          getTypeColor(integration.type) === 'purple' ? '#722ed1' :
-                            getTypeColor(integration.type) === 'orange' ? '#fa8c16' : '#13c2c2',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontSize: 14
+                      borderRadius: "50%",
+                      background: getTypeColor(integration.type) === "blue" ? "#1890ff" :
+                        getTypeColor(integration.type) === "green" ? "#52c41a" :
+                          getTypeColor(integration.type) === "purple" ? "#722ed1" :
+                            getTypeColor(integration.type) === "orange" ? "#fa8c16" : "#13c2c2",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      fontSize: 14,
                     }}>
                       {getTypeIcon(integration.type)}
                     </div>
@@ -361,34 +361,34 @@ const IntegrationsPage: React.FC = () => {
                     </div>
                   </div>
                   <Badge
-                    status={integration.status === 'active' ? 'success' :
-                      integration.status === 'error' ? 'error' : 'default'}
+                    status={integration.status === "active" ? "success" :
+                      integration.status === "error" ? "error" : "default"}
                     text={getStatusText(integration.status)}
                   />
                 </div>
 
                 <Paragraph
                   ellipsis={{ rows: 2 }}
-                  style={{ color: '#666', marginBottom: 12, minHeight: 40 }}
+                  style={{ color: "#666", marginBottom: 12, minHeight: 40 }}
                 >
                   {integration.description}
                 </Paragraph>
               </div>
 
-              <Divider style={{ margin: '12px 0' }} />
+              <Divider style={{ margin: "12px 0" }} />
 
               <div style={{ fontSize: 12 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                   <Text type="secondary">同步次数</Text>
                   <Text strong>{integration.syncCount.toLocaleString()}</Text>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                   <Text type="secondary">错误次数</Text>
-                  <Text strong style={{ color: integration.errorCount > 0 ? '#ff4d4f' : '#52c41a' }}>
+                  <Text strong style={{ color: integration.errorCount > 0 ? "#ff4d4f" : "#52c41a" }}>
                     {integration.errorCount}
                   </Text>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <Text type="secondary">最后同步</Text>
                   <Text>{integration.lastSync}</Text>
                 </div>
@@ -405,8 +405,8 @@ const IntegrationsPage: React.FC = () => {
         onCancel={() => setIntegrationModalVisible(false)}
         onOk={() => {
           form.validateFields().then(values => {
-            console.log('Integration values:', values);
-            message.success(editingIntegration ? '集成配置已更新' : '集成创建成功');
+            console.log("Integration values:", values);
+            message.success(editingIntegration ? "集成配置已更新" : "集成创建成功");
             setIntegrationModalVisible(false);
           });
         }}
@@ -466,7 +466,7 @@ const IntegrationsPage: React.FC = () => {
         footer={[
           <Button key="close" onClick={() => setTestModalVisible(false)}>
             关闭
-          </Button>
+          </Button>,
         ]}
         width={600}
       >
@@ -482,8 +482,8 @@ const IntegrationsPage: React.FC = () => {
                 </Tag>
               </Descriptions.Item>
             </Descriptions>
-            <div style={{ marginTop: 16, textAlign: 'center' }}>
-              <SyncOutlined spin style={{ fontSize: 24, color: '#1890ff' }} />
+            <div style={{ marginTop: 16, textAlign: "center" }}>
+              <SyncOutlined spin style={{ fontSize: 24, color: "#1890ff" }} />
               <div style={{ marginTop: 8 }}>正在测试连接...</div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import {
   QuestionCircleOutlined,
   SearchOutlined,
   StarOutlined,
-  TagsOutlined
+  TagsOutlined,
 } from "@ant-design/icons";
 import {
   Anchor,
@@ -21,7 +21,7 @@ import {
   Row,
   Space,
   Tag,
-  Typography
+  Typography,
 } from "antd";
 import React, { useState } from "react";
 
@@ -60,36 +60,36 @@ const DocumentationPage: React.FC = () => {
       title: "全部文档",
       icon: <FolderOpenOutlined />,
       description: "查看所有可用文档",
-      count: 24
+      count: 24,
     },
     {
       key: "getting-started",
       title: "快速入门",
       icon: <BookOutlined />,
       description: "新用户必读指南",
-      count: 6
+      count: 6,
     },
     {
       key: "annotation-guide",
       title: "标注指南",
       icon: <TagsOutlined />,
       description: "详细的标注操作说明",
-      count: 8
+      count: 8,
     },
     {
       key: "advanced-features",
       title: "高级功能",
       icon: <StarOutlined />,
       description: "进阶功能使用说明",
-      count: 5
+      count: 5,
     },
     {
       key: "troubleshooting",
       title: "故障排除",
       icon: <QuestionCircleOutlined />,
       description: "常见问题解决方案",
-      count: 5
-    }
+      count: 5,
+    },
   ];
 
   // 文档数据
@@ -152,7 +152,7 @@ const DocumentationPage: React.FC = () => {
 - 严格按照标注规范执行
 - 遇到问题及时咨询项目负责人
 - 保持标注的一致性和准确性
-- 定期查看系统通知和更新`
+- 定期查看系统通知和更新`,
     },
     {
       id: "doc_002",
@@ -203,7 +203,7 @@ const DocumentationPage: React.FC = () => {
 - 使用放大功能处理细节
 - 利用自动填充工具提高效率
 - 使用橡皮擦工具修正错误
-- 定期保存标注进度`
+- 定期保存标注进度`,
     },
     {
       id: "doc_003",
@@ -252,7 +252,7 @@ const DocumentationPage: React.FC = () => {
 - 关注整体情感倾向
 - 考虑上下文语境
 - 区分事实陈述和情感表达
-- 处理讽刺和反语表达`
+- 处理讽刺和反语表达`,
     },
     {
       id: "doc_004",
@@ -308,7 +308,7 @@ const DocumentationPage: React.FC = () => {
 - 熟练使用快捷键
 - 自定义工作环境
 - 利用辅助功能
-- 反馈工具问题`
+- 反馈工具问题`,
     },
     {
       id: "doc_005",
@@ -350,8 +350,8 @@ A: 在任务详情页面点击"申请延期"，填写延期原因和预期完成
 A: 检查数据格式是否正确，确认浏览器支持该文件类型。
 
 ### Q: 如何下载标注结果？
-A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。`
-    }
+A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。`,
+    },
   ]);
 
   // 筛选文档
@@ -393,23 +393,23 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
               dataSource={categories}
               renderItem={(category) => (
                 <List.Item
-                  className={`category-item ${selectedCategory === category.key ? 'active' : ''}`}
+                  className={`category-item ${selectedCategory === category.key ? "active" : ""}`}
                   onClick={() => setSelectedCategory(category.key)}
                   style={{
-                    cursor: 'pointer',
-                    padding: '12px 16px',
-                    borderRadius: '6px',
-                    marginBottom: '4px',
-                    backgroundColor: selectedCategory === category.key ? '#e6f7ff' : 'transparent',
-                    border: selectedCategory === category.key ? '1px solid #1890ff' : '1px solid transparent'
+                    cursor: "pointer",
+                    padding: "12px 16px",
+                    borderRadius: "6px",
+                    marginBottom: "4px",
+                    backgroundColor: selectedCategory === category.key ? "#e6f7ff" : "transparent",
+                    border: selectedCategory === category.key ? "1px solid #1890ff" : "1px solid transparent",
                   }}
                 >
                   <List.Item.Meta
                     avatar={category.icon}
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span>{category.title}</span>
-                        <Badge count={category.count} style={{ backgroundColor: '#52c41a' }} />
+                        <Badge count={category.count} style={{ backgroundColor: "#52c41a" }} />
                       </div>
                     }
                     description={category.description}
@@ -424,24 +424,24 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
             <Anchor
               items={[
                 {
-                  key: 'getting-started',
-                  href: '#getting-started',
-                  title: '快速入门',
+                  key: "getting-started",
+                  href: "#getting-started",
+                  title: "快速入门",
                 },
                 {
-                  key: 'annotation-guide',
-                  href: '#annotation-guide',
-                  title: '标注指南',
+                  key: "annotation-guide",
+                  href: "#annotation-guide",
+                  title: "标注指南",
                 },
                 {
-                  key: 'advanced-features',
-                  href: '#advanced-features',
-                  title: '高级功能',
+                  key: "advanced-features",
+                  href: "#advanced-features",
+                  title: "高级功能",
                 },
                 {
-                  key: 'troubleshooting',
-                  href: '#troubleshooting',
-                  title: '故障排除',
+                  key: "troubleshooting",
+                  href: "#troubleshooting",
+                  title: "故障排除",
                 },
               ]}
             />
@@ -456,7 +456,7 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
               placeholder="搜索文档标题、内容或标签..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               size="large"
               prefix={<SearchOutlined />}
             />
@@ -472,14 +472,14 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
                 hoverable
               >
                 <div
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                   onClick={() => handleDocumentClick(doc.id)}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                         <Title level={4} style={{ margin: 0 }}>
-                          <FileTextOutlined style={{ marginRight: 8, color: '#1890ff' }} />
+                          <FileTextOutlined style={{ marginRight: 8, color: "#1890ff" }} />
                           {doc.title}
                         </Title>
                         {doc.isPopular && (
@@ -489,7 +489,7 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
                         )}
                       </div>
                       <Paragraph
-                        style={{ margin: 0, color: '#666' }}
+                        style={{ margin: 0, color: "#666" }}
                         ellipsis={{ rows: 2, expandable: false }}
                       >
                         {doc.description}
@@ -507,7 +507,7 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
                     )}
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Space>
                       {doc.tags.map((tag) => (
                         <Tag key={tag} color="blue">{tag}</Tag>
@@ -523,12 +523,12 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
                 {expandedDoc === doc.id && doc.content && (
                   <>
                     <Divider />
-                    <div style={{ padding: '16px 0' }}>
+                    <div style={{ padding: "16px 0" }}>
                       <div
                         style={{
-                          whiteSpace: 'pre-wrap',
+                          whiteSpace: "pre-wrap",
                           lineHeight: 1.6,
-                          fontSize: 14
+                          fontSize: 14,
                         }}
                       >
                         {doc.content}
@@ -542,8 +542,8 @@ A: 在项目管理页面选择"导出数据"，选择所需格式进行下载。
 
           {filteredDocuments.length === 0 && (
             <Card>
-              <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <FileTextOutlined style={{ fontSize: 48, color: '#d9d9d9', marginBottom: 16 }} />
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <FileTextOutlined style={{ fontSize: 48, color: "#d9d9d9", marginBottom: 16 }} />
                 <Title level={4} type="secondary">未找到相关文档</Title>
                 <Text type="secondary">请尝试调整搜索条件或选择其他分类</Text>
               </div>

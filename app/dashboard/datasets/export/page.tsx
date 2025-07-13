@@ -10,7 +10,7 @@ import {
   FolderOutlined,
   ReloadOutlined,
   SearchOutlined,
-  SettingOutlined
+  SettingOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -31,7 +31,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -239,7 +239,7 @@ const DataExport: React.FC = () => {
       message.success("导出任务已创建，正在处理中...");
       setExportModalVisible(false);
       exportForm.resetFields();
-    } catch (error) {
+    } catch (_error) {
       message.error("创建导出任务失败");
     } finally {
       setLoading(false);

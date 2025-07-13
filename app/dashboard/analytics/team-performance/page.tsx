@@ -17,7 +17,7 @@ import {
   TeamOutlined,
   ThunderboltOutlined,
   TrophyOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -33,7 +33,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -88,7 +88,7 @@ const TeamPerformancePage: React.FC = () => {
     topPerformers: 6,
     improvingMembers: 18,
     teamProductivity: 142.8,
-    collaborationIndex: 91.5
+    collaborationIndex: 91.5,
   };
 
   // 个人绩效数据
@@ -109,7 +109,7 @@ const TeamPerformancePage: React.FC = () => {
       badges: ["质量之星", "效率达人", "月度MVP"],
       performanceTrend: "up",
       monthlyTarget: 150,
-      targetCompletion: 104
+      targetCompletion: 104,
     },
     {
       id: "tm_002",
@@ -127,7 +127,7 @@ const TeamPerformancePage: React.FC = () => {
       badges: ["一致性专家", "团队协作"],
       performanceTrend: "stable",
       monthlyTarget: 140,
-      targetCompletion: 95.7
+      targetCompletion: 95.7,
     },
     {
       id: "tm_003",
@@ -145,8 +145,8 @@ const TeamPerformancePage: React.FC = () => {
       badges: ["新人进步"],
       performanceTrend: "down",
       monthlyTarget: 120,
-      targetCompletion: 81.7
-    }
+      targetCompletion: 81.7,
+    },
   ];
 
   // 部门绩效数据
@@ -162,7 +162,7 @@ const TeamPerformancePage: React.FC = () => {
       teamScore: 94.5,
       rank: 1,
       improvement: 12.3,
-      collaboration: 92.8
+      collaboration: 92.8,
     },
     {
       id: "dept_002",
@@ -175,7 +175,7 @@ const TeamPerformancePage: React.FC = () => {
       teamScore: 91.7,
       rank: 2,
       improvement: 8.9,
-      collaboration: 89.4
+      collaboration: 89.4,
     },
     {
       id: "dept_003",
@@ -188,8 +188,8 @@ const TeamPerformancePage: React.FC = () => {
       teamScore: 87.3,
       rank: 3,
       improvement: 5.6,
-      collaboration: 85.7
-    }
+      collaboration: 85.7,
+    },
   ];
 
   const getBadgeColor = (badge: string) => {
@@ -199,7 +199,7 @@ const TeamPerformancePage: React.FC = () => {
       "月度MVP": "#fa8c16",
       "一致性专家": "#52c41a",
       "团队协作": "#13c2c2",
-      "新人进步": "#eb2f96"
+      "新人进步": "#eb2f96",
     };
     return colors[badge] || "#d9d9d9";
   };
@@ -230,7 +230,7 @@ const TeamPerformancePage: React.FC = () => {
         <div style={{ textAlign: "center", fontSize: 18 }}>
           {getRankIcon(rank)}
         </div>
-      )
+      ),
     },
     {
       title: "成员信息",
@@ -250,7 +250,7 @@ const TeamPerformancePage: React.FC = () => {
             <Text type="secondary" style={{ fontSize: 11 }}>{record.department}</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "绩效指标",
@@ -283,7 +283,7 @@ const TeamPerformancePage: React.FC = () => {
             />
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "工作量",
@@ -307,7 +307,7 @@ const TeamPerformancePage: React.FC = () => {
             <Text type="secondary" style={{ fontSize: 12 }}> 小时</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "目标达成",
@@ -326,7 +326,7 @@ const TeamPerformancePage: React.FC = () => {
             <Text type="secondary">{record.tasksCompleted}/{record.monthlyTarget}</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "成长趋势",
@@ -340,13 +340,13 @@ const TeamPerformancePage: React.FC = () => {
           <Text
             style={{
               fontSize: 12,
-              color: record.improvementRate > 0 ? "#52c41a" : record.improvementRate < 0 ? "#ff4d4f" : "#1890ff"
+              color: record.improvementRate > 0 ? "#52c41a" : record.improvementRate < 0 ? "#ff4d4f" : "#1890ff",
             }}
           >
             {record.improvementRate > 0 ? "+" : ""}{record.improvementRate}%
           </Text>
         </div>
-      )
+      ),
     },
     {
       title: "荣誉徽章",
@@ -360,8 +360,8 @@ const TeamPerformancePage: React.FC = () => {
             </Tag>
           ))}
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   const departmentColumns: ColumnsType<DepartmentPerformance> = [
@@ -374,7 +374,7 @@ const TeamPerformancePage: React.FC = () => {
         <div style={{ textAlign: "center", fontSize: 18 }}>
           {getRankIcon(rank)}
         </div>
-      )
+      ),
     },
     {
       title: "部门信息",
@@ -393,7 +393,7 @@ const TeamPerformancePage: React.FC = () => {
             <Text type="secondary">团队规模: {record.memberCount}人</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "团队评分",
@@ -410,7 +410,7 @@ const TeamPerformancePage: React.FC = () => {
             format={() => `${score}%`}
           />
         </div>
-      )
+      ),
     },
     {
       title: "工作量统计",
@@ -433,7 +433,7 @@ const TeamPerformancePage: React.FC = () => {
             <Text strong>{record.avgEfficiency} 项/小时</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "团队协作",
@@ -449,7 +449,7 @@ const TeamPerformancePage: React.FC = () => {
           />
           <Text style={{ fontSize: 12 }}>{value}%</Text>
         </div>
-      )
+      ),
     },
     {
       title: "改进幅度",
@@ -461,8 +461,8 @@ const TeamPerformancePage: React.FC = () => {
           <ArrowUpOutlined style={{ color: "#52c41a", marginRight: 4 }} />
           <Text strong style={{ color: "#52c41a" }}>+{value}%</Text>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -676,7 +676,7 @@ const TeamPerformancePage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />
@@ -689,7 +689,7 @@ const TeamPerformancePage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />

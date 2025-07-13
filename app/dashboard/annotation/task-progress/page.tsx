@@ -176,7 +176,7 @@ const TaskProgress: React.FC = () => {
       width: 150,
       render: (_, record) => {
         const reviewProgress = Math.round(
-          (record.reviewedItems / record.completedItems) * 100
+          (record.reviewedItems / record.completedItems) * 100,
         );
         return (
           <div>
@@ -201,7 +201,7 @@ const TaskProgress: React.FC = () => {
       width: 100,
       render: (_, record) => {
         const approvalRate = Math.round(
-          (record.approvedItems / record.reviewedItems) * 100
+          (record.approvedItems / record.reviewedItems) * 100,
         );
         return (
           <div style={{ textAlign: "center" }}>
@@ -278,7 +278,7 @@ const TaskProgress: React.FC = () => {
   const totalItems = filteredData.reduce((sum, item) => sum + item.totalItems, 0);
   const completedItems = filteredData.reduce(
     (sum, item) => sum + item.completedItems,
-    0
+    0,
   );
   const averageQuality =
     filteredData.reduce((sum, item) => sum + item.qualityScore, 0) / totalTasks;

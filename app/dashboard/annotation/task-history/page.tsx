@@ -26,7 +26,7 @@ import {
   Table,
   Tag,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -259,11 +259,11 @@ const TaskHistory: React.FC = () => {
   // 计算统计数据
   const totalCompleted = mockHistory.reduce(
     (sum, item) => sum + item.itemsCompleted,
-    0
+    0,
   );
   const totalDuration = mockHistory.reduce(
     (sum, item) => sum + item.duration,
-    0
+    0,
   );
   const averageQuality =
     mockHistory.reduce((sum, item) => sum + item.qualityScore, 0) /

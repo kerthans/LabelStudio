@@ -7,7 +7,7 @@ import {
   ReloadOutlined,
   SearchOutlined,
   SettingOutlined,
-  TeamOutlined
+  TeamOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -28,7 +28,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -407,7 +407,7 @@ const TaskAssign: React.FC = () => {
       setAssignModalVisible(false);
       setSelectedTasks([]);
       setSelectedAnnotators([]);
-    } catch (error) {
+    } catch (_error) {
       message.error("分配失败");
     } finally {
       setLoading(false);

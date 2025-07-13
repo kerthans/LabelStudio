@@ -8,7 +8,7 @@ import {
   PhoneOutlined,
   SafetyCertificateOutlined,
   ToolOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Anchor,
@@ -17,7 +17,7 @@ import {
   Divider,
   Row,
   Space,
-  Typography
+  Typography,
 } from "antd";
 import React from "react";
 
@@ -58,7 +58,7 @@ const LicenseAgreementPage: React.FC = () => {
                 { key: "compliance", href: "#compliance", title: "合规要求" },
                 { key: "updates", href: "#updates", title: "更新维护" },
                 { key: "governing", href: "#governing", title: "适用法律" },
-                { key: "contact", href: "#contact", title: "联系方式" }
+                { key: "contact", href: "#contact", title: "联系方式" },
               ]}
             />
           </Card>
@@ -74,8 +74,8 @@ const LicenseAgreementPage: React.FC = () => {
                 协议概述
               </Title>
               <Paragraph>
-                本软件许可协议（以下简称"协议"）是您（个人或实体）与智能标注平台开发团队（以下简称"许可方"）
-                之间关于智能标注平台软件（以下简称"软件"）使用的法律协议。
+                {"本软件许可协议（以下简称\"协议\"）是您（个人或实体）与智能标注平台开发团队（以下简称\"许可方\"）"}
+                {"之间关于智能标注平台软件（以下简称\"软件\"）使用的法律协议。"}
               </Paragraph>
               <Paragraph>
                 <strong>通过安装、复制或使用本软件，您表示同意受本协议条款的约束。</strong>
@@ -95,13 +95,13 @@ const LicenseAgreementPage: React.FC = () => {
                 在本协议中，以下术语具有特定含义：
               </Paragraph>
               <ul>
-                <li><strong>"软件"</strong>：指智能标注平台及其所有相关组件、文档、更新和修改版本</li>
-                <li><strong>"许可方"</strong>：指智能标注平台的开发和运营团队</li>
-                <li><strong>"被许可方"</strong>：指获得软件使用许可的个人或实体</li>
-                <li><strong>"文档"</strong>：指与软件相关的用户手册、技术文档、API文档等</li>
-                <li><strong>"更新"</strong>：指软件的错误修复、安全补丁、功能改进等</li>
-                <li><strong>"商业用途"</strong>：指以营利为目的的使用行为</li>
-                <li><strong>"源代码"</strong>：指软件的人类可读形式代码</li>
+                <li><strong>{"软件"}</strong>：指智能标注平台及其所有相关组件、文档、更新和修改版本</li>
+                <li><strong>{"许可方"}</strong>：指智能标注平台的开发和运营团队</li>
+                <li><strong>{"被许可方"}</strong>：指获得软件使用许可的个人或实体</li>
+                <li><strong>{"文档"}</strong>：指与软件相关的用户手册、技术文档、API文档等</li>
+                <li><strong>{"更新"}</strong>：指软件的错误修复、安全补丁、功能改进等</li>
+                <li><strong>{"商业用途"}</strong>：指以营利为目的的使用行为</li>
+                <li><strong>{"源代码"}</strong>：指软件的人类可读形式代码</li>
               </ul>
             </div>
 
@@ -211,7 +211,7 @@ const LicenseAgreementPage: React.FC = () => {
 
               <Title level={3}>有限保证</Title>
               <ul>
-                <li>软件按"现状"提供，不提供任何明示或暗示的保证</li>
+                <li>{"软件按\"现状\"提供，不提供任何明示或暗示的保证"}</li>
                 <li>不保证软件完全无错误或不间断运行</li>
                 <li>不保证软件满足您的特定需求</li>
               </ul>
@@ -344,13 +344,13 @@ const LicenseAgreementPage: React.FC = () => {
               <Paragraph>
                 如果您对本许可协议有任何疑问，请联系我们：
               </Paragraph>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <MailOutlined style={{ color: '#1890ff' }} />
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <MailOutlined style={{ color: "#1890ff" }} />
                   <Text>邮箱：license@labelstudio.com</Text>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <PhoneOutlined style={{ color: '#52c41a' }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <PhoneOutlined style={{ color: "#52c41a" }} />
                   <Text>电话：400-123-4567</Text>
                 </div>
                 <div>

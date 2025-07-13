@@ -1,7 +1,7 @@
 "use client";
 import type { DashboardFooterProps } from "@/types/dashboard/dashboard";
 import { CopyrightOutlined } from "@ant-design/icons";
-import { Divider, Layout, Space, theme, Typography } from "antd";
+import { Divider, Layout, Space, Typography, theme } from "antd";
 import Link from "next/link";
 import React from "react";
 
@@ -37,13 +37,13 @@ const DashboardFooter: React.FC<DashboardFooterProps> = ({
             <CopyrightOutlined /> {currentYear} {companyName}. 保留所有权利.
           </span>
           <Link href="/privacy-policy" style={{ color: colorTextSecondary }}>
-            <Text style={{ color: 'inherit', fontSize: '12px' }}>隐私政策</Text>
+            <Text style={{ color: "inherit", fontSize: "12px" }}>隐私政策</Text>
           </Link>
           <Link href="/terms-of-service" style={{ color: colorTextSecondary }}>
-            <Text style={{ color: 'inherit', fontSize: '12px' }}>服务条款</Text>
+            <Text style={{ color: "inherit", fontSize: "12px" }}>服务条款</Text>
           </Link>
           <Link href="/license-agreement" style={{ color: colorTextSecondary }}>
-            <Text style={{ color: 'inherit', fontSize: '12px' }}>许可协议</Text>
+            <Text style={{ color: "inherit", fontSize: "12px" }}>许可协议</Text>
           </Link>
           <span>由 {teamName} 开发运营</span>
         </Space>

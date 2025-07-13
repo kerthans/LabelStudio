@@ -34,7 +34,7 @@ import {
 import React, { useState } from "react";
 import DashboardLoading from "./loading";
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 // 统计卡片组件
 const StatisticCard: React.FC<{

@@ -5,7 +5,7 @@ import {
   EyeOutlined,
   FileTextOutlined,
   FilterOutlined,
-  TagOutlined
+  TagOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -22,7 +22,7 @@ import {
   Select,
   Space,
   Tag,
-  Typography
+  Typography,
 } from "antd";
 import React, { useState } from "react";
 
@@ -43,15 +43,15 @@ interface ReviewTask {
     name: string;
     avatar: string;
   };
-  type: 'image' | 'text' | 'audio' | 'video';
+  type: "image" | "text" | "audio" | "video";
   category: string;
   totalItems: number;
   reviewedItems: number;
   approvedItems: number;
   rejectedItems: number;
   qualityScore: number;
-  priority: 'high' | 'medium' | 'low';
-  status: 'pending' | 'reviewing' | 'completed' | 'rejected';
+  priority: "high" | "medium" | "low";
+  status: "pending" | "reviewing" | "completed" | "rejected";
   submittedAt: string;
   deadline: string;
   issues: string[];
@@ -73,25 +73,25 @@ const AnnotationsReviewPage: React.FC = () => {
       annotator: {
         name: "张小明",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
-        level: "高级标注员"
+        level: "高级标注员",
       },
       reviewer: {
         name: "李专家",
-        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li"
+        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
       },
-      type: 'image',
+      type: "image",
       category: "医疗影像",
       totalItems: 500,
       reviewedItems: 350,
       approvedItems: 320,
       rejectedItems: 30,
       qualityScore: 4.2,
-      priority: 'high',
-      status: 'reviewing',
+      priority: "high",
+      status: "reviewing",
       submittedAt: "2024-01-15 09:30",
       deadline: "2024-01-18 18:00",
       issues: ["边界不清晰", "标注遗漏"],
-      notes: "整体质量良好，部分细节需要改进"
+      notes: "整体质量良好，部分细节需要改进",
     },
     {
       id: "review_002",
@@ -100,21 +100,21 @@ const AnnotationsReviewPage: React.FC = () => {
       annotator: {
         name: "王小红",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
-        level: "中级标注员"
+        level: "中级标注员",
       },
-      type: 'text',
+      type: "text",
       category: "文本分析",
       totalItems: 1000,
       reviewedItems: 1000,
       approvedItems: 950,
       rejectedItems: 50,
       qualityScore: 4.5,
-      priority: 'medium',
-      status: 'completed',
+      priority: "medium",
+      status: "completed",
       submittedAt: "2024-01-14 14:20",
       deadline: "2024-01-17 17:00",
       issues: ["情感倾向判断"],
-      notes: "标注质量优秀，一致性很好"
+      notes: "标注质量优秀，一致性很好",
     },
     {
       id: "review_003",
@@ -123,17 +123,17 @@ const AnnotationsReviewPage: React.FC = () => {
       annotator: {
         name: "赵小强",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhao",
-        level: "专家标注员"
+        level: "专家标注员",
       },
-      type: 'image',
+      type: "image",
       category: "目标检测",
       totalItems: 800,
       reviewedItems: 200,
       approvedItems: 180,
       rejectedItems: 20,
       qualityScore: 4.0,
-      priority: 'high',
-      status: 'reviewing',
+      priority: "high",
+      status: "reviewing",
       submittedAt: "2024-01-15 16:45",
       deadline: "2024-01-19 12:00",
       issues: ["框选精度", "类别错误"],
@@ -145,21 +145,21 @@ const AnnotationsReviewPage: React.FC = () => {
       annotator: {
         name: "孙小美",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=sun",
-        level: "初级标注员"
+        level: "初级标注员",
       },
-      type: 'audio',
+      type: "audio",
       category: "语音识别",
       totalItems: 300,
       reviewedItems: 0,
       approvedItems: 0,
       rejectedItems: 0,
       qualityScore: 0,
-      priority: 'low',
-      status: 'pending',
+      priority: "low",
+      status: "pending",
       submittedAt: "2024-01-15 17:30",
       deadline: "2024-01-20 15:00",
       issues: [],
-    }
+    },
   ]);
 
   const statusOptions = [
@@ -198,48 +198,48 @@ const AnnotationsReviewPage: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'default';
-      case 'reviewing': return 'processing';
-      case 'completed': return 'success';
-      case 'rejected': return 'error';
-      default: return 'default';
+      case "pending": return "default";
+      case "reviewing": return "processing";
+      case "completed": return "success";
+      case "rejected": return "error";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'pending': return '待评审';
-      case 'reviewing': return '评审中';
-      case 'completed': return '已完成';
-      case 'rejected': return '已拒绝';
-      default: return '未知';
+      case "pending": return "待评审";
+      case "reviewing": return "评审中";
+      case "completed": return "已完成";
+      case "rejected": return "已拒绝";
+      default: return "未知";
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'red';
-      case 'medium': return 'orange';
-      case 'low': return 'blue';
-      default: return 'default';
+      case "high": return "red";
+      case "medium": return "orange";
+      case "low": return "blue";
+      default: return "default";
     }
   };
 
   const getPriorityText = (priority: string) => {
     switch (priority) {
-      case 'high': return '高';
-      case 'medium': return '中';
-      case 'low': return '低';
-      default: return '普通';
+      case "high": return "高";
+      case "medium": return "中";
+      case "low": return "低";
+      default: return "普通";
     }
   };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'image': return <FileTextOutlined style={{ color: '#52c41a' }} />;
-      case 'text': return <FileTextOutlined style={{ color: '#1890ff' }} />;
-      case 'audio': return <FileTextOutlined style={{ color: '#722ed1' }} />;
-      case 'video': return <FileTextOutlined style={{ color: '#fa8c16' }} />;
+      case "image": return <FileTextOutlined style={{ color: "#52c41a" }} />;
+      case "text": return <FileTextOutlined style={{ color: "#1890ff" }} />;
+      case "audio": return <FileTextOutlined style={{ color: "#722ed1" }} />;
+      case "video": return <FileTextOutlined style={{ color: "#fa8c16" }} />;
       default: return <FileTextOutlined />;
     }
   };
@@ -325,7 +325,7 @@ const AnnotationsReviewPage: React.FC = () => {
                 style={{ marginBottom: 16 }}
                 hoverable
                 styles={{
-                  body: { padding: "20px 24px" }
+                  body: { padding: "20px 24px" },
                 }}
               >
                 <div style={{ display: "flex", gap: 16 }}>
@@ -371,7 +371,7 @@ const AnnotationsReviewPage: React.FC = () => {
                         <Col span={12}>
                           <div style={{ marginBottom: 4 }}>
                             <Text type="secondary">评审进度</Text>
-                            <Text style={{ float: 'right', fontWeight: 500 }}>
+                            <Text style={{ float: "right", fontWeight: 500 }}>
                               {task.reviewedItems}/{task.totalItems}
                             </Text>
                           </div>
@@ -379,14 +379,14 @@ const AnnotationsReviewPage: React.FC = () => {
                             percent={progress}
                             size="small"
                             showInfo={false}
-                            strokeColor={progress === 100 ? '#52c41a' : '#1890ff'}
+                            strokeColor={progress === 100 ? "#52c41a" : "#1890ff"}
                           />
                         </Col>
                         {task.reviewedItems > 0 && (
                           <Col span={12}>
                             <div style={{ marginBottom: 4 }}>
                               <Text type="secondary">通过率</Text>
-                              <Text style={{ float: 'right', fontWeight: 500 }}>
+                              <Text style={{ float: "right", fontWeight: 500 }}>
                                 {approvalRate.toFixed(1)}%
                               </Text>
                             </div>
@@ -394,7 +394,7 @@ const AnnotationsReviewPage: React.FC = () => {
                               percent={approvalRate}
                               size="small"
                               showInfo={false}
-                              strokeColor={approvalRate >= 90 ? '#52c41a' : approvalRate >= 70 ? '#faad14' : '#ff4d4f'}
+                              strokeColor={approvalRate >= 90 ? "#52c41a" : approvalRate >= 70 ? "#faad14" : "#ff4d4f"}
                             />
                           </Col>
                         )}
@@ -420,7 +420,7 @@ const AnnotationsReviewPage: React.FC = () => {
                       <div style={{ marginBottom: 12 }}>
                         <Paragraph
                           ellipsis={{ rows: 1, expandable: true }}
-                          style={{ margin: 0, color: '#666', fontStyle: 'italic' }}
+                          style={{ margin: 0, color: "#666", fontStyle: "italic" }}
                         >
                           备注: {task.notes}
                         </Paragraph>
@@ -452,12 +452,12 @@ const AnnotationsReviewPage: React.FC = () => {
                         <Button type="text" icon={<EyeOutlined />}>
                           查看详情
                         </Button>
-                        {task.status === 'pending' && (
+                        {task.status === "pending" && (
                           <Button type="primary" size="small">
                             开始评审
                           </Button>
                         )}
-                        {task.status === 'reviewing' && (
+                        {task.status === "reviewing" && (
                           <Button type="primary" size="small">
                             继续评审
                           </Button>

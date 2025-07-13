@@ -12,7 +12,7 @@ import {
   SearchOutlined,
   SettingOutlined,
   SyncOutlined,
-  TagOutlined
+  TagOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -32,9 +32,9 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
-import type { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
 
 const { Title, Text } = Typography;
@@ -86,7 +86,7 @@ const LabelSchemaPage: React.FC = () => {
       labels: [
         { id: "label_001", name: "正常", color: "#52c41a", order: 1 },
         { id: "label_002", name: "异常", color: "#ff4d4f", order: 2 },
-        { id: "label_003", name: "疑似", color: "#fa8c16", order: 3 }
+        { id: "label_003", name: "疑似", color: "#fa8c16", order: 3 },
       ],
       createdAt: "2024-01-10",
       updatedAt: "2024-01-15",
@@ -94,7 +94,7 @@ const LabelSchemaPage: React.FC = () => {
       status: "active",
       projectCount: 5,
       version: "v1.2",
-      isDefault: true
+      isDefault: true,
     },
     {
       id: "schema_002",
@@ -105,7 +105,7 @@ const LabelSchemaPage: React.FC = () => {
         { id: "label_004", name: "汽车", color: "#1890ff", order: 1 },
         { id: "label_005", name: "行人", color: "#722ed1", order: 2 },
         { id: "label_006", name: "交通标志", color: "#fa541c", order: 3 },
-        { id: "label_007", name: "红绿灯", color: "#13c2c2", order: 4 }
+        { id: "label_007", name: "红绿灯", color: "#13c2c2", order: 4 },
       ],
       createdAt: "2024-01-08",
       updatedAt: "2024-01-14",
@@ -113,7 +113,7 @@ const LabelSchemaPage: React.FC = () => {
       status: "active",
       projectCount: 3,
       version: "v2.0",
-      isDefault: false
+      isDefault: false,
     },
     {
       id: "schema_003",
@@ -123,7 +123,7 @@ const LabelSchemaPage: React.FC = () => {
       labels: [
         { id: "label_008", name: "积极", color: "#52c41a", order: 1 },
         { id: "label_009", name: "消极", color: "#ff4d4f", order: 2 },
-        { id: "label_010", name: "中性", color: "#d9d9d9", order: 3 }
+        { id: "label_010", name: "中性", color: "#d9d9d9", order: 3 },
       ],
       createdAt: "2024-01-05",
       updatedAt: "2024-01-12",
@@ -131,8 +131,8 @@ const LabelSchemaPage: React.FC = () => {
       status: "draft",
       projectCount: 1,
       version: "v1.0",
-      isDefault: false
-    }
+      isDefault: false,
+    },
   ]);
 
   // 统计数据
@@ -140,7 +140,7 @@ const LabelSchemaPage: React.FC = () => {
     totalSchemas: schemas.length,
     activeSchemas: schemas.filter(s => s.status === "active").length,
     totalLabels: schemas.reduce((sum, s) => sum + s.labels.length, 0),
-    totalProjects: schemas.reduce((sum, s) => sum + s.projectCount, 0)
+    totalProjects: schemas.reduce((sum, s) => sum + s.projectCount, 0),
   };
 
   // 获取类型标签
@@ -150,7 +150,7 @@ const LabelSchemaPage: React.FC = () => {
       detection: { color: "green", text: "检测" },
       segmentation: { color: "orange", text: "分割" },
       ner: { color: "purple", text: "命名实体" },
-      relation: { color: "cyan", text: "关系抽取" }
+      relation: { color: "cyan", text: "关系抽取" },
     };
     const config = typeConfig[type as keyof typeof typeConfig] || { color: "default", text: type };
     return <Tag color={config.color}>{config.text}</Tag>;
@@ -161,7 +161,7 @@ const LabelSchemaPage: React.FC = () => {
     const configs = {
       active: { color: "success", text: "活跃", icon: <CheckCircleOutlined /> },
       draft: { color: "warning", text: "草稿", icon: <SyncOutlined /> },
-      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> }
+      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.draft;
   };
@@ -182,30 +182,30 @@ const LabelSchemaPage: React.FC = () => {
       dataIndex: "name",
       key: "name",
       width: 280,
-      fixed: 'left',
+      fixed: "left",
       render: (text, record) => (
         <Space align="start">
           <TagOutlined style={{ color: "#1890ff", marginTop: 4 }} />
           <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ 
-              fontWeight: 500, 
+            <div style={{
+              fontWeight: 500,
               marginBottom: 4,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap'
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}>
               <Tooltip title={text}>{text}</Tooltip>
             </div>
-            <Text 
-              type="secondary" 
-              style={{ 
+            <Text
+              type="secondary"
+              style={{
                 fontSize: 12,
-                display: '-webkit-box',
+                display: "-webkit-box",
                 WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                lineHeight: '16px',
-                maxHeight: '32px'
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                lineHeight: "16px",
+                maxHeight: "32px",
               }}
             >
               <Tooltip title={record.description}>
@@ -219,14 +219,14 @@ const LabelSchemaPage: React.FC = () => {
             )}
           </div>
         </Space>
-      )
+      ),
     },
     {
       title: "类型",
       dataIndex: "type",
       key: "type",
       width: 120,
-      render: (type) => getTypeTag(type)
+      render: (type) => getTypeTag(type),
     },
     {
       title: "标签数量",
@@ -235,7 +235,7 @@ const LabelSchemaPage: React.FC = () => {
       width: 100,
       render: (labels) => (
         <Badge count={labels.length} style={{ backgroundColor: "#52c41a" }} />
-      )
+      ),
     },
     {
       title: "标签预览",
@@ -253,7 +253,7 @@ const LabelSchemaPage: React.FC = () => {
             <Tag style={{ margin: 2 }}>+{labels.length - 3}</Tag>
           )}
         </Space>
-      )
+      ),
     },
     {
       title: "状态",
@@ -268,7 +268,7 @@ const LabelSchemaPage: React.FC = () => {
             text={config.text}
           />
         );
-      }
+      },
     },
     {
       title: "使用项目",
@@ -279,25 +279,25 @@ const LabelSchemaPage: React.FC = () => {
         <Text strong style={{ color: count > 0 ? "#1890ff" : "#d9d9d9" }}>
           {count}
         </Text>
-      )
+      ),
     },
     {
       title: "版本",
       dataIndex: "version",
       key: "version",
-      width: 80
+      width: 80,
     },
     {
       title: "创建者",
       dataIndex: "creator",
       key: "creator",
-      width: 100
+      width: 100,
     },
     {
       title: "更新时间",
       dataIndex: "updatedAt",
       key: "updatedAt",
-      width: 120
+      width: 120,
     },
     {
       title: "操作",
@@ -333,24 +333,24 @@ const LabelSchemaPage: React.FC = () => {
                   key: "export",
                   label: "导出配置",
                   icon: <ExportOutlined />,
-                  onClick: () => handleExport(record)
+                  onClick: () => handleExport(record),
                 },
                 {
                   key: "delete",
                   label: "删除",
                   icon: <DeleteOutlined />,
                   danger: true,
-                  onClick: () => handleDelete(record)
-                }
-              ]
+                  onClick: () => handleDelete(record),
+                },
+              ],
             }}
             trigger={["click"]}
           >
             <Button type="text" icon={<SettingOutlined />} />
           </Dropdown>
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   // 处理函数
@@ -371,7 +371,7 @@ const LabelSchemaPage: React.FC = () => {
       name: `${schema.name}_副本`,
       isDefault: false,
       status: "draft" as const,
-      projectCount: 0
+      projectCount: 0,
     };
     setSchemas([...schemas, newSchema]);
     message.success("标签配置已复制");
@@ -388,7 +388,7 @@ const LabelSchemaPage: React.FC = () => {
       onOk: () => {
         setSchemas(schemas.filter(s => s.id !== schema.id));
         message.success("删除成功");
-      }
+      },
     });
   };
 
@@ -407,7 +407,7 @@ const LabelSchemaPage: React.FC = () => {
       if (editingSchema) {
         // 编辑
         setSchemas(schemas.map(s =>
-          s.id === editingSchema.id ? { ...s, ...values } : s
+          s.id === editingSchema.id ? { ...s, ...values } : s,
         ));
         message.success("更新成功");
       } else {
@@ -415,12 +415,12 @@ const LabelSchemaPage: React.FC = () => {
         const newSchema: LabelSchema = {
           ...values,
           id: `schema_${Date.now()}`,
-          createdAt: new Date().toISOString().split('T')[0],
-          updatedAt: new Date().toISOString().split('T')[0],
+          createdAt: new Date().toISOString().split("T")[0],
+          updatedAt: new Date().toISOString().split("T")[0],
           creator: "当前用户",
           projectCount: 0,
           version: "v1.0",
-          labels: []
+          labels: [],
         };
         setSchemas([...schemas, newSchema]);
         message.success("创建成功");
@@ -550,7 +550,7 @@ const LabelSchemaPage: React.FC = () => {
             pageSize: 10,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total) => `共 ${total} 条记录`
+            showTotal: (total) => `共 ${total} 条记录`,
           }}
           scroll={{ x: 1200 }}
         />
@@ -570,7 +570,7 @@ const LabelSchemaPage: React.FC = () => {
           layout="vertical"
           initialValues={{
             status: "draft",
-            isDefault: false
+            isDefault: false,
           }}
         >
           <Form.Item

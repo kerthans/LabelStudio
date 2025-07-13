@@ -7,7 +7,7 @@ import {
   ReloadOutlined,
   SyncOutlined,
   UserOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -27,7 +27,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -98,7 +98,7 @@ const QualityConsensus: React.FC = () => {
       completedAt: "2024-01-15 16:30:00",
       priority: "high",
       agreementThreshold: 85,
-      currentAgreement: 87.5
+      currentAgreement: 87.5,
     },
     {
       id: "consensus_002",
@@ -113,7 +113,7 @@ const QualityConsensus: React.FC = () => {
       createdAt: "2024-01-15 14:00:00",
       priority: "medium",
       agreementThreshold: 90,
-      currentAgreement: 92.3
+      currentAgreement: 92.3,
     },
     {
       id: "consensus_003",
@@ -128,8 +128,8 @@ const QualityConsensus: React.FC = () => {
       createdAt: "2024-01-16 10:00:00",
       priority: "high",
       agreementThreshold: 85,
-      currentAgreement: 78.2
-    }
+      currentAgreement: 78.2,
+    },
   ]);
 
   // 获取状态颜色和文本
@@ -138,7 +138,7 @@ const QualityConsensus: React.FC = () => {
       pending: { color: "orange", text: "待处理", icon: <WarningOutlined /> },
       processing: { color: "blue", text: "检查中", icon: <SyncOutlined spin /> },
       completed: { color: "green", text: "已完成", icon: <CheckCircleOutlined /> },
-      failed: { color: "red", text: "检查失败", icon: <CloseCircleOutlined /> }
+      failed: { color: "red", text: "检查失败", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.pending;
   };
@@ -147,7 +147,7 @@ const QualityConsensus: React.FC = () => {
     const configs = {
       high: { color: "red", text: "高" },
       medium: { color: "orange", text: "中" },
-      low: { color: "blue", text: "低" }
+      low: { color: "blue", text: "低" },
     };
     return configs[priority as keyof typeof configs] || configs.medium;
   };
@@ -172,10 +172,10 @@ const QualityConsensus: React.FC = () => {
         annotators: [
           { name: "张医生", label: "恶性肿瘤", confidence: 0.95 },
           { name: "李医生", label: "良性肿瘤", confidence: 0.88 },
-          { name: "王医生", label: "恶性肿瘤", confidence: 0.92 }
+          { name: "王医生", label: "恶性肿瘤", confidence: 0.92 },
         ],
         conflictType: "label",
-        severity: "high"
+        severity: "high",
       },
       {
         id: "conflict_002",
@@ -184,14 +184,14 @@ const QualityConsensus: React.FC = () => {
         annotators: [
           { name: "张医生", label: "正常", confidence: 0.78 },
           { name: "李医生", label: "异常", confidence: 0.82 },
-          { name: "王医生", label: "正常", confidence: 0.85 }
+          { name: "王医生", label: "正常", confidence: 0.85 },
         ],
         conflictType: "label",
         severity: "medium",
         resolvedBy: "专家审核员",
         resolution: "经专家审核确认为正常",
-        resolvedAt: "2024-01-15 15:30:00"
-      }
+        resolvedAt: "2024-01-15 15:30:00",
+      },
     ]);
     setDetailDrawerVisible(true);
   };
@@ -213,7 +213,7 @@ const QualityConsensus: React.FC = () => {
             </Text>
           </Space>
         </div>
-      )
+      ),
     },
     {
       title: "标注员",
@@ -238,7 +238,7 @@ const QualityConsensus: React.FC = () => {
             )}
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "一致性指标",
@@ -270,7 +270,7 @@ const QualityConsensus: React.FC = () => {
             </Space>
           </div>
         );
-      }
+      },
     },
     {
       title: "状态",
@@ -290,7 +290,7 @@ const QualityConsensus: React.FC = () => {
             }
           />
         );
-      }
+      },
     },
     {
       title: "优先级",
@@ -300,7 +300,7 @@ const QualityConsensus: React.FC = () => {
       render: (priority) => {
         const config = getPriorityConfig(priority);
         return <Tag color={config.color}>{config.text}</Tag>;
-      }
+      },
     },
     {
       title: "时间",
@@ -317,7 +317,7 @@ const QualityConsensus: React.FC = () => {
             </div>
           )}
         </div>
-      )
+      ),
     },
     {
       title: "操作",
@@ -348,8 +348,8 @@ const QualityConsensus: React.FC = () => {
             </Tooltip>
           )}
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   // 筛选数据
@@ -448,7 +448,7 @@ const QualityConsensus: React.FC = () => {
             showSizeChanger: true,
             showQuickJumper: true,
             showTotal: (total, range) =>
-              `第 ${range[0]}-${range[1]} 条/共 ${total} 条`
+              `第 ${range[0]}-${range[1]} 条/共 ${total} 条`,
           }}
         />
       </Card>
@@ -477,7 +477,7 @@ const QualityConsensus: React.FC = () => {
                     value={currentTask.currentAgreement}
                     suffix="%"
                     valueStyle={{
-                      color: currentTask.currentAgreement >= currentTask.agreementThreshold ? "#52c41a" : "#faad14"
+                      color: currentTask.currentAgreement >= currentTask.agreementThreshold ? "#52c41a" : "#faad14",
                     }}
                   />
                 </Col>

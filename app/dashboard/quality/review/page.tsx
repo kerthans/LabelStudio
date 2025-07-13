@@ -8,7 +8,7 @@ import {
   FileTextOutlined,
   FilterOutlined,
   ReloadOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -28,7 +28,7 @@ import {
   Timeline,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -90,7 +90,7 @@ const QualityReview: React.FC = () => {
     avgQualityScore: 92.8,
     avgReviewTime: 18,
     approvalRate: 87.3,
-    criticalIssues: 5
+    criticalIssues: 5,
   };
 
   // 审核数据
@@ -109,7 +109,7 @@ const QualityReview: React.FC = () => {
       consistency: 92.8,
       completeness: 98.0,
       issues: { critical: 2, major: 5, minor: 8 },
-      estimatedTime: 45
+      estimatedTime: 45,
     },
     {
       id: "qr_002",
@@ -127,8 +127,8 @@ const QualityReview: React.FC = () => {
       reviewer: "王审核员",
       issues: { critical: 0, major: 12, minor: 28 },
       estimatedTime: 60,
-      actualTime: 35
-    }
+      actualTime: 35,
+    },
   ]);
 
   const getPriorityConfig = (priority: string) => {
@@ -136,7 +136,7 @@ const QualityReview: React.FC = () => {
       urgent: { color: "#ff4d4f", text: "紧急", bgColor: "#fff2f0" },
       high: { color: "#fa8c16", text: "高", bgColor: "#fff7e6" },
       medium: { color: "#1890ff", text: "中", bgColor: "#e6f7ff" },
-      low: { color: "#52c41a", text: "低", bgColor: "#f6ffed" }
+      low: { color: "#52c41a", text: "低", bgColor: "#f6ffed" },
     };
     return configs[priority as keyof typeof configs] || configs.medium;
   };
@@ -147,7 +147,7 @@ const QualityReview: React.FC = () => {
       reviewing: { color: "blue", text: "审核中" },
       approved: { color: "green", text: "已通过" },
       rejected: { color: "red", text: "已拒绝" },
-      disputed: { color: "purple", text: "有争议" }
+      disputed: { color: "purple", text: "有争议" },
     };
     return configs[status as keyof typeof configs] || configs.pending;
   };
@@ -192,7 +192,7 @@ const QualityReview: React.FC = () => {
             {record.annotator} · {record.itemCount}项
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "状态",
@@ -202,7 +202,7 @@ const QualityReview: React.FC = () => {
       render: (status) => {
         const config = getStatusConfig(status);
         return <Badge color={config.color} text={config.text} />;
-      }
+      },
     },
     {
       title: "质量评估",
@@ -231,7 +231,7 @@ const QualityReview: React.FC = () => {
             </Tooltip>
           </Space>
         </div>
-      )
+      ),
     },
     {
       title: "问题统计",
@@ -253,7 +253,7 @@ const QualityReview: React.FC = () => {
             轻微: {record.issues.minor}
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "时间信息",
@@ -270,7 +270,7 @@ const QualityReview: React.FC = () => {
             {record.actualTime && ` / 实际: ${record.actualTime}分钟`}
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "操作",
@@ -296,8 +296,8 @@ const QualityReview: React.FC = () => {
             onClick={() => message.info("查看详情")}
           />
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   const filteredItems = reviewItems.filter(item => {
@@ -412,7 +412,7 @@ const QualityReview: React.FC = () => {
             pageSize: 10,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total, range) => `第 ${range[0]}-${range[1]} 条/共 ${total} 条`
+            showTotal: (total, range) => `第 ${range[0]}-${range[1]} 条/共 ${total} 条`,
           }}
         />
       </Card>

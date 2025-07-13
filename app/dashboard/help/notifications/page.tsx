@@ -11,7 +11,7 @@ import {
   InfoCircleOutlined,
   MailOutlined,
   SettingOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -23,14 +23,14 @@ import {
   Dropdown,
   Empty,
   List,
-  message,
   Modal,
   Row,
   Select,
   Space,
   Switch,
   Tag,
-  Typography
+  Typography,
+  message,
 } from "antd";
 import React, { useState } from "react";
 
@@ -41,14 +41,14 @@ interface Notification {
   id: string;
   title: string;
   content: string;
-  type: 'info' | 'success' | 'warning' | 'error' | 'system';
-  category: 'task' | 'system' | 'quality' | 'announcement';
+  type: "info" | "success" | "warning" | "error" | "system";
+  category: "task" | "system" | "quality" | "announcement";
   isRead: boolean;
   createdAt: string;
   sender?: string;
   avatar?: string;
   actionUrl?: string;
-  priority: 'low' | 'medium' | 'high' | 'urgent';
+  priority: "low" | "medium" | "high" | "urgent";
 }
 
 interface NotificationSettings {
@@ -62,8 +62,8 @@ interface NotificationSettings {
 }
 
 const NotificationsPage: React.FC = () => {
-  const [filterType, setFilterType] = useState<string>('all');
-  const [filterCategory, setFilterCategory] = useState<string>('all');
+  const [filterType, setFilterType] = useState<string>("all");
+  const [filterCategory, setFilterCategory] = useState<string>("all");
   const [showSettings, setShowSettings] = useState(false);
   const [selectedNotifications, setSelectedNotifications] = useState<string[]>([]);
 
@@ -80,7 +80,7 @@ const NotificationsPage: React.FC = () => {
       sender: "项目管理员",
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=admin",
       actionUrl: "/dashboard/annotation/my-tasks",
-      priority: "high"
+      priority: "high",
     },
     {
       id: "notif_002",
@@ -91,7 +91,7 @@ const NotificationsPage: React.FC = () => {
       isRead: false,
       createdAt: "2024-01-15 11:20",
       sender: "质量控制系统",
-      priority: "medium"
+      priority: "medium",
     },
     {
       id: "notif_003",
@@ -103,7 +103,7 @@ const NotificationsPage: React.FC = () => {
       createdAt: "2024-01-15 09:45",
       sender: "系统提醒",
       actionUrl: "/dashboard/annotation/my-tasks",
-      priority: "urgent"
+      priority: "urgent",
     },
     {
       id: "notif_004",
@@ -114,7 +114,7 @@ const NotificationsPage: React.FC = () => {
       isRead: true,
       createdAt: "2024-01-14 16:00",
       sender: "系统管理员",
-      priority: "medium"
+      priority: "medium",
     },
     {
       id: "notif_005",
@@ -126,7 +126,7 @@ const NotificationsPage: React.FC = () => {
       createdAt: "2024-01-14 14:15",
       sender: "质量检查系统",
       actionUrl: "/dashboard/quality/review",
-      priority: "high"
+      priority: "high",
     },
     {
       id: "notif_006",
@@ -137,8 +137,8 @@ const NotificationsPage: React.FC = () => {
       isRead: true,
       createdAt: "2024-01-13 10:00",
       sender: "产品团队",
-      priority: "low"
-    }
+      priority: "low",
+    },
   ]);
 
   // 通知设置
@@ -149,66 +149,66 @@ const NotificationsPage: React.FC = () => {
     taskDeadline: true,
     qualityFeedback: true,
     systemUpdates: false,
-    announcements: true
+    announcements: true,
   });
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'success': return <CheckCircleOutlined style={{ color: '#52c41a' }} />;
-      case 'warning': return <WarningOutlined style={{ color: '#faad14' }} />;
-      case 'error': return <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />;
-      case 'system': return <SettingOutlined style={{ color: '#722ed1' }} />;
-      default: return <InfoCircleOutlined style={{ color: '#1890ff' }} />;
+      case "success": return <CheckCircleOutlined style={{ color: "#52c41a" }} />;
+      case "warning": return <WarningOutlined style={{ color: "#faad14" }} />;
+      case "error": return <ExclamationCircleOutlined style={{ color: "#ff4d4f" }} />;
+      case "system": return <SettingOutlined style={{ color: "#722ed1" }} />;
+      default: return <InfoCircleOutlined style={{ color: "#1890ff" }} />;
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'success': return '#f6ffed';
-      case 'warning': return '#fffbe6';
-      case 'error': return '#fff2f0';
-      case 'system': return '#f9f0ff';
-      default: return '#e6f7ff';
+      case "success": return "#f6ffed";
+      case "warning": return "#fffbe6";
+      case "error": return "#fff2f0";
+      case "system": return "#f9f0ff";
+      default: return "#e6f7ff";
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'urgent': return 'red';
-      case 'high': return 'orange';
-      case 'medium': return 'blue';
-      case 'low': return 'default';
-      default: return 'default';
+      case "urgent": return "red";
+      case "high": return "orange";
+      case "medium": return "blue";
+      case "low": return "default";
+      default: return "default";
     }
   };
 
   const getPriorityText = (priority: string) => {
     switch (priority) {
-      case 'urgent': return '紧急';
-      case 'high': return '重要';
-      case 'medium': return '普通';
-      case 'low': return '一般';
-      default: return '普通';
+      case "urgent": return "紧急";
+      case "high": return "重要";
+      case "medium": return "普通";
+      case "low": return "一般";
+      default: return "普通";
     }
   };
 
   const getCategoryText = (category: string) => {
     switch (category) {
-      case 'task': return '任务';
-      case 'system': return '系统';
-      case 'quality': return '质量';
-      case 'announcement': return '公告';
-      default: return '其他';
+      case "task": return "任务";
+      case "system": return "系统";
+      case "quality": return "质量";
+      case "announcement": return "公告";
+      default: return "其他";
     }
   };
 
   // 筛选通知
   const filteredNotifications = notifications.filter(notification => {
-    const typeMatch = filterType === 'all' ||
-      (filterType === 'unread' && !notification.isRead) ||
-      (filterType === 'read' && notification.isRead) ||
+    const typeMatch = filterType === "all" ||
+      (filterType === "unread" && !notification.isRead) ||
+      (filterType === "read" && notification.isRead) ||
       notification.type === filterType;
-    const categoryMatch = filterCategory === 'all' || notification.category === filterCategory;
+    const categoryMatch = filterCategory === "all" || notification.category === filterCategory;
     return typeMatch && categoryMatch;
   });
 
@@ -216,87 +216,87 @@ const NotificationsPage: React.FC = () => {
 
   const handleMarkAsRead = (id: string) => {
     setNotifications(prev =>
-      prev.map(n => n.id === id ? { ...n, isRead: true } : n)
+      prev.map(n => n.id === id ? { ...n, isRead: true } : n),
     );
-    message.success('已标记为已读');
+    message.success("已标记为已读");
   };
 
   const handleMarkAllAsRead = () => {
     setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
-    message.success('已全部标记为已读');
+    message.success("已全部标记为已读");
   };
 
   const handleDelete = (id: string) => {
     Modal.confirm({
-      title: '确认删除',
-      content: '确定要删除这条通知吗？',
+      title: "确认删除",
+      content: "确定要删除这条通知吗？",
       onOk: () => {
         setNotifications(prev => prev.filter(n => n.id !== id));
-        message.success('通知已删除');
+        message.success("通知已删除");
       },
     });
   };
 
   const handleBatchDelete = () => {
     if (selectedNotifications.length === 0) {
-      message.warning('请先选择要删除的通知');
+      message.warning("请先选择要删除的通知");
       return;
     }
     Modal.confirm({
-      title: '批量删除',
+      title: "批量删除",
       content: `确定要删除选中的 ${selectedNotifications.length} 条通知吗？`,
       onOk: () => {
         setNotifications(prev => prev.filter(n => !selectedNotifications.includes(n.id)));
         setSelectedNotifications([]);
-        message.success('批量删除成功');
+        message.success("批量删除成功");
       },
     });
   };
 
   const handleSettingChange = (key: keyof NotificationSettings, value: boolean) => {
     setSettings(prev => ({ ...prev, [key]: value }));
-    message.success('设置已保存');
+    message.success("设置已保存");
   };
 
   const typeOptions = [
-    { value: 'all', label: '全部通知' },
-    { value: 'unread', label: '未读通知' },
-    { value: 'read', label: '已读通知' },
-    { value: 'info', label: '信息通知' },
-    { value: 'success', label: '成功通知' },
-    { value: 'warning', label: '警告通知' },
-    { value: 'error', label: '错误通知' },
-    { value: 'system', label: '系统通知' }
+    { value: "all", label: "全部通知" },
+    { value: "unread", label: "未读通知" },
+    { value: "read", label: "已读通知" },
+    { value: "info", label: "信息通知" },
+    { value: "success", label: "成功通知" },
+    { value: "warning", label: "警告通知" },
+    { value: "error", label: "错误通知" },
+    { value: "system", label: "系统通知" },
   ];
 
   const categoryOptions = [
-    { value: 'all', label: '全部分类' },
-    { value: 'task', label: '任务相关' },
-    { value: 'quality', label: '质量相关' },
-    { value: 'system', label: '系统相关' },
-    { value: 'announcement', label: '公告通知' }
+    { value: "all", label: "全部分类" },
+    { value: "task", label: "任务相关" },
+    { value: "quality", label: "质量相关" },
+    { value: "system", label: "系统相关" },
+    { value: "announcement", label: "公告通知" },
   ];
 
   const actionMenuItems = [
     {
-      key: 'markAllRead',
-      label: '全部标记为已读',
+      key: "markAllRead",
+      label: "全部标记为已读",
       icon: <CheckOutlined />,
       onClick: handleMarkAllAsRead,
     },
     {
-      key: 'batchDelete',
-      label: '批量删除',
+      key: "batchDelete",
+      label: "批量删除",
       icon: <DeleteOutlined />,
       onClick: handleBatchDelete,
       danger: true,
     },
     {
-      type: 'divider' as const,
+      type: "divider" as const,
     },
     {
-      key: 'settings',
-      label: '通知设置',
+      key: "settings",
+      label: "通知设置",
       icon: <SettingOutlined />,
       onClick: () => setShowSettings(true),
     },
@@ -317,7 +317,7 @@ const NotificationsPage: React.FC = () => {
             <Text type="secondary">查看和管理您的系统通知消息</Text>
           </div>
           <Space>
-            <Dropdown menu={{ items: actionMenuItems }} trigger={['click']}>
+            <Dropdown menu={{ items: actionMenuItems }} trigger={["click"]}>
               <Button icon={<SettingOutlined />}>
                 操作
               </Button>
@@ -331,7 +331,7 @@ const NotificationsPage: React.FC = () => {
             <Select
               value={filterType}
               onChange={setFilterType}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               placeholder="选择通知类型"
               suffixIcon={<FilterOutlined />}
             >
@@ -344,7 +344,7 @@ const NotificationsPage: React.FC = () => {
             <Select
               value={filterCategory}
               onChange={setFilterCategory}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               placeholder="选择通知分类"
             >
               {categoryOptions.map(option => (
@@ -355,38 +355,38 @@ const NotificationsPage: React.FC = () => {
         </Row>
 
         {/* 统计信息 */}
-        <div style={{ marginTop: 16, padding: 16, background: '#f0f2f5', borderRadius: 8 }}>
+        <div style={{ marginTop: 16, padding: 16, background: "#f0f2f5", borderRadius: 8 }}>
           <Row gutter={16}>
             <Col span={6}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 'bold', color: '#1890ff' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 20, fontWeight: "bold", color: "#1890ff" }}>
                   {notifications.length}
                 </div>
-                <div style={{ color: '#666' }}>总通知</div>
+                <div style={{ color: "#666" }}>总通知</div>
               </div>
             </Col>
             <Col span={6}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 'bold', color: '#ff4d4f' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 20, fontWeight: "bold", color: "#ff4d4f" }}>
                   {unreadCount}
                 </div>
-                <div style={{ color: '#666' }}>未读</div>
+                <div style={{ color: "#666" }}>未读</div>
               </div>
             </Col>
             <Col span={6}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 'bold', color: '#52c41a' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 20, fontWeight: "bold", color: "#52c41a" }}>
                   {notifications.length - unreadCount}
                 </div>
-                <div style={{ color: '#666' }}>已读</div>
+                <div style={{ color: "#666" }}>已读</div>
               </div>
             </Col>
             <Col span={6}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 'bold', color: '#faad14' }}>
-                  {notifications.filter(n => n.priority === 'urgent' || n.priority === 'high').length}
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 20, fontWeight: "bold", color: "#faad14" }}>
+                  {notifications.filter(n => n.priority === "urgent" || n.priority === "high").length}
                 </div>
-                <div style={{ color: '#666' }}>重要</div>
+                <div style={{ color: "#666" }}>重要</div>
               </div>
             </Col>
           </Row>
@@ -414,11 +414,11 @@ const NotificationsPage: React.FC = () => {
               <List.Item
                 key={notification.id}
                 style={{
-                  backgroundColor: notification.isRead ? '#fff' : getTypeColor(notification.type),
-                  border: notification.isRead ? '1px solid #f0f0f0' : `1px solid ${notification.type === 'error' ? '#ffccc7' : '#d9f7be'}`,
+                  backgroundColor: notification.isRead ? "#fff" : getTypeColor(notification.type),
+                  border: notification.isRead ? "1px solid #f0f0f0" : `1px solid ${notification.type === "error" ? "#ffccc7" : "#d9f7be"}`,
                   borderRadius: 8,
                   marginBottom: 8,
-                  padding: 16
+                  padding: 16,
                 }}
                 actions={[
                   <Button
@@ -428,7 +428,7 @@ const NotificationsPage: React.FC = () => {
                     icon={<EyeOutlined />}
                     onClick={() => !notification.isRead && handleMarkAsRead(notification.id)}
                   >
-                    {notification.isRead ? '已读' : '标记已读'}
+                    {notification.isRead ? "已读" : "标记已读"}
                   </Button>,
                   <Button
                     key="delete"
@@ -444,7 +444,7 @@ const NotificationsPage: React.FC = () => {
               >
                 <List.Item.Meta
                   avatar={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       {getTypeIcon(notification.type)}
                       {notification.avatar && (
                         <Avatar src={notification.avatar} size={32} />
@@ -452,8 +452,8 @@ const NotificationsPage: React.FC = () => {
                     </div>
                   }
                   title={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ fontWeight: notification.isRead ? 'normal' : 'bold' }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontWeight: notification.isRead ? "normal" : "bold" }}>
                         {notification.title}
                       </span>
                       <Tag color={getPriorityColor(notification.priority)} className="small-tag">
@@ -471,15 +471,15 @@ const NotificationsPage: React.FC = () => {
                     <div>
                       <Paragraph
                         style={{
-                          margin: '8px 0',
-                          color: notification.isRead ? '#666' : '#333'
+                          margin: "8px 0",
+                          color: notification.isRead ? "#666" : "#333",
                         }}
                       >
                         {notification.content}
                       </Paragraph>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <Space size="small">
-                          <ClockCircleOutlined style={{ color: '#999' }} />
+                          <ClockCircleOutlined style={{ color: "#999" }} />
                           <Text type="secondary" style={{ fontSize: 12 }}>
                             {notification.createdAt}
                           </Text>
@@ -515,70 +515,70 @@ const NotificationsPage: React.FC = () => {
         footer={[
           <Button key="cancel" onClick={() => setShowSettings(false)}>
             关闭
-          </Button>
+          </Button>,
         ]}
         width={600}
       >
-        <div style={{ padding: '16px 0' }}>
+        <div style={{ padding: "16px 0" }}>
           <Title level={5}>通知方式</Title>
           <div style={{ marginBottom: 24 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
               <div>
                 <MailOutlined style={{ marginRight: 8 }} />
                 邮件通知
               </div>
               <Switch
                 checked={settings.emailNotifications}
-                onChange={(checked) => handleSettingChange('emailNotifications', checked)}
+                onChange={(checked) => handleSettingChange("emailNotifications", checked)}
               />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
                 <BellOutlined style={{ marginRight: 8 }} />
                 浏览器通知
               </div>
               <Switch
                 checked={settings.browserNotifications}
-                onChange={(checked) => handleSettingChange('browserNotifications', checked)}
+                onChange={(checked) => handleSettingChange("browserNotifications", checked)}
               />
             </div>
           </div>
 
           <Title level={5}>通知内容</Title>
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
               <div>任务分配通知</div>
               <Switch
                 checked={settings.taskAssignment}
-                onChange={(checked) => handleSettingChange('taskAssignment', checked)}
+                onChange={(checked) => handleSettingChange("taskAssignment", checked)}
               />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
               <div>任务截止提醒</div>
               <Switch
                 checked={settings.taskDeadline}
-                onChange={(checked) => handleSettingChange('taskDeadline', checked)}
+                onChange={(checked) => handleSettingChange("taskDeadline", checked)}
               />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
               <div>质量反馈通知</div>
               <Switch
                 checked={settings.qualityFeedback}
-                onChange={(checked) => handleSettingChange('qualityFeedback', checked)}
+                onChange={(checked) => handleSettingChange("qualityFeedback", checked)}
               />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
               <div>系统更新通知</div>
               <Switch
                 checked={settings.systemUpdates}
-                onChange={(checked) => handleSettingChange('systemUpdates', checked)}
+                onChange={(checked) => handleSettingChange("systemUpdates", checked)}
               />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>公告通知</div>
               <Switch
                 checked={settings.announcements}
-                onChange={(checked) => handleSettingChange('announcements', checked)}
+                onChange={(checked) => handleSettingChange("announcements", checked)}
               />
             </div>
           </div>

@@ -17,7 +17,7 @@ import {
   RocketOutlined,
   SafetyOutlined,
   TeamOutlined,
-  TrophyOutlined
+  TrophyOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -31,7 +31,7 @@ import {
   Space,
   Tag,
   Timeline,
-  Typography
+  Typography,
 } from "antd";
 import React from "react";
 
@@ -57,7 +57,7 @@ interface Feature {
   title: string;
   description: string;
   icon: React.ReactNode;
-  status: 'stable' | 'beta' | 'experimental';
+  status: "stable" | "beta" | "experimental";
 }
 
 const AboutPage: React.FC = () => {
@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
     environment: "生产环境",
     database: "PostgreSQL 14.2",
     server: "Node.js 18.17.0",
-    uptime: "99.9%"
+    uptime: "99.9%",
   };
 
   // 团队成员
@@ -77,26 +77,26 @@ const AboutPage: React.FC = () => {
       name: "张明",
       role: "产品经理",
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
-      description: "负责产品规划和用户体验设计"
+      description: "负责产品规划和用户体验设计",
     },
     {
       name: "李华",
       role: "技术总监",
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
-      description: "负责技术架构和系统开发"
+      description: "负责技术架构和系统开发",
     },
     {
       name: "王芳",
       role: "UI/UX设计师",
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
-      description: "负责界面设计和交互体验"
+      description: "负责界面设计和交互体验",
     },
     {
       name: "陈强",
       role: "算法工程师",
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=chen",
-      description: "负责AI算法和智能标注功能"
-    }
+      description: "负责AI算法和智能标注功能",
+    },
   ];
 
   // 核心功能
@@ -104,39 +104,39 @@ const AboutPage: React.FC = () => {
     {
       title: "智能标注",
       description: "基于AI的智能辅助标注，提高标注效率",
-      icon: <ExperimentOutlined style={{ color: '#1890ff' }} />,
-      status: "stable"
+      icon: <ExperimentOutlined style={{ color: "#1890ff" }} />,
+      status: "stable",
     },
     {
       title: "质量控制",
       description: "多层次质量检查和评估体系",
-      icon: <SafetyOutlined style={{ color: '#52c41a' }} />,
-      status: "stable"
+      icon: <SafetyOutlined style={{ color: "#52c41a" }} />,
+      status: "stable",
     },
     {
       title: "协作管理",
       description: "团队协作和任务分配管理",
-      icon: <TeamOutlined style={{ color: '#722ed1' }} />,
-      status: "stable"
+      icon: <TeamOutlined style={{ color: "#722ed1" }} />,
+      status: "stable",
     },
     {
       title: "数据分析",
       description: "标注数据统计和可视化分析",
-      icon: <DatabaseOutlined style={{ color: '#fa8c16' }} />,
-      status: "beta"
+      icon: <DatabaseOutlined style={{ color: "#fa8c16" }} />,
+      status: "beta",
     },
     {
       title: "API集成",
       description: "开放API接口，支持第三方集成",
-      icon: <CodeOutlined style={{ color: '#13c2c2' }} />,
-      status: "experimental"
+      icon: <CodeOutlined style={{ color: "#13c2c2" }} />,
+      status: "experimental",
     },
     {
       title: "云端部署",
       description: "支持云端部署和弹性扩展",
-      icon: <CloudServerOutlined style={{ color: '#eb2f96' }} />,
-      status: "beta"
-    }
+      icon: <CloudServerOutlined style={{ color: "#eb2f96" }} />,
+      status: "beta",
+    },
   ];
 
   // 版本历史
@@ -144,40 +144,40 @@ const AboutPage: React.FC = () => {
     {
       version: "v2.1.3",
       date: "2024-01-15",
-      changes: ["修复批量操作bug", "优化性能", "新增快捷键支持"]
+      changes: ["修复批量操作bug", "优化性能", "新增快捷键支持"],
     },
     {
       version: "v2.1.0",
       date: "2024-01-01",
-      changes: ["新增智能标注功能", "重构用户界面", "增强安全性"]
+      changes: ["新增智能标注功能", "重构用户界面", "增强安全性"],
     },
     {
       version: "v2.0.5",
       date: "2023-12-15",
-      changes: ["修复数据导出问题", "优化加载速度", "更新文档"]
+      changes: ["修复数据导出问题", "优化加载速度", "更新文档"],
     },
     {
       version: "v2.0.0",
       date: "2023-12-01",
-      changes: ["全新架构重构", "支持多种标注类型", "新增协作功能"]
-    }
+      changes: ["全新架构重构", "支持多种标注类型", "新增协作功能"],
+    },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'stable': return 'green';
-      case 'beta': return 'orange';
-      case 'experimental': return 'red';
-      default: return 'default';
+      case "stable": return "green";
+      case "beta": return "orange";
+      case "experimental": return "red";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'stable': return '稳定版';
-      case 'beta': return '测试版';
-      case 'experimental': return '实验版';
-      default: return '未知';
+      case "stable": return "稳定版";
+      case "beta": return "测试版";
+      case "experimental": return "实验版";
+      default: return "未知";
     }
   };
 
@@ -196,7 +196,7 @@ const AboutPage: React.FC = () => {
         {/* 系统概览 */}
         <Col xs={24} lg={12}>
           <Card title={<><AppstoreOutlined style={{ marginRight: 8 }} />系统概览</>}>
-            <div style={{ textAlign: 'center', marginBottom: 24 }}>
+            <div style={{ textAlign: "center", marginBottom: 24 }}>
               <div style={{ fontSize: 48, marginBottom: 8 }}>🏷️</div>
               <Title level={4} style={{ margin: 0 }}>智能标注平台</Title>
               <Text type="secondary">专业的数据标注和管理解决方案</Text>
@@ -227,7 +227,7 @@ const AboutPage: React.FC = () => {
                   <List.Item.Meta
                     avatar={feature.icon}
                     title={
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         {feature.title}
                         <Tag color={getStatusColor(feature.status)} className="small-tag">
                           {getStatusText(feature.status)}
@@ -248,11 +248,11 @@ const AboutPage: React.FC = () => {
             <Row gutter={[16, 16]}>
               {teamMembers.map((member, index) => (
                 <Col xs={24} sm={12} md={6} key={index}>
-                  <Card size="small" style={{ textAlign: 'center' }}>
+                  <Card size="small" style={{ textAlign: "center" }}>
                     <Avatar src={member.avatar} size={64} style={{ marginBottom: 12 }} />
-                    <Title level={5} style={{ margin: '8px 0 4px' }}>{member.name}</Title>
+                    <Title level={5} style={{ margin: "8px 0 4px" }}>{member.name}</Title>
                     <Tag color="blue" style={{ marginBottom: 8 }}>{member.role}</Tag>
-                    <Paragraph style={{ fontSize: 12, color: '#666', margin: 0 }}>
+                    <Paragraph style={{ fontSize: 12, color: "#666", margin: 0 }}>
                       {member.description}
                     </Paragraph>
                   </Card>
@@ -269,7 +269,7 @@ const AboutPage: React.FC = () => {
               items={versionHistory.map((version) => ({
                 children: (
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                       <Tag color="blue">{version.version}</Tag>
                       <Text type="secondary" style={{ fontSize: 12 }}>{version.date}</Text>
                     </div>
@@ -277,14 +277,14 @@ const AboutPage: React.FC = () => {
                       size="small"
                       dataSource={version.changes}
                       renderItem={(change) => (
-                        <List.Item style={{ padding: '4px 0', border: 'none' }}>
-                          <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 8 }} />
+                        <List.Item style={{ padding: "4px 0", border: "none" }}>
+                          <CheckCircleOutlined style={{ color: "#52c41a", marginRight: 8 }} />
                           <Text style={{ fontSize: 12 }}>{change}</Text>
                         </List.Item>
                       )}
                     />
                   </div>
-                )
+                ),
               }))}
             />
           </Card>
@@ -293,34 +293,34 @@ const AboutPage: React.FC = () => {
         {/* 联系信息 */}
         <Col xs={24} lg={12}>
           <Card title={<><CustomerServiceOutlined style={{ marginRight: 8 }} />联系我们</>}>
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <MailOutlined style={{ color: '#1890ff' }} />
+            <Space direction="vertical" style={{ width: "100%" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <MailOutlined style={{ color: "#1890ff" }} />
                 <Text>邮箱：support@labelstudio.com</Text>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <PhoneOutlined style={{ color: '#52c41a' }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <PhoneOutlined style={{ color: "#52c41a" }} />
                 <Text>电话：400-123-4567</Text>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <GlobalOutlined style={{ color: '#722ed1' }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <GlobalOutlined style={{ color: "#722ed1" }} />
                 <Text>官网：www.labelstudio.com</Text>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <GithubOutlined style={{ color: '#000' }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <GithubOutlined style={{ color: "#000" }} />
                 <Text>GitHub：github.com/labelstudio</Text>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <EnvironmentOutlined style={{ color: '#fa8c16' }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <EnvironmentOutlined style={{ color: "#fa8c16" }} />
                 <Text>地址：北京市朝阳区科技园区</Text>
               </div>
             </Space>
 
             <Divider />
 
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: "center" }}>
               <Space>
-                <HeartOutlined style={{ color: '#ff4d4f' }} />
+                <HeartOutlined style={{ color: "#ff4d4f" }} />
                 <Text type="secondary">感谢您使用我们的产品</Text>
               </Space>
             </div>

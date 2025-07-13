@@ -4,7 +4,7 @@ import {
   EyeOutlined,
   ReloadOutlined,
   SafetyOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -21,10 +21,10 @@ import {
   Table,
   Tag,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import React, { useState } from "react";
 
 const { Title, Text } = Typography;
@@ -41,10 +41,10 @@ interface AuditLog {
   action: string;
   resource: string;
   resourceId: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   ipAddress: string;
   userAgent: string;
-  status: 'success' | 'failed' | 'warning';
+  status: "success" | "failed" | "warning";
   duration: number;
   details: Record<string, any>;
   changes?: {
@@ -74,16 +74,16 @@ const AuditLogsPage: React.FC = () => {
       action: "创建标注任务",
       resource: "annotation_task",
       resourceId: "task_12345",
-      method: 'POST',
+      method: "POST",
       ipAddress: "192.168.1.100",
       userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      status: 'success',
+      status: "success",
       duration: 245,
       details: {
         taskName: "医疗影像标注-批次001",
         datasetId: "dataset_001",
-        assignedUsers: ["user_002", "user_003"]
-      }
+        assignedUsers: ["user_002", "user_003"],
+      },
     },
     {
       id: "log_002",
@@ -94,19 +94,19 @@ const AuditLogsPage: React.FC = () => {
       action: "修改用户权限",
       resource: "user_permission",
       resourceId: "user_004",
-      method: 'PUT',
+      method: "PUT",
       ipAddress: "192.168.1.101",
       userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-      status: 'success',
+      status: "success",
       duration: 156,
       details: {
         targetUser: "zhaomei",
-        operation: "权限修改"
+        operation: "权限修改",
       },
       changes: {
         before: { permissions: ["标注任务"] },
-        after: { permissions: ["标注任务", "质量检查"] }
-      }
+        after: { permissions: ["标注任务", "质量检查"] },
+      },
     },
     {
       id: "log_003",
@@ -117,16 +117,16 @@ const AuditLogsPage: React.FC = () => {
       action: "删除数据集",
       resource: "dataset",
       resourceId: "dataset_old_001",
-      method: 'DELETE',
+      method: "DELETE",
       ipAddress: "192.168.1.102",
       userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      status: 'warning',
+      status: "warning",
       duration: 1200,
       details: {
         datasetName: "过期测试数据集",
         reason: "数据过期清理",
-        backupCreated: true
-      }
+        backupCreated: true,
+      },
     },
     {
       id: "log_004",
@@ -137,15 +137,15 @@ const AuditLogsPage: React.FC = () => {
       action: "登录系统",
       resource: "auth_session",
       resourceId: "session_789",
-      method: 'POST',
+      method: "POST",
       ipAddress: "192.168.1.103",
       userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
-      status: 'success',
+      status: "success",
       duration: 89,
       details: {
         loginMethod: "用户名密码",
-        sessionDuration: 28800
-      }
+        sessionDuration: 28800,
+      },
     },
     {
       id: "log_005",
@@ -156,16 +156,16 @@ const AuditLogsPage: React.FC = () => {
       action: "尝试访问管理页面",
       resource: "admin_panel",
       resourceId: "admin_001",
-      method: 'GET',
+      method: "GET",
       ipAddress: "203.0.113.1",
       userAgent: "curl/7.68.0",
-      status: 'failed',
+      status: "failed",
       duration: 50,
       details: {
         reason: "权限不足",
-        errorCode: "403"
-      }
-    }
+        errorCode: "403",
+      },
+    },
   ]);
 
   const actionOptions = [
@@ -212,21 +212,21 @@ const AuditLogsPage: React.FC = () => {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'success': return '成功';
-      case 'failed': return '失败';
-      case 'warning': return '警告';
-      default: return '未知';
+      case "success": return "成功";
+      case "failed": return "失败";
+      case "warning": return "警告";
+      default: return "未知";
     }
   };
 
   const getMethodColor = (method: string) => {
     switch (method) {
-      case 'GET': return 'blue';
-      case 'POST': return 'green';
-      case 'PUT': return 'orange';
-      case 'DELETE': return 'red';
-      case 'PATCH': return 'purple';
-      default: return 'default';
+      case "GET": return "blue";
+      case "POST": return "green";
+      case "PUT": return "orange";
+      case "DELETE": return "red";
+      case "PATCH": return "purple";
+      default: return "default";
     }
   };
 
@@ -248,7 +248,7 @@ const AuditLogsPage: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      message.success('审计日志导出成功');
+      message.success("审计日志导出成功");
     }, 2000);
   };
 
@@ -256,47 +256,47 @@ const AuditLogsPage: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      message.success('数据已刷新');
+      message.success("数据已刷新");
     }, 1000);
   };
 
   const columns: ColumnsType<AuditLog> = [
     {
-      title: '时间',
-      dataIndex: 'timestamp',
-      key: 'timestamp',
+      title: "时间",
+      dataIndex: "timestamp",
+      key: "timestamp",
       width: 160,
       sorter: (a, b) => dayjs(a.timestamp).unix() - dayjs(b.timestamp).unix(),
       render: (timestamp) => (
         <div style={{ fontSize: 12 }}>
-          <div>{dayjs(timestamp).format('MM-DD HH:mm')}</div>
-          <div style={{ color: '#666' }}>{dayjs(timestamp).format('YYYY')}</div>
+          <div>{dayjs(timestamp).format("MM-DD HH:mm")}</div>
+          <div style={{ color: "#666" }}>{dayjs(timestamp).format("YYYY")}</div>
         </div>
       ),
     },
     {
-      title: '用户',
-      key: 'user',
+      title: "用户",
+      key: "user",
       width: 150,
       render: (_, log) => (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <UserOutlined style={{ color: '#666' }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <UserOutlined style={{ color: "#666" }} />
           <div>
             <div style={{ fontWeight: 500, fontSize: 12 }}>{log.username}</div>
-            <div style={{ fontSize: 11, color: '#666' }}>{log.userRole}</div>
+            <div style={{ fontSize: 11, color: "#666" }}>{log.userRole}</div>
           </div>
         </div>
       ),
     },
     {
-      title: '操作',
-      dataIndex: 'action',
-      key: 'action',
+      title: "操作",
+      dataIndex: "action",
+      key: "action",
       width: 180,
       render: (action, log) => (
         <div>
           <div style={{ fontWeight: 500, marginBottom: 2 }}>{action}</div>
-          <div style={{ display: 'flex', gap: 4 }}>
+          <div style={{ display: "flex", gap: 4 }}>
             <Tag color={getMethodColor(log.method)} className="small-tag">
               {log.method}
             </Tag>
@@ -308,38 +308,38 @@ const AuditLogsPage: React.FC = () => {
       ),
     },
     {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status',
+      title: "状态",
+      dataIndex: "status",
+      key: "status",
       width: 80,
       render: (status) => (
         <Badge
-          status={status === 'success' ? 'success' : status === 'failed' ? 'error' : 'warning'}
+          status={status === "success" ? "success" : status === "failed" ? "error" : "warning"}
           text={getStatusText(status)}
         />
       ),
     },
     {
-      title: 'IP地址',
-      dataIndex: 'ipAddress',
-      key: 'ipAddress',
+      title: "IP地址",
+      dataIndex: "ipAddress",
+      key: "ipAddress",
       width: 120,
       render: (ip) => (
         <Text code style={{ fontSize: 11 }}>{ip}</Text>
       ),
     },
     {
-      title: '耗时',
-      dataIndex: 'duration',
-      key: 'duration',
+      title: "耗时",
+      dataIndex: "duration",
+      key: "duration",
       width: 80,
       render: (duration) => (
         <Text style={{ fontSize: 12 }}>{duration}ms</Text>
       ),
     },
     {
-      title: '操作',
-      key: 'actions',
+      title: "操作",
+      key: "actions",
       width: 100,
       render: (_, log) => (
         <Space>
@@ -430,7 +430,7 @@ const AuditLogsPage: React.FC = () => {
                 value={dateRange}
                 onChange={handleDateRangeChange}
                 style={{ width: "100%" }}
-                placeholder={['开始时间', '结束时间']}
+                placeholder={["开始时间", "结束时间"]}
               />
             </Col>
           </Row>
@@ -479,14 +479,14 @@ const AuditLogsPage: React.FC = () => {
               </Descriptions.Item>
               <Descriptions.Item label="状态">
                 <Badge
-                  status={selectedLog.status === 'success' ? 'success' :
-                    selectedLog.status === 'failed' ? 'error' : 'warning'}
+                  status={selectedLog.status === "success" ? "success" :
+                    selectedLog.status === "failed" ? "error" : "warning"}
                   text={getStatusText(selectedLog.status)}
                 />
               </Descriptions.Item>
               <Descriptions.Item label="IP地址">{selectedLog.ipAddress}</Descriptions.Item>
               <Descriptions.Item label="用户代理">
-                <Text code style={{ fontSize: 11, wordBreak: 'break-all' }}>
+                <Text code style={{ fontSize: 11, wordBreak: "break-all" }}>
                   {selectedLog.userAgent}
                 </Text>
               </Descriptions.Item>
@@ -497,7 +497,7 @@ const AuditLogsPage: React.FC = () => {
               <div style={{ marginTop: 16 }}>
                 <Title level={5}>操作详情</Title>
                 <Card size="small">
-                  <pre style={{ fontSize: 12, margin: 0, whiteSpace: 'pre-wrap' }}>
+                  <pre style={{ fontSize: 12, margin: 0, whiteSpace: "pre-wrap" }}>
                     {JSON.stringify(selectedLog.details, null, 2)}
                   </pre>
                 </Card>
@@ -510,14 +510,14 @@ const AuditLogsPage: React.FC = () => {
                 <Row gutter={16}>
                   <Col span={12}>
                     <Card size="small" title="变更前">
-                      <pre style={{ fontSize: 12, margin: 0, whiteSpace: 'pre-wrap' }}>
+                      <pre style={{ fontSize: 12, margin: 0, whiteSpace: "pre-wrap" }}>
                         {JSON.stringify(selectedLog.changes.before, null, 2)}
                       </pre>
                     </Card>
                   </Col>
                   <Col span={12}>
                     <Card size="small" title="变更后">
-                      <pre style={{ fontSize: 12, margin: 0, whiteSpace: 'pre-wrap' }}>
+                      <pre style={{ fontSize: 12, margin: 0, whiteSpace: "pre-wrap" }}>
                         {JSON.stringify(selectedLog.changes.after, null, 2)}
                       </pre>
                     </Card>

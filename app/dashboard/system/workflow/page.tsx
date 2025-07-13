@@ -15,7 +15,7 @@ import {
   PlusOutlined,
   SearchOutlined,
   SettingOutlined,
-  SyncOutlined
+  SyncOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -36,9 +36,9 @@ import {
   Timeline,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
-import type { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
 
 const { Title, Text } = Typography;
@@ -101,7 +101,7 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: { role: "annotator" },
           conditions: {},
           timeLimit: 480,
-          isRequired: true
+          isRequired: true,
         },
         {
           id: "step_002",
@@ -112,7 +112,7 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: { role: "reviewer" },
           conditions: { accuracy: ">= 0.9" },
           timeLimit: 240,
-          isRequired: true
+          isRequired: true,
         },
         {
           id: "step_003",
@@ -122,8 +122,8 @@ const WorkflowPage: React.FC = () => {
           assigneeType: "auto",
           assigneeConfig: { algorithm: "consensus" },
           conditions: { confidence: ">= 0.95" },
-          isRequired: false
-        }
+          isRequired: false,
+        },
       ],
       createdAt: "2024-01-10",
       updatedAt: "2024-01-15",
@@ -133,7 +133,7 @@ const WorkflowPage: React.FC = () => {
       version: "v2.1",
       isDefault: true,
       executionCount: 1250,
-      successRate: 94.5
+      successRate: 94.5,
     },
     {
       id: "workflow_002",
@@ -150,7 +150,7 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: { role: "annotator" },
           conditions: {},
           timeLimit: 240,
-          isRequired: true
+          isRequired: true,
         },
         {
           id: "step_005",
@@ -160,8 +160,8 @@ const WorkflowPage: React.FC = () => {
           assigneeType: "auto",
           assigneeConfig: { format: "json" },
           conditions: { completion: "100%" },
-          isRequired: true
-        }
+          isRequired: true,
+        },
       ],
       createdAt: "2024-01-08",
       updatedAt: "2024-01-14",
@@ -171,7 +171,7 @@ const WorkflowPage: React.FC = () => {
       version: "v1.5",
       isDefault: false,
       executionCount: 680,
-      successRate: 98.2
+      successRate: 98.2,
     },
     {
       id: "workflow_003",
@@ -188,7 +188,7 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: {},
           conditions: {},
           timeLimit: 600,
-          isRequired: true
+          isRequired: true,
         },
         {
           id: "step_007",
@@ -199,7 +199,7 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: { count: 2 },
           conditions: { agreement: ">= 0.8" },
           timeLimit: 300,
-          isRequired: true
+          isRequired: true,
         },
         {
           id: "step_008",
@@ -210,8 +210,8 @@ const WorkflowPage: React.FC = () => {
           assigneeConfig: { role: "expert" },
           conditions: { conflict: "exists" },
           timeLimit: 480,
-          isRequired: true
-        }
+          isRequired: true,
+        },
       ],
       createdAt: "2024-01-05",
       updatedAt: "2024-01-12",
@@ -221,8 +221,8 @@ const WorkflowPage: React.FC = () => {
       version: "v1.0",
       isDefault: false,
       executionCount: 0,
-      successRate: 0
-    }
+      successRate: 0,
+    },
   ]);
 
   // 统计数据
@@ -230,7 +230,7 @@ const WorkflowPage: React.FC = () => {
     totalWorkflows: workflows.length,
     activeWorkflows: workflows.filter(w => w.status === "active").length,
     totalExecutions: workflows.reduce((sum, w) => sum + w.executionCount, 0),
-    avgSuccessRate: workflows.reduce((sum, w) => sum + w.successRate, 0) / workflows.length
+    avgSuccessRate: workflows.reduce((sum, w) => sum + w.successRate, 0) / workflows.length,
   };
 
   // 获取类型标签
@@ -239,7 +239,7 @@ const WorkflowPage: React.FC = () => {
       annotation: { color: "blue", text: "标注流程" },
       review: { color: "green", text: "审核流程" },
       quality: { color: "orange", text: "质检流程" },
-      export: { color: "purple", text: "导出流程" }
+      export: { color: "purple", text: "导出流程" },
     };
     const config = typeConfig[type as keyof typeof typeConfig] || { color: "default", text: type };
     return <Tag color={config.color}>{config.text}</Tag>;
@@ -251,7 +251,7 @@ const WorkflowPage: React.FC = () => {
       active: { color: "success", text: "运行中", icon: <PlayCircleOutlined /> },
       draft: { color: "warning", text: "草稿", icon: <SyncOutlined /> },
       paused: { color: "processing", text: "已暂停", icon: <PauseCircleOutlined /> },
-      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> }
+      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.draft;
   };
@@ -263,7 +263,7 @@ const WorkflowPage: React.FC = () => {
       review: <EyeOutlined />,
       quality_check: <CheckCircleOutlined />,
       approval: <CheckCircleOutlined />,
-      export: <ExportOutlined />
+      export: <ExportOutlined />,
     };
     return icons[type as keyof typeof icons] || <SettingOutlined />;
   };
@@ -284,7 +284,7 @@ const WorkflowPage: React.FC = () => {
       dataIndex: "name",
       key: "name",
       width: 280,
-      fixed: 'left',
+      fixed: "left",
       render: (text, record) => (
         <Space align="start">
           <BranchesOutlined style={{ color: "#1890ff", marginTop: 4 }} />
@@ -292,9 +292,9 @@ const WorkflowPage: React.FC = () => {
             <div style={{
               fontWeight: 500,
               marginBottom: 4,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap'
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}>
               <Tooltip title={text}>{text}</Tooltip>
             </div>
@@ -302,12 +302,12 @@ const WorkflowPage: React.FC = () => {
               type="secondary"
               style={{
                 fontSize: 12,
-                display: '-webkit-box',
+                display: "-webkit-box",
                 WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                lineHeight: '16px',
-                maxHeight: '32px'
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                lineHeight: "16px",
+                maxHeight: "32px",
               }}
             >
               <Tooltip title={record.description}>
@@ -321,14 +321,14 @@ const WorkflowPage: React.FC = () => {
             )}
           </div>
         </Space>
-      )
+      ),
     },
     {
       title: "类型",
       dataIndex: "type",
       key: "type",
       width: 120,
-      render: (type) => getTypeTag(type)
+      render: (type) => getTypeTag(type),
     },
     {
       title: "步骤数量",
@@ -337,7 +337,7 @@ const WorkflowPage: React.FC = () => {
       width: 100,
       render: (steps) => (
         <Badge count={steps.length} style={{ backgroundColor: "#52c41a" }} />
-      )
+      ),
     },
     {
       title: "工作流预览",
@@ -361,7 +361,7 @@ const WorkflowPage: React.FC = () => {
             </Timeline.Item>
           )}
         </Timeline>
-      )
+      ),
     },
     {
       title: "状态",
@@ -376,7 +376,7 @@ const WorkflowPage: React.FC = () => {
             text={config.text}
           />
         );
-      }
+      },
     },
     {
       title: "使用项目",
@@ -387,7 +387,7 @@ const WorkflowPage: React.FC = () => {
         <Text strong style={{ color: count > 0 ? "#1890ff" : "#d9d9d9" }}>
           {count}
         </Text>
-      )
+      ),
     },
     {
       title: "执行次数",
@@ -398,7 +398,7 @@ const WorkflowPage: React.FC = () => {
         <Text style={{ color: "#722ed1" }}>
           {count.toLocaleString()}
         </Text>
-      )
+      ),
     },
     {
       title: "成功率",
@@ -407,29 +407,29 @@ const WorkflowPage: React.FC = () => {
       width: 100,
       render: (rate) => (
         <Text style={{
-          color: rate >= 95 ? "#52c41a" : rate >= 85 ? "#fa8c16" : "#ff4d4f"
+          color: rate >= 95 ? "#52c41a" : rate >= 85 ? "#fa8c16" : "#ff4d4f",
         }}>
           {rate > 0 ? `${rate.toFixed(1)}%` : "-"}
         </Text>
-      )
+      ),
     },
     {
       title: "版本",
       dataIndex: "version",
       key: "version",
-      width: 80
+      width: 80,
     },
     {
       title: "创建者",
       dataIndex: "creator",
       key: "creator",
-      width: 100
+      width: 100,
     },
     {
       title: "更新时间",
       dataIndex: "updatedAt",
       key: "updatedAt",
-      width: 120
+      width: 120,
     },
     {
       title: "操作",
@@ -465,30 +465,30 @@ const WorkflowPage: React.FC = () => {
                   key: "copy",
                   label: "复制",
                   icon: <CopyOutlined />,
-                  onClick: () => handleCopy(record)
+                  onClick: () => handleCopy(record),
                 },
                 {
                   key: "export",
                   label: "导出配置",
                   icon: <ExportOutlined />,
-                  onClick: () => handleExport(record)
+                  onClick: () => handleExport(record),
                 },
                 {
                   key: "delete",
                   label: "删除",
                   icon: <DeleteOutlined />,
                   danger: true,
-                  onClick: () => handleDelete(record)
-                }
-              ]
+                  onClick: () => handleDelete(record),
+                },
+              ],
             }}
             trigger={["click"]}
           >
             <Button type="text" icon={<SettingOutlined />} />
           </Dropdown>
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   // 处理函数
@@ -505,7 +505,7 @@ const WorkflowPage: React.FC = () => {
   const handleToggleStatus = (workflow: WorkflowConfig) => {
     const newStatus = workflow.status === "active" ? "paused" : "active";
     setWorkflows(workflows.map(w =>
-      w.id === workflow.id ? { ...w, status: newStatus } : w
+      w.id === workflow.id ? { ...w, status: newStatus } : w,
     ));
     message.success(`工作流已${newStatus === "active" ? "启动" : "暂停"}`);
   };
@@ -519,7 +519,7 @@ const WorkflowPage: React.FC = () => {
       status: "draft" as const,
       projectCount: 0,
       executionCount: 0,
-      successRate: 0
+      successRate: 0,
     };
     setWorkflows([...workflows, newWorkflow]);
     message.success("工作流已复制");
@@ -536,7 +536,7 @@ const WorkflowPage: React.FC = () => {
       onOk: () => {
         setWorkflows(workflows.filter(w => w.id !== workflow.id));
         message.success("删除成功");
-      }
+      },
     });
   };
 
@@ -555,7 +555,7 @@ const WorkflowPage: React.FC = () => {
       if (editingWorkflow) {
         // 编辑
         setWorkflows(workflows.map(w =>
-          w.id === editingWorkflow.id ? { ...w, ...values } : w
+          w.id === editingWorkflow.id ? { ...w, ...values } : w,
         ));
         message.success("更新成功");
       } else {
@@ -563,14 +563,14 @@ const WorkflowPage: React.FC = () => {
         const newWorkflow: WorkflowConfig = {
           ...values,
           id: `workflow_${Date.now()}`,
-          createdAt: new Date().toISOString().split('T')[0],
-          updatedAt: new Date().toISOString().split('T')[0],
+          createdAt: new Date().toISOString().split("T")[0],
+          updatedAt: new Date().toISOString().split("T")[0],
           creator: "当前用户",
           projectCount: 0,
           version: "v1.0",
           steps: [],
           executionCount: 0,
-          successRate: 0
+          successRate: 0,
         };
         setWorkflows([...workflows, newWorkflow]);
         message.success("创建成功");
@@ -701,7 +701,7 @@ const WorkflowPage: React.FC = () => {
             pageSize: 10,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total) => `共 ${total} 条记录`
+            showTotal: (total) => `共 ${total} 条记录`,
           }}
           scroll={{ x: 1400 }}
         />
@@ -721,7 +721,7 @@ const WorkflowPage: React.FC = () => {
           layout="vertical"
           initialValues={{
             status: "draft",
-            isDefault: false
+            isDefault: false,
           }}
         >
           <Form.Item

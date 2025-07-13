@@ -6,7 +6,7 @@ import {
   MessageOutlined,
   PlusOutlined,
   TagOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -22,7 +22,7 @@ import {
   Space,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import React, { useState } from "react";
 
@@ -48,7 +48,7 @@ interface Discussion {
   lastReply: string;
   isHot: boolean;
   isPinned: boolean;
-  status: 'open' | 'resolved' | 'closed';
+  status: "open" | "resolved" | "closed";
 }
 
 const DiscussionsPage: React.FC = () => {
@@ -65,7 +65,7 @@ const DiscussionsPage: React.FC = () => {
       author: {
         name: "张医生",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
-        role: "医疗专家"
+        role: "医疗专家",
       },
       category: "标注规范",
       tags: ["医疗影像", "边界标注", "质量控制"],
@@ -76,7 +76,7 @@ const DiscussionsPage: React.FC = () => {
       lastReply: "2024-01-15 16:45",
       isHot: true,
       isPinned: false,
-      status: 'open'
+      status: "open",
     },
     {
       id: "disc_002",
@@ -85,7 +85,7 @@ const DiscussionsPage: React.FC = () => {
       author: {
         name: "李分析师",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
-        role: "数据分析师"
+        role: "数据分析师",
       },
       category: "质量控制",
       tags: ["情感分析", "一致性", "标注规范"],
@@ -96,7 +96,7 @@ const DiscussionsPage: React.FC = () => {
       lastReply: "2024-01-15 09:20",
       isHot: false,
       isPinned: true,
-      status: 'open'
+      status: "open",
     },
     {
       id: "disc_003",
@@ -105,7 +105,7 @@ const DiscussionsPage: React.FC = () => {
       author: {
         name: "王工程师",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
-        role: "算法工程师"
+        role: "算法工程师",
       },
       category: "工具推荐",
       tags: ["目标检测", "标注工具", "效率优化"],
@@ -116,7 +116,7 @@ const DiscussionsPage: React.FC = () => {
       lastReply: "2024-01-14 11:30",
       isHot: false,
       isPinned: false,
-      status: 'resolved'
+      status: "resolved",
     },
     {
       id: "disc_004",
@@ -125,7 +125,7 @@ const DiscussionsPage: React.FC = () => {
       author: {
         name: "赵研究员",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhao",
-        role: "研究员"
+        role: "研究员",
       },
       category: "标准制定",
       tags: ["语音识别", "质量评估", "标准制定"],
@@ -136,8 +136,8 @@ const DiscussionsPage: React.FC = () => {
       lastReply: "2024-01-13 10:15",
       isHot: false,
       isPinned: false,
-      status: 'open'
-    }
+      status: "open",
+    },
   ]);
 
   const categories = [
@@ -180,19 +180,19 @@ const DiscussionsPage: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'open': return 'processing';
-      case 'resolved': return 'success';
-      case 'closed': return 'default';
-      default: return 'default';
+      case "open": return "processing";
+      case "resolved": return "success";
+      case "closed": return "default";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'open': return '讨论中';
-      case 'resolved': return '已解决';
-      case 'closed': return '已关闭';
-      default: return '未知';
+      case "open": return "讨论中";
+      case "resolved": return "已解决";
+      case "closed": return "已关闭";
+      default: return "未知";
     }
   };
 
@@ -262,7 +262,7 @@ const DiscussionsPage: React.FC = () => {
               style={{ marginBottom: 16 }}
               hoverable
               styles={{
-                body: { padding: "20px 24px" }
+                body: { padding: "20px 24px" },
               }}
             >
               <div style={{ display: "flex", gap: 16 }}>

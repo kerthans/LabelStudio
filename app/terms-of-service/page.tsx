@@ -7,7 +7,7 @@ import {
   PhoneOutlined,
   SafetyOutlined,
   UserOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Anchor,
@@ -16,7 +16,7 @@ import {
   Divider,
   Row,
   Space,
-  Typography
+  Typography,
 } from "antd";
 import React from "react";
 
@@ -58,7 +58,7 @@ const TermsOfServicePage: React.FC = () => {
                 { key: "liability", href: "#liability", title: "责任限制" },
                 { key: "dispute", href: "#dispute", title: "争议解决" },
                 { key: "changes", href: "#changes", title: "条款变更" },
-                { key: "contact", href: "#contact", title: "联系我们" }
+                { key: "contact", href: "#contact", title: "联系我们" },
               ]}
             />
           </Card>
@@ -74,7 +74,7 @@ const TermsOfServicePage: React.FC = () => {
                 条款接受
               </Title>
               <Paragraph>
-                欢迎使用智能标注平台（以下简称"本平台"或"我们"）。本服务条款（以下简称"条款"）是您与本平台之间关于使用本平台服务的法律协议。
+                {"欢迎使用智能标注平台（以下简称\"本平台\"或\"我们\"）。本服务条款（以下简称\"条款\"）是您与本平台之间关于使用本平台服务的法律协议。"}
               </Paragraph>
               <Paragraph>
                 <strong>通过访问或使用本平台，您表示已阅读、理解并同意受本条款约束。</strong>
@@ -281,9 +281,9 @@ const TermsOfServicePage: React.FC = () => {
 
               <Title level={3}>服务免责</Title>
               <ul>
-                <li>本平台按"现状"提供服务，不提供任何明示或暗示的保证</li>
-                <li>我们不保证服务的连续性、及时性、安全性或无错误</li>
-                <li>用户应自行承担使用服务的风险</li>
+                <li>{"本平台按\"现状\"提供服务，不提供任何明示或暗示的保证"}</li>
+                <li>{"我们不保证服务的连续性、及时性、安全性或无错误"}</li>
+                <li>{"用户应自行承担使用服务的风险"}</li>
               </ul>
 
               <Title level={3}>损害赔偿限制</Title>
@@ -335,13 +335,13 @@ const TermsOfServicePage: React.FC = () => {
               <Paragraph>
                 如果您对本服务条款有任何疑问，请联系我们：
               </Paragraph>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <MailOutlined style={{ color: '#1890ff' }} />
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <MailOutlined style={{ color: "#1890ff" }} />
                   <Text>邮箱：legal@labelstudio.com</Text>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <PhoneOutlined style={{ color: '#52c41a' }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <PhoneOutlined style={{ color: "#52c41a" }} />
                   <Text>电话：400-123-4567</Text>
                 </div>
                 <div>

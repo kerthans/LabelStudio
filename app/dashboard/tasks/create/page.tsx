@@ -5,7 +5,7 @@ import {
   InfoCircleOutlined,
   SettingOutlined,
   TeamOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import {
@@ -17,7 +17,6 @@ import {
   Form,
   Input,
   InputNumber,
-  message,
   Radio,
   Row,
   Select,
@@ -26,7 +25,8 @@ import {
   Switch,
   Tag,
   Typography,
-  Upload
+  Upload,
+  message,
 } from "antd";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -129,7 +129,7 @@ const CreateTask: React.FC = () => {
     try {
       await form.validateFields();
       setCurrentStep(currentStep + 1);
-    } catch (error) {
+    } catch (_error) {
       message.error("请完善当前步骤的必填信息");
     }
   };
@@ -150,7 +150,7 @@ const CreateTask: React.FC = () => {
 
       message.success("任务创建成功！");
       router.push("/dashboard/tasks/monitor");
-    } catch (error) {
+    } catch (_error) {
       message.error("创建失败，请检查信息");
     } finally {
       setLoading(false);

@@ -7,7 +7,7 @@ import {
   PlayCircleOutlined,
   StarOutlined,
   TagsOutlined,
-  VideoCameraOutlined
+  VideoCameraOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -23,7 +23,7 @@ import {
   Select,
   Space,
   Tag,
-  Typography
+  Typography,
 } from "antd";
 import React, { useState } from "react";
 
@@ -35,7 +35,7 @@ interface Tutorial {
   title: string;
   description: string;
   category: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty: "beginner" | "intermediate" | "advanced";
   duration: number; // 分钟
   videoUrl?: string;
   thumbnailUrl: string;
@@ -78,26 +78,26 @@ const TutorialsPage: React.FC = () => {
       key: "all",
       title: "全部教程",
       icon: <VideoCameraOutlined />,
-      count: 18
+      count: 18,
     },
     {
       key: "image-annotation",
       title: "图像标注",
       icon: <TagsOutlined />,
-      count: 8
+      count: 8,
     },
     {
       key: "text-annotation",
       title: "文本标注",
       icon: <TagsOutlined />,
-      count: 6
+      count: 6,
     },
     {
       key: "quality-control",
       title: "质量控制",
       icon: <StarOutlined />,
-      count: 4
-    }
+      count: 4,
+    },
   ];
 
   // 教程数据
@@ -113,7 +113,7 @@ const TutorialsPage: React.FC = () => {
       instructor: {
         name: "张明",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
-        title: "高级标注专家"
+        title: "高级标注专家",
       },
       rating: 4.8,
       viewCount: 1245,
@@ -124,9 +124,9 @@ const TutorialsPage: React.FC = () => {
         { id: "ch1", title: "标注工具介绍", duration: 5, isCompleted: true },
         { id: "ch2", title: "分类标准说明", duration: 8, isCompleted: true },
         { id: "ch3", title: "实际操作演示", duration: 10, isCompleted: true },
-        { id: "ch4", title: "质量检查方法", duration: 2, isCompleted: true }
+        { id: "ch4", title: "质量检查方法", duration: 2, isCompleted: true },
       ],
-      createdAt: "2024-01-10"
+      createdAt: "2024-01-10",
     },
     {
       id: "tutorial_002",
@@ -139,7 +139,7 @@ const TutorialsPage: React.FC = () => {
       instructor: {
         name: "李红",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
-        title: "计算机视觉专家"
+        title: "计算机视觉专家",
       },
       rating: 4.9,
       viewCount: 987,
@@ -149,9 +149,9 @@ const TutorialsPage: React.FC = () => {
         { id: "ch1", title: "目标检测基础", duration: 8, isCompleted: true },
         { id: "ch2", title: "边界框绘制技巧", duration: 12, isCompleted: true },
         { id: "ch3", title: "多目标标注策略", duration: 10, isCompleted: false },
-        { id: "ch4", title: "质量评估标准", duration: 5, isCompleted: false }
+        { id: "ch4", title: "质量评估标准", duration: 5, isCompleted: false },
       ],
-      createdAt: "2024-01-08"
+      createdAt: "2024-01-08",
     },
     {
       id: "tutorial_003",
@@ -164,7 +164,7 @@ const TutorialsPage: React.FC = () => {
       instructor: {
         name: "王强",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
-        title: "NLP算法工程师"
+        title: "NLP算法工程师",
       },
       rating: 4.7,
       viewCount: 756,
@@ -172,9 +172,9 @@ const TutorialsPage: React.FC = () => {
       chapters: [
         { id: "ch1", title: "情感分析概述", duration: 5 },
         { id: "ch2", title: "标注规则详解", duration: 8 },
-        { id: "ch3", title: "边界情况处理", duration: 7 }
+        { id: "ch3", title: "边界情况处理", duration: 7 },
       ],
-      createdAt: "2024-01-05"
+      createdAt: "2024-01-05",
     },
     {
       id: "tutorial_004",
@@ -187,7 +187,7 @@ const TutorialsPage: React.FC = () => {
       instructor: {
         name: "赵美",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhao",
-        title: "深度学习专家"
+        title: "深度学习专家",
       },
       rating: 4.9,
       viewCount: 432,
@@ -196,9 +196,9 @@ const TutorialsPage: React.FC = () => {
         { id: "ch1", title: "语义分割原理", duration: 10 },
         { id: "ch2", title: "工具高级功能", duration: 15 },
         { id: "ch3", title: "复杂场景处理", duration: 12 },
-        { id: "ch4", title: "质量优化技巧", duration: 8 }
+        { id: "ch4", title: "质量优化技巧", duration: 8 },
       ],
-      createdAt: "2024-01-03"
+      createdAt: "2024-01-03",
     },
     {
       id: "tutorial_005",
@@ -211,7 +211,7 @@ const TutorialsPage: React.FC = () => {
       instructor: {
         name: "孙伟",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=sun",
-        title: "质量管理专家"
+        title: "质量管理专家",
       },
       rating: 4.8,
       viewCount: 623,
@@ -220,10 +220,10 @@ const TutorialsPage: React.FC = () => {
         { id: "ch1", title: "质量标准制定", duration: 8 },
         { id: "ch2", title: "检查流程设计", duration: 10 },
         { id: "ch3", title: "问题识别方法", duration: 7 },
-        { id: "ch4", title: "持续改进策略", duration: 5 }
+        { id: "ch4", title: "持续改进策略", duration: 5 },
       ],
-      createdAt: "2024-01-01"
-    }
+      createdAt: "2024-01-01",
+    },
   ]);
 
   // 筛选教程
@@ -296,23 +296,23 @@ const TutorialsPage: React.FC = () => {
               dataSource={categories}
               renderItem={(category) => (
                 <List.Item
-                  className={`category-item ${selectedCategory === category.key ? 'active' : ''}`}
+                  className={`category-item ${selectedCategory === category.key ? "active" : ""}`}
                   onClick={() => setSelectedCategory(category.key)}
                   style={{
-                    cursor: 'pointer',
-                    padding: '8px 12px',
-                    borderRadius: '6px',
-                    marginBottom: '4px',
-                    backgroundColor: selectedCategory === category.key ? '#e6f7ff' : 'transparent',
-                    border: selectedCategory === category.key ? '1px solid #1890ff' : '1px solid transparent'
+                    cursor: "pointer",
+                    padding: "8px 12px",
+                    borderRadius: "6px",
+                    marginBottom: "4px",
+                    backgroundColor: selectedCategory === category.key ? "#e6f7ff" : "transparent",
+                    border: selectedCategory === category.key ? "1px solid #1890ff" : "1px solid transparent",
                   }}
                 >
                   <List.Item.Meta
                     avatar={category.icon}
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span>{category.title}</span>
-                        <Badge count={category.count} style={{ backgroundColor: '#52c41a' }} />
+                        <Badge count={category.count} style={{ backgroundColor: "#52c41a" }} />
                       </div>
                     }
                   />
@@ -324,11 +324,11 @@ const TutorialsPage: React.FC = () => {
           {/* 筛选选项 */}
           <Card title={<><FilterOutlined /> 筛选选项</>}>
             <div style={{ marginBottom: 16 }}>
-              <Text strong style={{ display: 'block', marginBottom: 8 }}>难度等级</Text>
+              <Text strong style={{ display: "block", marginBottom: 8 }}>难度等级</Text>
               <Select
                 value={selectedDifficulty}
                 onChange={setSelectedDifficulty}
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
               >
                 <Option value="all">全部难度</Option>
                 <Option value="beginner">入门</Option>
@@ -337,11 +337,11 @@ const TutorialsPage: React.FC = () => {
               </Select>
             </div>
             <div>
-              <Text strong style={{ display: 'block', marginBottom: 8 }}>排序方式</Text>
+              <Text strong style={{ display: "block", marginBottom: 8 }}>排序方式</Text>
               <Select
                 value={sortBy}
                 onChange={setSortBy}
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
               >
                 <Option value="latest">最新发布</Option>
                 <Option value="popular">最受欢迎</Option>
@@ -361,41 +361,41 @@ const TutorialsPage: React.FC = () => {
                   hoverable
                   className="tutorial-card"
                   cover={
-                    <div style={{ position: 'relative' }}>
+                    <div style={{ position: "relative" }}>
                       <img
                         alt={tutorial.title}
                         src={tutorial.thumbnailUrl}
-                        style={{ width: '100%', height: 180, objectFit: 'cover' }}
+                        style={{ width: "100%", height: 180, objectFit: "cover" }}
                       />
                       <div
                         style={{
-                          position: 'absolute',
-                          top: '50%',
-                          left: '50%',
-                          transform: 'translate(-50%, -50%)',
-                          backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                          borderRadius: '50%',
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                          backgroundColor: "rgba(0, 0, 0, 0.6)",
+                          borderRadius: "50%",
                           width: 60,
                           height: 60,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: 'pointer'
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
                         }}
                         onClick={() => handlePlayTutorial(tutorial)}
                       >
-                        <PlayCircleOutlined style={{ fontSize: 32, color: '#fff' }} />
+                        <PlayCircleOutlined style={{ fontSize: 32, color: "#fff" }} />
                       </div>
                       <div
                         style={{
-                          position: 'absolute',
+                          position: "absolute",
                           top: 8,
                           right: 8,
-                          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                          color: '#fff',
-                          padding: '2px 8px',
+                          backgroundColor: "rgba(0, 0, 0, 0.7)",
+                          color: "#fff",
+                          padding: "2px 8px",
                           borderRadius: 4,
-                          fontSize: 12
+                          fontSize: 12,
                         }}
                       >
                         {tutorial.duration} 分钟
@@ -403,19 +403,19 @@ const TutorialsPage: React.FC = () => {
                       {tutorial.progress !== undefined && (
                         <div
                           style={{
-                            position: 'absolute',
+                            position: "absolute",
                             bottom: 0,
                             left: 0,
                             right: 0,
                             height: 4,
-                            backgroundColor: 'rgba(255, 255, 255, 0.3)'
+                            backgroundColor: "rgba(255, 255, 255, 0.3)",
                           }}
                         >
                           <div
                             style={{
-                              height: '100%',
+                              height: "100%",
                               width: `${tutorial.progress}%`,
-                              backgroundColor: '#52c41a'
+                              backgroundColor: "#52c41a",
                             }}
                           />
                         </div>
@@ -433,11 +433,11 @@ const TutorialsPage: React.FC = () => {
                     </Button>,
                     <Button key="view" icon={<EyeOutlined />}>
                       {tutorial.viewCount}
-                    </Button>
+                    </Button>,
                   ]}
                 >
                   <div style={{ marginBottom: 12 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
                       <Title level={5} style={{ margin: 0, flex: 1 }}>
                         {tutorial.title}
                       </Title>
@@ -446,7 +446,7 @@ const TutorialsPage: React.FC = () => {
                       )}
                     </div>
                     <Paragraph
-                      style={{ margin: 0, color: '#666', fontSize: 12 }}
+                      style={{ margin: 0, color: "#666", fontSize: 12 }}
                       ellipsis={{ rows: 2 }}
                     >
                       {tutorial.description}
@@ -464,23 +464,23 @@ const TutorialsPage: React.FC = () => {
                     </Space>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <Avatar src={tutorial.instructor.avatar} size={24} />
                       <div>
                         <div style={{ fontSize: 12, fontWeight: 500 }}>{tutorial.instructor.name}</div>
-                        <div style={{ fontSize: 11, color: '#666' }}>{tutorial.instructor.title}</div>
+                        <div style={{ fontSize: 11, color: "#666" }}>{tutorial.instructor.title}</div>
                       </div>
                     </div>
-                    <div style={{ textAlign: 'right' }}>
+                    <div style={{ textAlign: "right" }}>
                       <Rate disabled defaultValue={tutorial.rating} style={{ fontSize: 12 }} />
-                      <div style={{ fontSize: 11, color: '#666' }}>{tutorial.rating}</div>
+                      <div style={{ fontSize: 11, color: "#666" }}>{tutorial.rating}</div>
                     </div>
                   </div>
 
                   {tutorial.progress !== undefined && (
                     <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                         <Text style={{ fontSize: 12 }}>学习进度</Text>
                         <Text style={{ fontSize: 12 }}>{tutorial.progress}%</Text>
                       </div>
@@ -494,8 +494,8 @@ const TutorialsPage: React.FC = () => {
 
           {sortedTutorials.length === 0 && (
             <Card>
-              <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <VideoCameraOutlined style={{ fontSize: 48, color: '#d9d9d9', marginBottom: 16 }} />
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <VideoCameraOutlined style={{ fontSize: 48, color: "#d9d9d9", marginBottom: 16 }} />
                 <Title level={4} type="secondary">暂无相关教程</Title>
                 <Text type="secondary">请尝试调整筛选条件</Text>
               </div>
@@ -518,34 +518,34 @@ const TutorialsPage: React.FC = () => {
             {/* 视频播放器占位 */}
             <div
               style={{
-                width: '100%',
+                width: "100%",
                 height: 400,
-                backgroundColor: '#000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 16
+                backgroundColor: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 16,
               }}
             >
-              <PlayCircleOutlined style={{ fontSize: 64, color: '#fff' }} />
+              <PlayCircleOutlined style={{ fontSize: 64, color: "#fff" }} />
             </div>
 
             {/* 教程信息 */}
             <div style={{ marginBottom: 16 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <Avatar src={selectedTutorial.instructor.avatar} />
                   <div>
                     <div style={{ fontWeight: 500 }}>{selectedTutorial.instructor.name}</div>
-                    <div style={{ fontSize: 12, color: '#666' }}>{selectedTutorial.instructor.title}</div>
+                    <div style={{ fontSize: 12, color: "#666" }}>{selectedTutorial.instructor.title}</div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                     <ClockCircleOutlined />
                     <span>{selectedTutorial.duration} 分钟</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                     <EyeOutlined />
                     <span>{selectedTutorial.viewCount}</span>
                   </div>
@@ -562,10 +562,10 @@ const TutorialsPage: React.FC = () => {
                 renderItem={(chapter, index) => (
                   <List.Item
                     style={{
-                      padding: '8px 12px',
-                      backgroundColor: chapter.isCompleted ? '#f6ffed' : 'transparent',
+                      padding: "8px 12px",
+                      backgroundColor: chapter.isCompleted ? "#f6ffed" : "transparent",
                       borderRadius: 4,
-                      marginBottom: 4
+                      marginBottom: 4,
                     }}
                   >
                     <List.Item.Meta
@@ -574,13 +574,13 @@ const TutorialsPage: React.FC = () => {
                           style={{
                             width: 24,
                             height: 24,
-                            borderRadius: '50%',
-                            backgroundColor: chapter.isCompleted ? '#52c41a' : '#d9d9d9',
-                            color: '#fff',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: 12
+                            borderRadius: "50%",
+                            backgroundColor: chapter.isCompleted ? "#52c41a" : "#d9d9d9",
+                            color: "#fff",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: 12,
                           }}
                         >
                           {index + 1}

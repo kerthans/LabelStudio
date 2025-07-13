@@ -7,7 +7,7 @@ import {
   PlayCircleOutlined,
   ReloadOutlined,
   SettingOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Alert,
@@ -30,7 +30,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -104,7 +104,7 @@ const QualitySampling: React.FC = () => {
       reviewer: "质量专家A",
       priority: "high",
       confidence: 95.2,
-      errorRate: 5.2
+      errorRate: 5.2,
     },
     {
       id: "sampling_002",
@@ -121,7 +121,7 @@ const QualitySampling: React.FC = () => {
       reviewer: "质量专家B",
       priority: "medium",
       confidence: 92.8,
-      errorRate: 8.5
+      errorRate: 8.5,
     },
     {
       id: "sampling_003",
@@ -137,8 +137,8 @@ const QualitySampling: React.FC = () => {
       createdAt: "2024-01-16 10:00:00",
       priority: "high",
       confidence: 0,
-      errorRate: 0
-    }
+      errorRate: 0,
+    },
   ]);
 
   // 获取状态配置
@@ -148,7 +148,7 @@ const QualitySampling: React.FC = () => {
       sampling: { color: "blue", text: "抽样中", icon: <PlayCircleOutlined /> },
       reviewing: { color: "purple", text: "审核中", icon: <EyeOutlined /> },
       completed: { color: "green", text: "已完成", icon: <CheckCircleOutlined /> },
-      failed: { color: "red", text: "检查失败", icon: <CloseCircleOutlined /> }
+      failed: { color: "red", text: "检查失败", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.pending;
   };
@@ -157,7 +157,7 @@ const QualitySampling: React.FC = () => {
     const configs = {
       high: { color: "red", text: "高" },
       medium: { color: "orange", text: "中" },
-      low: { color: "blue", text: "低" }
+      low: { color: "blue", text: "低" },
     };
     return configs[priority as keyof typeof configs] || configs.medium;
   };
@@ -167,7 +167,7 @@ const QualitySampling: React.FC = () => {
       random: "随机抽样",
       stratified: "分层抽样",
       systematic: "系统抽样",
-      cluster: "整群抽样"
+      cluster: "整群抽样",
     };
     return methods[method as keyof typeof methods] || method;
   };
@@ -193,7 +193,7 @@ const QualitySampling: React.FC = () => {
         isCorrect: true,
         confidence: 0.95,
         reviewer: "质量专家A",
-        reviewTime: "2024-01-15 15:30:00"
+        reviewTime: "2024-01-15 15:30:00",
       },
       {
         id: "result_002",
@@ -205,7 +205,7 @@ const QualitySampling: React.FC = () => {
         issueType: "标注错误",
         comments: "边界不清晰，需要重新标注",
         reviewer: "质量专家A",
-        reviewTime: "2024-01-15 15:35:00"
+        reviewTime: "2024-01-15 15:35:00",
       },
       {
         id: "result_003",
@@ -215,8 +215,8 @@ const QualitySampling: React.FC = () => {
         isCorrect: true,
         confidence: 0.92,
         reviewer: "质量专家A",
-        reviewTime: "2024-01-15 15:40:00"
-      }
+        reviewTime: "2024-01-15 15:40:00",
+      },
     ]);
     setDetailDrawerVisible(true);
   };
@@ -228,7 +228,7 @@ const QualitySampling: React.FC = () => {
       samplingRate: 5,
       samplingMethod: "random",
       minSampleSize: 100,
-      maxSampleSize: 1000
+      maxSampleSize: 1000,
     });
   };
 
@@ -261,7 +261,7 @@ const QualitySampling: React.FC = () => {
             </Text>
           </Space>
         </div>
-      )
+      ),
     },
     {
       title: "抽样配置",
@@ -276,7 +276,7 @@ const QualitySampling: React.FC = () => {
             样本量: {record.sampleSize} ({record.samplingRate}%)
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "质量指标",
@@ -312,7 +312,7 @@ const QualitySampling: React.FC = () => {
             </Space>
           </div>
         );
-      }
+      },
     },
     {
       title: "状态",
@@ -332,7 +332,7 @@ const QualitySampling: React.FC = () => {
             }
           />
         );
-      }
+      },
     },
     {
       title: "优先级",
@@ -342,14 +342,14 @@ const QualitySampling: React.FC = () => {
       render: (priority) => {
         const config = getPriorityConfig(priority);
         return <Tag color={config.color}>{config.text}</Tag>;
-      }
+      },
     },
     {
       title: "审核员",
       dataIndex: "reviewer",
       key: "reviewer",
       width: 100,
-      render: (reviewer) => reviewer || "-"
+      render: (reviewer) => reviewer || "-",
     },
     {
       title: "时间",
@@ -366,7 +366,7 @@ const QualitySampling: React.FC = () => {
             </div>
           )}
         </div>
-      )
+      ),
     },
     {
       title: "操作",
@@ -397,8 +397,8 @@ const QualitySampling: React.FC = () => {
             </Tooltip>
           )}
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   // 抽样结果表格列
@@ -407,21 +407,21 @@ const QualitySampling: React.FC = () => {
       title: "数据项",
       dataIndex: "itemId",
       key: "itemId",
-      width: 120
+      width: 120,
     },
     {
       title: "原始标注",
       dataIndex: "originalLabel",
       key: "originalLabel",
       width: 120,
-      render: (label) => <Tag color="blue">{label}</Tag>
+      render: (label) => <Tag color="blue">{label}</Tag>,
     },
     {
       title: "审核标注",
       dataIndex: "reviewLabel",
       key: "reviewLabel",
       width: 120,
-      render: (label) => <Tag color="green">{label}</Tag>
+      render: (label) => <Tag color="green">{label}</Tag>,
     },
     {
       title: "结果",
@@ -433,29 +433,29 @@ const QualitySampling: React.FC = () => {
           color={isCorrect ? "green" : "red"}
           text={isCorrect ? "正确" : "错误"}
         />
-      )
+      ),
     },
     {
       title: "置信度",
       dataIndex: "confidence",
       key: "confidence",
       width: 100,
-      render: (confidence) => `${(confidence * 100).toFixed(1)}%`
+      render: (confidence) => `${(confidence * 100).toFixed(1)}%`,
     },
     {
       title: "问题类型",
       dataIndex: "issueType",
       key: "issueType",
       width: 100,
-      render: (type) => type ? <Tag color="orange">{type}</Tag> : "-"
+      render: (type) => type ? <Tag color="orange">{type}</Tag> : "-",
     },
     {
       title: "备注",
       dataIndex: "comments",
       key: "comments",
       width: 200,
-      render: (comments) => comments || "-"
-    }
+      render: (comments) => comments || "-",
+    },
   ];
 
   // 筛选数据
@@ -578,7 +578,7 @@ const QualitySampling: React.FC = () => {
             showSizeChanger: true,
             showQuickJumper: true,
             showTotal: (total, range) =>
-              `第 ${range[0]}-${range[1]} 条/共 ${total} 条`
+              `第 ${range[0]}-${range[1]} 条/共 ${total} 条`,
           }}
         />
       </Card>
@@ -611,7 +611,7 @@ const QualitySampling: React.FC = () => {
                     suffix="%"
                     valueStyle={{
                       color: currentTask.qualityScore >= 95 ? "#52c41a" :
-                        currentTask.qualityScore >= 85 ? "#faad14" : "#ff4d4f"
+                        currentTask.qualityScore >= 85 ? "#faad14" : "#ff4d4f",
                     }}
                   />
                 </Col>
@@ -644,7 +644,7 @@ const QualitySampling: React.FC = () => {
                   size="small"
                   pagination={{
                     pageSize: 5,
-                    showSizeChanger: false
+                    showSizeChanger: false,
                   }}
                 />
               ) : (

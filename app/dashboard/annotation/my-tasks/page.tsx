@@ -3,7 +3,7 @@ import type {
   AnnotationTask,
   AnnotationTaskStatus,
   AnnotationTaskType,
-  TaskPriority
+  TaskPriority,
 } from "@/types/dashboard/annotation";
 import {
   CalendarOutlined,
@@ -13,7 +13,7 @@ import {
   PlayCircleOutlined,
   PlusOutlined,
   ReloadOutlined,
-  SearchOutlined
+  SearchOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -473,7 +473,7 @@ const MyTasks: React.FC = () => {
                 <div style={{ fontSize: 24, fontWeight: 600, color: "#fa8c16" }}>
                   {Math.round(
                     mockTasks.reduce((acc, task) => acc + task.progress, 0) /
-                    mockTasks.length
+                    mockTasks.length,
                   )}%
                 </div>
                 <div style={{ fontSize: 12, color: "#666" }}>平均进度</div>

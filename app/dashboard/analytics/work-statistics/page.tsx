@@ -10,7 +10,7 @@ import {
   PieChartOutlined,
   TeamOutlined,
   TrophyOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -25,7 +25,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -71,7 +71,7 @@ const WorkStatisticsPage: React.FC = () => {
     totalWorkHours: 312.5,
     avgProductivity: 5.9,
     activeToday: 18,
-    completionRate: 94.2
+    completionRate: 94.2,
   };
 
   // 部门统计数据
@@ -82,7 +82,7 @@ const WorkStatisticsPage: React.FC = () => {
       totalTasks: 654,
       completionRate: 96.2,
       avgQuality: 94.8,
-      avgEfficiency: 6.2
+      avgEfficiency: 6.2,
     },
     {
       department: "自然语言",
@@ -90,7 +90,7 @@ const WorkStatisticsPage: React.FC = () => {
       totalTasks: 892,
       completionRate: 93.1,
       avgQuality: 92.5,
-      avgEfficiency: 5.8
+      avgEfficiency: 5.8,
     },
     {
       department: "计算机视觉",
@@ -98,8 +98,8 @@ const WorkStatisticsPage: React.FC = () => {
       totalTasks: 301,
       completionRate: 91.7,
       avgQuality: 95.3,
-      avgEfficiency: 5.5
-    }
+      avgEfficiency: 5.5,
+    },
   ];
 
   // 个人工作统计数据
@@ -116,7 +116,7 @@ const WorkStatisticsPage: React.FC = () => {
       qualityScore: 97.2,
       efficiency: 6.8,
       lastActiveDate: "2024-01-15",
-      workload: "normal"
+      workload: "normal",
     },
     {
       id: "ws_002",
@@ -130,7 +130,7 @@ const WorkStatisticsPage: React.FC = () => {
       qualityScore: 95.6,
       efficiency: 6.2,
       lastActiveDate: "2024-01-15",
-      workload: "heavy"
+      workload: "heavy",
     },
     {
       id: "ws_003",
@@ -144,8 +144,8 @@ const WorkStatisticsPage: React.FC = () => {
       qualityScore: 93.1,
       efficiency: 5.9,
       lastActiveDate: "2024-01-14",
-      workload: "normal"
-    }
+      workload: "normal",
+    },
   ];
 
   const getWorkloadColor = (workload: string) => {
@@ -153,7 +153,7 @@ const WorkStatisticsPage: React.FC = () => {
       light: "#52c41a",
       normal: "#1890ff",
       heavy: "#faad14",
-      overload: "#ff4d4f"
+      overload: "#ff4d4f",
     };
     return colors[workload as keyof typeof colors] || "#d9d9d9";
   };
@@ -163,7 +163,7 @@ const WorkStatisticsPage: React.FC = () => {
       light: "轻松",
       normal: "正常",
       heavy: "繁重",
-      overload: "超负荷"
+      overload: "超负荷",
     };
     return texts[workload as keyof typeof texts] || "未知";
   };
@@ -181,7 +181,7 @@ const WorkStatisticsPage: React.FC = () => {
           </div>
           <Text type="secondary" style={{ fontSize: 12 }}>{record.department}</Text>
         </div>
-      )
+      ),
     },
     {
       title: "任务完成情况",
@@ -205,7 +205,7 @@ const WorkStatisticsPage: React.FC = () => {
             />
           </div>
         );
-      }
+      },
     },
     {
       title: "工作时长",
@@ -219,7 +219,7 @@ const WorkStatisticsPage: React.FC = () => {
           </div>
           <Text type="secondary" style={{ fontSize: 12 }}>平均 {record.avgTaskTime}h/项</Text>
         </div>
-      )
+      ),
     },
     {
       title: "质量评分",
@@ -236,7 +236,7 @@ const WorkStatisticsPage: React.FC = () => {
             format={() => `${value}%`}
           />
         </div>
-      )
+      ),
     },
     {
       title: "效率指标",
@@ -248,7 +248,7 @@ const WorkStatisticsPage: React.FC = () => {
           <div style={{ fontSize: 18, fontWeight: 600, color: "#1890ff" }}>{value}</div>
           <Text type="secondary" style={{ fontSize: 11 }}>项/小时</Text>
         </div>
-      )
+      ),
     },
     {
       title: "工作负荷",
@@ -259,7 +259,7 @@ const WorkStatisticsPage: React.FC = () => {
         <Tag color={getWorkloadColor(workload)}>
           {getWorkloadText(workload)}
         </Tag>
-      )
+      ),
     },
     {
       title: "最后活跃",
@@ -268,8 +268,8 @@ const WorkStatisticsPage: React.FC = () => {
       width: 120,
       render: (date) => (
         <Text type="secondary">{dayjs(date).format("MM-DD")}</Text>
-      )
-    }
+      ),
+    },
   ];
 
   const departmentColumns: ColumnsType<DepartmentStats> = [
@@ -283,21 +283,21 @@ const WorkStatisticsPage: React.FC = () => {
           <TeamOutlined style={{ marginRight: 8, color: "#1890ff" }} />
           {department}
         </div>
-      )
+      ),
     },
     {
       title: "团队规模",
       dataIndex: "totalMembers",
       key: "totalMembers",
       width: 100,
-      render: (value) => <Text strong>{value}人</Text>
+      render: (value) => <Text strong>{value}人</Text>,
     },
     {
       title: "任务总量",
       dataIndex: "totalTasks",
       key: "totalTasks",
       width: 100,
-      render: (value) => <Text strong>{value}</Text>
+      render: (value) => <Text strong>{value}</Text>,
     },
     {
       title: "完成率",
@@ -313,7 +313,7 @@ const WorkStatisticsPage: React.FC = () => {
           />
           <Text style={{ fontSize: 12 }}>{value}%</Text>
         </div>
-      )
+      ),
     },
     {
       title: "平均质量",
@@ -324,7 +324,7 @@ const WorkStatisticsPage: React.FC = () => {
         <Text style={{ color: value >= 95 ? "#52c41a" : value >= 90 ? "#faad14" : "#ff4d4f" }}>
           {value}%
         </Text>
-      )
+      ),
     },
     {
       title: "平均效率",
@@ -336,8 +336,8 @@ const WorkStatisticsPage: React.FC = () => {
           <div style={{ fontSize: 16, fontWeight: 600, color: "#1890ff" }}>{value}</div>
           <Text type="secondary" style={{ fontSize: 11 }}>项/小时</Text>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -547,7 +547,7 @@ const WorkStatisticsPage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />
@@ -560,7 +560,7 @@ const WorkStatisticsPage: React.FC = () => {
               pageSize: 10,
               showSizeChanger: true,
               showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`
+              showTotal: (total) => `共 ${total} 条记录`,
             }}
             size="middle"
           />

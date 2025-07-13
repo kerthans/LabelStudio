@@ -13,7 +13,7 @@ import {
   QuestionCircleOutlined,
   SendOutlined,
   StarOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import {
@@ -33,7 +33,7 @@ import {
   Tag,
   Typography,
   Upload,
-  message
+  message,
 } from "antd";
 import React, { useState } from "react";
 
@@ -45,9 +45,9 @@ interface Feedback {
   id: string;
   title: string;
   content: string;
-  type: 'bug' | 'feature' | 'improvement' | 'question' | 'praise';
-  priority: 'low' | 'medium' | 'high' | 'urgent';
-  status: 'pending' | 'processing' | 'resolved' | 'closed';
+  type: "bug" | "feature" | "improvement" | "question" | "praise";
+  priority: "low" | "medium" | "high" | "urgent";
+  status: "pending" | "processing" | "resolved" | "closed";
   rating?: number;
   attachments?: string[];
   createdAt: string;
@@ -70,8 +70,8 @@ const FeedbackPage: React.FC = () => {
   const [form] = Form.useForm();
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState<Feedback | null>(null);
-  const [filterType, setFilterType] = useState<string>('all');
-  const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [filterType, setFilterType] = useState<string>("all");
+  const [filterStatus, setFilterStatus] = useState<string>("all");
 
   // 模拟反馈数据
   const [feedbacks] = useState<Feedback[]>([
@@ -87,7 +87,7 @@ const FeedbackPage: React.FC = () => {
       updatedAt: "2024-01-15 16:20",
       response: "感谢您的反馈，我们已经识别到这个问题，正在优化图像处理算法，预计下周发布修复版本。",
       responder: "技术支持团队",
-      tags: ["性能", "图像标注"]
+      tags: ["性能", "图像标注"],
     },
     {
       id: "fb_002",
@@ -101,7 +101,7 @@ const FeedbackPage: React.FC = () => {
       updatedAt: "2024-01-15 09:30",
       response: "您的建议很棒！我们已经在最新版本中添加了快捷键功能，请查看帮助文档了解详细使用方法。",
       responder: "产品经理",
-      tags: ["快捷键", "效率"]
+      tags: ["快捷键", "效率"],
     },
     {
       id: "fb_003",
@@ -115,7 +115,7 @@ const FeedbackPage: React.FC = () => {
       updatedAt: "2024-01-14 08:20",
       response: "非常感谢您的认可！我们会继续努力提供更好的用户体验。",
       responder: "设计团队",
-      tags: ["界面设计", "用户体验"]
+      tags: ["界面设计", "用户体验"],
     },
     {
       id: "fb_004",
@@ -126,130 +126,130 @@ const FeedbackPage: React.FC = () => {
       status: "pending",
       rating: 2,
       createdAt: "2024-01-12 11:30",
-      tags: ["数据导出", "文档"]
-    }
+      tags: ["数据导出", "文档"],
+    },
   ]);
 
   // 统计数据
   const stats: FeedbackStats = {
     total: feedbacks.length,
-    pending: feedbacks.filter(f => f.status === 'pending').length,
-    processing: feedbacks.filter(f => f.status === 'processing').length,
-    resolved: feedbacks.filter(f => f.status === 'resolved').length,
+    pending: feedbacks.filter(f => f.status === "pending").length,
+    processing: feedbacks.filter(f => f.status === "processing").length,
+    resolved: feedbacks.filter(f => f.status === "resolved").length,
     avgRating: feedbacks.reduce((sum, f) => sum + (f.rating || 0), 0) / feedbacks.filter(f => f.rating).length,
-    responseTime: 24 // 平均响应时间（小时）
+    responseTime: 24, // 平均响应时间（小时）
   };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'bug': return <BugOutlined style={{ color: '#ff4d4f' }} />;
-      case 'feature': return <BulbOutlined style={{ color: '#1890ff' }} />;
-      case 'improvement': return <StarOutlined style={{ color: '#faad14' }} />;
-      case 'question': return <QuestionCircleOutlined style={{ color: '#722ed1' }} />;
-      case 'praise': return <HeartOutlined style={{ color: '#52c41a' }} />;
+      case "bug": return <BugOutlined style={{ color: "#ff4d4f" }} />;
+      case "feature": return <BulbOutlined style={{ color: "#1890ff" }} />;
+      case "improvement": return <StarOutlined style={{ color: "#faad14" }} />;
+      case "question": return <QuestionCircleOutlined style={{ color: "#722ed1" }} />;
+      case "praise": return <HeartOutlined style={{ color: "#52c41a" }} />;
       default: return <CommentOutlined />;
     }
   };
 
   const getTypeText = (type: string) => {
     switch (type) {
-      case 'bug': return 'Bug反馈';
-      case 'feature': return '功能建议';
-      case 'improvement': return '改进建议';
-      case 'question': return '使用问题';
-      case 'praise': return '表扬建议';
-      default: return '其他';
+      case "bug": return "Bug反馈";
+      case "feature": return "功能建议";
+      case "improvement": return "改进建议";
+      case "question": return "使用问题";
+      case "praise": return "表扬建议";
+      default: return "其他";
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'bug': return 'red';
-      case 'feature': return 'blue';
-      case 'improvement': return 'orange';
-      case 'question': return 'purple';
-      case 'praise': return 'green';
-      default: return 'default';
+      case "bug": return "red";
+      case "feature": return "blue";
+      case "improvement": return "orange";
+      case "question": return "purple";
+      case "praise": return "green";
+      default: return "default";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'pending': return <ClockCircleOutlined style={{ color: '#faad14' }} />;
-      case 'processing': return <ExclamationCircleOutlined style={{ color: '#1890ff' }} />;
-      case 'resolved': return <CheckCircleOutlined style={{ color: '#52c41a' }} />;
-      case 'closed': return <CheckCircleOutlined style={{ color: '#8c8c8c' }} />;
+      case "pending": return <ClockCircleOutlined style={{ color: "#faad14" }} />;
+      case "processing": return <ExclamationCircleOutlined style={{ color: "#1890ff" }} />;
+      case "resolved": return <CheckCircleOutlined style={{ color: "#52c41a" }} />;
+      case "closed": return <CheckCircleOutlined style={{ color: "#8c8c8c" }} />;
       default: return <ClockCircleOutlined />;
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'pending': return '待处理';
-      case 'processing': return '处理中';
-      case 'resolved': return '已解决';
-      case 'closed': return '已关闭';
-      default: return '未知';
+      case "pending": return "待处理";
+      case "processing": return "处理中";
+      case "resolved": return "已解决";
+      case "closed": return "已关闭";
+      default: return "未知";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'orange';
-      case 'processing': return 'blue';
-      case 'resolved': return 'green';
-      case 'closed': return 'default';
-      default: return 'default';
+      case "pending": return "orange";
+      case "processing": return "blue";
+      case "resolved": return "green";
+      case "closed": return "default";
+      default: return "default";
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'urgent': return 'red';
-      case 'high': return 'orange';
-      case 'medium': return 'blue';
-      case 'low': return 'default';
-      default: return 'default';
+      case "urgent": return "red";
+      case "high": return "orange";
+      case "medium": return "blue";
+      case "low": return "default";
+      default: return "default";
     }
   };
 
   const getPriorityText = (priority: string) => {
     switch (priority) {
-      case 'urgent': return '紧急';
-      case 'high': return '重要';
-      case 'medium': return '普通';
-      case 'low': return '一般';
-      default: return '普通';
+      case "urgent": return "紧急";
+      case "high": return "重要";
+      case "medium": return "普通";
+      case "low": return "一般";
+      default: return "普通";
     }
   };
 
   // 筛选反馈
   const filteredFeedbacks = feedbacks.filter(feedback => {
-    const typeMatch = filterType === 'all' || feedback.type === filterType;
-    const statusMatch = filterStatus === 'all' || feedback.status === filterStatus;
+    const typeMatch = filterType === "all" || feedback.type === filterType;
+    const statusMatch = filterStatus === "all" || feedback.status === filterStatus;
     return typeMatch && statusMatch;
   });
 
   const handleSubmitFeedback = async () => {
     try {
       const values = await form.validateFields();
-      console.log('提交反馈:', values);
-      message.success('反馈提交成功，我们会尽快处理！');
+      console.log("提交反馈:", values);
+      message.success("反馈提交成功，我们会尽快处理！");
       setShowFeedbackModal(false);
       form.resetFields();
     } catch (error) {
-      console.error('表单验证失败:', error);
+      console.error("表单验证失败:", error);
     }
   };
 
   const uploadProps: UploadProps = {
-    name: 'file',
+    name: "file",
     multiple: true,
     showUploadList: true,
     beforeUpload: (file) => {
       const isLt10M = file.size / 1024 / 1024 < 10;
       if (!isLt10M) {
-        message.error('文件大小不能超过 10MB!');
+        message.error("文件大小不能超过 10MB!");
         return false;
       }
       return false; // 阻止自动上传
@@ -257,20 +257,20 @@ const FeedbackPage: React.FC = () => {
   };
 
   const typeOptions = [
-    { value: 'all', label: '全部类型' },
-    { value: 'bug', label: 'Bug反馈' },
-    { value: 'feature', label: '功能建议' },
-    { value: 'improvement', label: '改进建议' },
-    { value: 'question', label: '使用问题' },
-    { value: 'praise', label: '表扬建议' }
+    { value: "all", label: "全部类型" },
+    { value: "bug", label: "Bug反馈" },
+    { value: "feature", label: "功能建议" },
+    { value: "improvement", label: "改进建议" },
+    { value: "question", label: "使用问题" },
+    { value: "praise", label: "表扬建议" },
   ];
 
   const statusOptions = [
-    { value: 'all', label: '全部状态' },
-    { value: 'pending', label: '待处理' },
-    { value: 'processing', label: '处理中' },
-    { value: 'resolved', label: '已解决' },
-    { value: 'closed', label: '已关闭' }
+    { value: "all", label: "全部状态" },
+    { value: "pending", label: "待处理" },
+    { value: "processing", label: "处理中" },
+    { value: "resolved", label: "已解决" },
+    { value: "closed", label: "已关闭" },
   ];
 
   return (
@@ -294,41 +294,41 @@ const FeedbackPage: React.FC = () => {
         <Row gutter={[16, 16]}>
           <Col xs={12} sm={6}>
             <Card className="stats-card">
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#1890ff' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 24, fontWeight: "bold", color: "#1890ff" }}>
                   {stats.total}
                 </div>
-                <div style={{ color: '#666', marginTop: 4 }}>总反馈数</div>
+                <div style={{ color: "#666", marginTop: 4 }}>总反馈数</div>
               </div>
             </Card>
           </Col>
           <Col xs={12} sm={6}>
             <Card className="stats-card">
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#faad14' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 24, fontWeight: "bold", color: "#faad14" }}>
                   {stats.pending}
                 </div>
-                <div style={{ color: '#666', marginTop: 4 }}>待处理</div>
+                <div style={{ color: "#666", marginTop: 4 }}>待处理</div>
               </div>
             </Card>
           </Col>
           <Col xs={12} sm={6}>
             <Card className="stats-card">
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#52c41a' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 24, fontWeight: "bold", color: "#52c41a" }}>
                   {stats.resolved}
                 </div>
-                <div style={{ color: '#666', marginTop: 4 }}>已解决</div>
+                <div style={{ color: "#666", marginTop: 4 }}>已解决</div>
               </div>
             </Card>
           </Col>
           <Col xs={12} sm={6}>
             <Card className="stats-card">
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#722ed1' }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 24, fontWeight: "bold", color: "#722ed1" }}>
                   {stats.avgRating.toFixed(1)}
                 </div>
-                <div style={{ color: '#666', marginTop: 4 }}>平均评分</div>
+                <div style={{ color: "#666", marginTop: 4 }}>平均评分</div>
               </div>
             </Card>
           </Col>
@@ -340,7 +340,7 @@ const FeedbackPage: React.FC = () => {
             <Select
               value={filterType}
               onChange={setFilterType}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               placeholder="选择反馈类型"
             >
               {typeOptions.map(option => (
@@ -352,7 +352,7 @@ const FeedbackPage: React.FC = () => {
             <Select
               value={filterStatus}
               onChange={setFilterStatus}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               placeholder="选择处理状态"
             >
               {statusOptions.map(option => (
@@ -378,10 +378,10 @@ const FeedbackPage: React.FC = () => {
             <List.Item
               key={feedback.id}
               style={{
-                border: '1px solid #f0f0f0',
+                border: "1px solid #f0f0f0",
                 borderRadius: 8,
                 marginBottom: 16,
-                padding: 16
+                padding: 16,
               }}
               actions={[
                 <Button
@@ -397,8 +397,8 @@ const FeedbackPage: React.FC = () => {
               <List.Item.Meta
                 avatar={getTypeIcon(feedback.type)}
                 title={
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                    <span style={{ fontWeight: 'bold' }}>{feedback.title}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <span style={{ fontWeight: "bold" }}>{feedback.title}</span>
                     <Tag color={getTypeColor(feedback.type)}>
                       {getTypeText(feedback.type)}
                     </Tag>
@@ -418,11 +418,11 @@ const FeedbackPage: React.FC = () => {
                   <div>
                     <Paragraph
                       ellipsis={{ rows: 2, expandable: true }}
-                      style={{ margin: '8px 0' }}
+                      style={{ margin: "8px 0" }}
                     >
                       {feedback.content}
                     </Paragraph>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <Space size="small">
                         <Text type="secondary" style={{ fontSize: 12 }}>
                           提交时间: {feedback.createdAt}
@@ -448,12 +448,12 @@ const FeedbackPage: React.FC = () => {
                       <div style={{
                         marginTop: 12,
                         padding: 12,
-                        backgroundColor: '#f6ffed',
-                        border: '1px solid #b7eb8f',
-                        borderRadius: 6
+                        backgroundColor: "#f6ffed",
+                        border: "1px solid #b7eb8f",
+                        borderRadius: 6,
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                          <Avatar size={20} style={{ backgroundColor: '#52c41a' }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                          <Avatar size={20} style={{ backgroundColor: "#52c41a" }}>
                             {feedback.responder?.charAt(0)}
                           </Avatar>
                           <Text strong style={{ fontSize: 12 }}>{feedback.responder}</Text>
@@ -490,7 +490,7 @@ const FeedbackPage: React.FC = () => {
               <Form.Item
                 name="type"
                 label="反馈类型"
-                rules={[{ required: true, message: '请选择反馈类型' }]}
+                rules={[{ required: true, message: "请选择反馈类型" }]}
               >
                 <Select placeholder="请选择反馈类型">
                   <Option value="bug">Bug反馈</Option>
@@ -505,7 +505,7 @@ const FeedbackPage: React.FC = () => {
               <Form.Item
                 name="priority"
                 label="优先级"
-                rules={[{ required: true, message: '请选择优先级' }]}
+                rules={[{ required: true, message: "请选择优先级" }]}
               >
                 <Select placeholder="请选择优先级">
                   <Option value="low">一般</Option>
@@ -519,14 +519,14 @@ const FeedbackPage: React.FC = () => {
           <Form.Item
             name="title"
             label="反馈标题"
-            rules={[{ required: true, message: '请输入反馈标题' }]}
+            rules={[{ required: true, message: "请输入反馈标题" }]}
           >
             <Input placeholder="请简要描述您的反馈" maxLength={100} showCount />
           </Form.Item>
           <Form.Item
             name="content"
             label="详细描述"
-            rules={[{ required: true, message: '请输入详细描述' }]}
+            rules={[{ required: true, message: "请输入详细描述" }]}
           >
             <TextArea
               rows={6}
@@ -542,7 +542,7 @@ const FeedbackPage: React.FC = () => {
             <Upload {...uploadProps}>
               <Button icon={<UploadOutlined />}>上传文件</Button>
             </Upload>
-            <div style={{ marginTop: 8, color: '#666', fontSize: 12 }}>
+            <div style={{ marginTop: 8, color: "#666", fontSize: 12 }}>
               支持图片、文档等格式，单个文件不超过10MB
             </div>
           </Form.Item>
@@ -557,7 +557,7 @@ const FeedbackPage: React.FC = () => {
         footer={[
           <Button key="close" onClick={() => setSelectedFeedback(null)}>
             关闭
-          </Button>
+          </Button>,
         ]}
         width={800}
       >
@@ -618,12 +618,12 @@ const FeedbackPage: React.FC = () => {
                 <Title level={5}>官方回复</Title>
                 <div style={{
                   padding: 16,
-                  backgroundColor: '#f6ffed',
-                  border: '1px solid #b7eb8f',
-                  borderRadius: 8
+                  backgroundColor: "#f6ffed",
+                  border: "1px solid #b7eb8f",
+                  borderRadius: 8,
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                    <Avatar size={24} style={{ backgroundColor: '#52c41a' }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                    <Avatar size={24} style={{ backgroundColor: "#52c41a" }}>
                       {selectedFeedback.responder?.charAt(0)}
                     </Avatar>
                     <Text strong>{selectedFeedback.responder}</Text>

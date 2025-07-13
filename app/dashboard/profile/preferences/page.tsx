@@ -6,7 +6,7 @@ import {
   NotificationOutlined,
   SaveOutlined,
   SettingOutlined,
-  TagsOutlined
+  TagsOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -15,7 +15,6 @@ import {
   Divider,
   Form,
   InputNumber,
-  message,
   Radio,
   Row,
   Select,
@@ -23,7 +22,8 @@ import {
   Space,
   Switch,
   TimePicker,
-  Typography
+  Typography,
+  message,
 } from "antd";
 import dayjs from "dayjs";
 import React, { useState } from "react";
@@ -42,7 +42,7 @@ interface WorkPreferences {
   taskPreferences: {
     preferredTaskTypes: string[];
     maxDailyTasks: number;
-    difficultyLevel: 'easy' | 'medium' | 'hard' | 'expert';
+    difficultyLevel: "easy" | "medium" | "hard" | "expert";
     autoAssign: boolean;
   };
   // 通知设置
@@ -56,7 +56,7 @@ interface WorkPreferences {
   };
   // 界面设置
   interface: {
-    theme: 'light' | 'dark' | 'auto';
+    theme: "light" | "dark" | "auto";
     language: string;
     fontSize: number;
     compactMode: boolean;
@@ -80,13 +80,13 @@ const WorkPreferencesPage: React.FC = () => {
     workingHours: {
       start: "09:00",
       end: "18:00",
-      timezone: "Asia/Shanghai"
+      timezone: "Asia/Shanghai",
     },
     taskPreferences: {
       preferredTaskTypes: ["图像分类", "目标检测"],
       maxDailyTasks: 50,
       difficultyLevel: "medium",
-      autoAssign: true
+      autoAssign: true,
     },
     notifications: {
       email: true,
@@ -94,46 +94,46 @@ const WorkPreferencesPage: React.FC = () => {
       taskAssignment: true,
       taskDeadline: true,
       qualityFeedback: true,
-      systemUpdates: false
+      systemUpdates: false,
     },
     interface: {
       theme: "light",
       language: "zh-CN",
       fontSize: 14,
-      compactMode: false
+      compactMode: false,
     },
     annotationPreferences: {
       autoSave: true,
       autoSaveInterval: 30,
       showShortcuts: true,
       confirmBeforeSubmit: true,
-      highlightUncertain: true
-    }
+      highlightUncertain: true,
+    },
   });
 
   React.useEffect(() => {
     form.setFieldsValue({
       ...preferences,
-      workingHoursStart: dayjs(preferences.workingHours.start, 'HH:mm'),
-      workingHoursEnd: dayjs(preferences.workingHours.end, 'HH:mm')
+      workingHoursStart: dayjs(preferences.workingHours.start, "HH:mm"),
+      workingHoursEnd: dayjs(preferences.workingHours.end, "HH:mm"),
     });
   }, [form, preferences]);
 
   const handleSave = async () => {
     try {
       const values = await form.validateFields();
-      console.log('保存工作偏好:', values);
-      message.success('工作偏好已保存');
+      console.log("保存工作偏好:", values);
+      message.success("工作偏好已保存");
       setHasChanges(false);
     } catch (error) {
-      console.error('表单验证失败:', error);
+      console.error("表单验证失败:", error);
     }
   };
 
   const handleReset = () => {
     form.resetFields();
     setHasChanges(false);
-    message.info('已重置为默认设置');
+    message.info("已重置为默认设置");
   };
 
   const taskTypeOptions = [
@@ -143,7 +143,7 @@ const WorkPreferencesPage: React.FC = () => {
     { value: "文本分类", label: "文本分类" },
     { value: "命名实体识别", label: "命名实体识别" },
     { value: "语音标注", label: "语音标注" },
-    { value: "视频标注", label: "视频标注" }
+    { value: "视频标注", label: "视频标注" },
   ];
 
   const timezoneOptions = [
@@ -151,7 +151,7 @@ const WorkPreferencesPage: React.FC = () => {
     { value: "Asia/Tokyo", label: "东京时间 (UTC+9)" },
     { value: "Europe/London", label: "伦敦时间 (UTC+0)" },
     { value: "America/New_York", label: "纽约时间 (UTC-5)" },
-    { value: "America/Los_Angeles", label: "洛杉矶时间 (UTC-8)" }
+    { value: "America/Los_Angeles", label: "洛杉矶时间 (UTC-8)" },
   ];
 
   const languageOptions = [
@@ -159,7 +159,7 @@ const WorkPreferencesPage: React.FC = () => {
     { value: "zh-TW", label: "繁体中文" },
     { value: "en-US", label: "English" },
     { value: "ja-JP", label: "日本語" },
-    { value: "ko-KR", label: "한국어" }
+    { value: "ko-KR", label: "한국어" },
   ];
 
   return (
@@ -197,10 +197,10 @@ const WorkPreferencesPage: React.FC = () => {
               <Form.Item
                 name="workingHoursStart"
                 label="工作开始时间"
-                rules={[{ required: true, message: '请选择工作开始时间' }]}
+                rules={[{ required: true, message: "请选择工作开始时间" }]}
               >
                 <TimePicker
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   format="HH:mm"
                   placeholder="选择开始时间"
                 />
@@ -208,16 +208,16 @@ const WorkPreferencesPage: React.FC = () => {
               <Form.Item
                 name="workingHoursEnd"
                 label="工作结束时间"
-                rules={[{ required: true, message: '请选择工作结束时间' }]}
+                rules={[{ required: true, message: "请选择工作结束时间" }]}
               >
                 <TimePicker
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   format="HH:mm"
                   placeholder="选择结束时间"
                 />
               </Form.Item>
               <Form.Item
-                name={['workingHours', 'timezone']}
+                name={["workingHours", "timezone"]}
                 label="时区设置"
               >
                 <Select placeholder="选择时区">
@@ -233,7 +233,7 @@ const WorkPreferencesPage: React.FC = () => {
           <Col xs={24} lg={12}>
             <Card title={<><TagsOutlined /> 任务偏好</>} className="preference-card">
               <Form.Item
-                name={['taskPreferences', 'preferredTaskTypes']}
+                name={["taskPreferences", "preferredTaskTypes"]}
                 label="偏好任务类型"
               >
                 <Select
@@ -247,18 +247,18 @@ const WorkPreferencesPage: React.FC = () => {
                 </Select>
               </Form.Item>
               <Form.Item
-                name={['taskPreferences', 'maxDailyTasks']}
+                name={["taskPreferences", "maxDailyTasks"]}
                 label="每日最大任务数"
               >
                 <InputNumber
                   min={1}
                   max={200}
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   placeholder="设置每日最大任务数"
                 />
               </Form.Item>
               <Form.Item
-                name={['taskPreferences', 'difficultyLevel']}
+                name={["taskPreferences", "difficultyLevel"]}
                 label="偏好难度等级"
               >
                 <Radio.Group>
@@ -269,7 +269,7 @@ const WorkPreferencesPage: React.FC = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                name={['taskPreferences', 'autoAssign']}
+                name={["taskPreferences", "autoAssign"]}
                 label="自动分配任务"
                 valuePropName="checked"
               >
@@ -282,43 +282,43 @@ const WorkPreferencesPage: React.FC = () => {
           <Col xs={24} lg={12}>
             <Card title={<><BellOutlined /> 通知设置</>} className="preference-card">
               <Form.Item
-                name={['notifications', 'email']}
+                name={["notifications", "email"]}
                 label="邮件通知"
                 valuePropName="checked"
               >
                 <Switch checkedChildren="开启" unCheckedChildren="关闭" />
               </Form.Item>
               <Form.Item
-                name={['notifications', 'browser']}
+                name={["notifications", "browser"]}
                 label="浏览器通知"
                 valuePropName="checked"
               >
                 <Switch checkedChildren="开启" unCheckedChildren="关闭" />
               </Form.Item>
-              <Divider style={{ margin: '12px 0' }} />
+              <Divider style={{ margin: "12px 0" }} />
               <Form.Item
-                name={['notifications', 'taskAssignment']}
+                name={["notifications", "taskAssignment"]}
                 label="任务分配通知"
                 valuePropName="checked"
               >
                 <Switch checkedChildren="开启" unCheckedChildren="关闭" />
               </Form.Item>
               <Form.Item
-                name={['notifications', 'taskDeadline']}
+                name={["notifications", "taskDeadline"]}
                 label="任务截止提醒"
                 valuePropName="checked"
               >
                 <Switch checkedChildren="开启" unCheckedChildren="关闭" />
               </Form.Item>
               <Form.Item
-                name={['notifications', 'qualityFeedback']}
+                name={["notifications", "qualityFeedback"]}
                 label="质量反馈通知"
                 valuePropName="checked"
               >
                 <Switch checkedChildren="开启" unCheckedChildren="关闭" />
               </Form.Item>
               <Form.Item
-                name={['notifications', 'systemUpdates']}
+                name={["notifications", "systemUpdates"]}
                 label="系统更新通知"
                 valuePropName="checked"
               >
@@ -331,7 +331,7 @@ const WorkPreferencesPage: React.FC = () => {
           <Col xs={24} lg={12}>
             <Card title={<><EyeOutlined /> 界面设置</>} className="preference-card">
               <Form.Item
-                name={['interface', 'theme']}
+                name={["interface", "theme"]}
                 label="主题模式"
               >
                 <Radio.Group>
@@ -341,7 +341,7 @@ const WorkPreferencesPage: React.FC = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                name={['interface', 'language']}
+                name={["interface", "language"]}
                 label="界面语言"
               >
                 <Select placeholder="选择界面语言">
@@ -351,23 +351,23 @@ const WorkPreferencesPage: React.FC = () => {
                 </Select>
               </Form.Item>
               <Form.Item
-                name={['interface', 'fontSize']}
+                name={["interface", "fontSize"]}
                 label="字体大小"
               >
                 <Slider
                   min={12}
                   max={18}
                   marks={{
-                    12: '小',
-                    14: '中',
-                    16: '大',
-                    18: '特大'
+                    12: "小",
+                    14: "中",
+                    16: "大",
+                    18: "特大",
                   }}
                   step={1}
                 />
               </Form.Item>
               <Form.Item
-                name={['interface', 'compactMode']}
+                name={["interface", "compactMode"]}
                 label="紧凑模式"
                 valuePropName="checked"
               >
@@ -382,7 +382,7 @@ const WorkPreferencesPage: React.FC = () => {
               <Row gutter={16}>
                 <Col xs={24} sm={12} md={8}>
                   <Form.Item
-                    name={['annotationPreferences', 'autoSave']}
+                    name={["annotationPreferences", "autoSave"]}
                     label="自动保存"
                     valuePropName="checked"
                   >
@@ -391,20 +391,20 @@ const WorkPreferencesPage: React.FC = () => {
                 </Col>
                 <Col xs={24} sm={12} md={8}>
                   <Form.Item
-                    name={['annotationPreferences', 'autoSaveInterval']}
+                    name={["annotationPreferences", "autoSaveInterval"]}
                     label="自动保存间隔（秒）"
                   >
                     <InputNumber
                       min={10}
                       max={300}
-                      style={{ width: '100%' }}
+                      style={{ width: "100%" }}
                       placeholder="设置自动保存间隔"
                     />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
                   <Form.Item
-                    name={['annotationPreferences', 'showShortcuts']}
+                    name={["annotationPreferences", "showShortcuts"]}
                     label="显示快捷键提示"
                     valuePropName="checked"
                   >
@@ -413,7 +413,7 @@ const WorkPreferencesPage: React.FC = () => {
                 </Col>
                 <Col xs={24} sm={12} md={8}>
                   <Form.Item
-                    name={['annotationPreferences', 'confirmBeforeSubmit']}
+                    name={["annotationPreferences", "confirmBeforeSubmit"]}
                     label="提交前确认"
                     valuePropName="checked"
                   >
@@ -422,7 +422,7 @@ const WorkPreferencesPage: React.FC = () => {
                 </Col>
                 <Col xs={24} sm={12} md={8}>
                   <Form.Item
-                    name={['annotationPreferences', 'highlightUncertain']}
+                    name={["annotationPreferences", "highlightUncertain"]}
                     label="高亮不确定标注"
                     valuePropName="checked"
                   >

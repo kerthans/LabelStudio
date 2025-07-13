@@ -9,7 +9,7 @@ import {
   PhoneOutlined,
   SaveOutlined,
   TeamOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import {
@@ -26,7 +26,7 @@ import {
   Space,
   Typography,
   Upload,
-  message
+  message,
 } from "antd";
 import dayjs from "dayjs";
 import React, { useState } from "react";
@@ -47,7 +47,7 @@ interface UserProfile {
   position: string;
   joinDate: string;
   birthday: string;
-  gender: 'male' | 'female' | 'other';
+  gender: "male" | "female" | "other";
   address: string;
   bio: string;
   emergencyContact: {
@@ -61,7 +61,7 @@ const PersonalInfoPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [form] = Form.useForm();
   const [avatarUrl, setAvatarUrl] = useState<string>(
-    "https://api.dicebear.com/7.x/miniavs/svg?seed=user"
+    "https://api.dicebear.com/7.x/miniavs/svg?seed=user",
   );
 
   // 模拟用户数据
@@ -83,8 +83,8 @@ const PersonalInfoPage: React.FC = () => {
     emergencyContact: {
       name: "李红",
       phone: "13900139001",
-      relationship: "配偶"
-    }
+      relationship: "配偶",
+    },
   });
 
   const handleEdit = () => {
@@ -95,18 +95,18 @@ const PersonalInfoPage: React.FC = () => {
       birthday: dayjs(userProfile.birthday),
       emergencyContactName: userProfile.emergencyContact.name,
       emergencyContactPhone: userProfile.emergencyContact.phone,
-      emergencyContactRelationship: userProfile.emergencyContact.relationship
+      emergencyContactRelationship: userProfile.emergencyContact.relationship,
     });
   };
 
   const handleSave = async () => {
     try {
       const values = await form.validateFields();
-      console.log('保存用户信息:', values);
-      message.success('个人信息已更新');
+      console.log("保存用户信息:", values);
+      message.success("个人信息已更新");
       setIsEditing(false);
     } catch (error) {
-      console.error('表单验证失败:', error);
+      console.error("表单验证失败:", error);
     }
   };
 
@@ -116,17 +116,17 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   const uploadProps: UploadProps = {
-    name: 'avatar',
+    name: "avatar",
     showUploadList: false,
     beforeUpload: (file) => {
-      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+      const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
       if (!isJpgOrPng) {
-        message.error('只能上传 JPG/PNG 格式的图片!');
+        message.error("只能上传 JPG/PNG 格式的图片!");
         return false;
       }
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isLt2M) {
-        message.error('图片大小不能超过 2MB!');
+        message.error("图片大小不能超过 2MB!");
         return false;
       }
 
@@ -134,7 +134,7 @@ const PersonalInfoPage: React.FC = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setAvatarUrl(e.target?.result as string);
-        message.success('头像上传成功');
+        message.success("头像上传成功");
       };
       reader.readAsDataURL(file);
       return false;
@@ -142,18 +142,18 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   const genderOptions = [
-    { value: 'male', label: '男' },
-    { value: 'female', label: '女' },
-    { value: 'other', label: '其他' }
+    { value: "male", label: "男" },
+    { value: "female", label: "女" },
+    { value: "other", label: "其他" },
   ];
 
   const relationshipOptions = [
-    { value: '配偶', label: '配偶' },
-    { value: '父母', label: '父母' },
-    { value: '子女', label: '子女' },
-    { value: '兄弟姐妹', label: '兄弟姐妹' },
-    { value: '朋友', label: '朋友' },
-    { value: '其他', label: '其他' }
+    { value: "配偶", label: "配偶" },
+    { value: "父母", label: "父母" },
+    { value: "子女", label: "子女" },
+    { value: "兄弟姐妹", label: "兄弟姐妹" },
+    { value: "朋友", label: "朋友" },
+    { value: "其他", label: "其他" },
   ];
 
   return (
@@ -189,12 +189,12 @@ const PersonalInfoPage: React.FC = () => {
         {/* 左侧：头像和基本信息 */}
         <Col xs={24} lg={8}>
           <Card title="个人头像" className="profile-avatar-card">
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: 16 }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ position: "relative", display: "inline-block", marginBottom: 16 }}>
                 <Avatar
                   size={120}
                   src={avatarUrl}
-                  style={{ border: '4px solid #f0f0f0' }}
+                  style={{ border: "4px solid #f0f0f0" }}
                 />
                 {isEditing && (
                   <Upload {...uploadProps}>
@@ -204,17 +204,17 @@ const PersonalInfoPage: React.FC = () => {
                       icon={<CameraOutlined />}
                       size="small"
                       style={{
-                        position: 'absolute',
+                        position: "absolute",
                         bottom: 0,
                         right: 0,
-                        border: '2px solid #fff'
+                        border: "2px solid #fff",
                       }}
                     />
                   </Upload>
                 )}
               </div>
               <div>
-                <Title level={4} style={{ margin: '0 0 4px 0' }}>{userProfile.realName}</Title>
+                <Title level={4} style={{ margin: "0 0 4px 0" }}>{userProfile.realName}</Title>
                 <Text type="secondary">@{userProfile.username}</Text>
                 <br />
                 <Text type="secondary">{userProfile.position}</Text>
@@ -241,7 +241,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="realName"
                       label="真实姓名"
-                      rules={[{ required: true, message: '请输入真实姓名' }]}
+                      rules={[{ required: true, message: "请输入真实姓名" }]}
                     >
                       <Input prefix={<UserOutlined />} placeholder="请输入真实姓名" />
                     </Form.Item>
@@ -250,7 +250,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="username"
                       label="用户名"
-                      rules={[{ required: true, message: '请输入用户名' }]}
+                      rules={[{ required: true, message: "请输入用户名" }]}
                     >
                       <Input prefix={<IdcardOutlined />} placeholder="请输入用户名" disabled />
                     </Form.Item>
@@ -262,8 +262,8 @@ const PersonalInfoPage: React.FC = () => {
                       name="email"
                       label="邮箱地址"
                       rules={[
-                        { required: true, message: '请输入邮箱地址' },
-                        { type: 'email', message: '请输入有效的邮箱地址' }
+                        { required: true, message: "请输入邮箱地址" },
+                        { type: "email", message: "请输入有效的邮箱地址" },
                       ]}
                     >
                       <Input prefix={<MailOutlined />} placeholder="请输入邮箱地址" />
@@ -273,7 +273,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="phone"
                       label="手机号码"
-                      rules={[{ required: true, message: '请输入手机号码' }]}
+                      rules={[{ required: true, message: "请输入手机号码" }]}
                     >
                       <Input prefix={<PhoneOutlined />} placeholder="请输入手机号码" />
                     </Form.Item>
@@ -284,7 +284,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="gender"
                       label="性别"
-                      rules={[{ required: true, message: '请选择性别' }]}
+                      rules={[{ required: true, message: "请选择性别" }]}
                     >
                       <Select placeholder="请选择性别">
                         {genderOptions.map(option => (
@@ -299,7 +299,7 @@ const PersonalInfoPage: React.FC = () => {
                       label="出生日期"
                     >
                       <DatePicker
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                         placeholder="请选择出生日期"
                         suffixIcon={<CalendarOutlined />}
                       />
@@ -311,7 +311,7 @@ const PersonalInfoPage: React.FC = () => {
                       label="入职时间"
                     >
                       <DatePicker
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                         placeholder="请选择入职时间"
                         suffixIcon={<CalendarOutlined />}
                         disabled
@@ -327,7 +327,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="department"
                       label="所属部门"
-                      rules={[{ required: true, message: '请输入所属部门' }]}
+                      rules={[{ required: true, message: "请输入所属部门" }]}
                     >
                       <Input prefix={<TeamOutlined />} placeholder="请输入所属部门" disabled />
                     </Form.Item>
@@ -336,7 +336,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="position"
                       label="职位"
-                      rules={[{ required: true, message: '请输入职位' }]}
+                      rules={[{ required: true, message: "请输入职位" }]}
                     >
                       <Input placeholder="请输入职位" disabled />
                     </Form.Item>
@@ -361,7 +361,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="emergencyContactName"
                       label="联系人姓名"
-                      rules={[{ required: true, message: '请输入联系人姓名' }]}
+                      rules={[{ required: true, message: "请输入联系人姓名" }]}
                     >
                       <Input placeholder="请输入联系人姓名" />
                     </Form.Item>
@@ -370,7 +370,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="emergencyContactPhone"
                       label="联系人电话"
-                      rules={[{ required: true, message: '请输入联系人电话' }]}
+                      rules={[{ required: true, message: "请输入联系人电话" }]}
                     >
                       <Input placeholder="请输入联系人电话" />
                     </Form.Item>
@@ -379,7 +379,7 @@ const PersonalInfoPage: React.FC = () => {
                     <Form.Item
                       name="emergencyContactRelationship"
                       label="关系"
-                      rules={[{ required: true, message: '请选择关系' }]}
+                      rules={[{ required: true, message: "请选择关系" }]}
                     >
                       <Select placeholder="请选择关系">
                         {relationshipOptions.map(option => (
@@ -400,7 +400,7 @@ const PersonalInfoPage: React.FC = () => {
                   <Descriptions.Item label="邮箱地址">{userProfile.email}</Descriptions.Item>
                   <Descriptions.Item label="手机号码">{userProfile.phone}</Descriptions.Item>
                   <Descriptions.Item label="性别">
-                    {userProfile.gender === 'male' ? '男' : userProfile.gender === 'female' ? '女' : '其他'}
+                    {userProfile.gender === "male" ? "男" : userProfile.gender === "female" ? "女" : "其他"}
                   </Descriptions.Item>
                   <Descriptions.Item label="出生日期">{userProfile.birthday}</Descriptions.Item>
                 </Descriptions>

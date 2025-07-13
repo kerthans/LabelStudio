@@ -4,7 +4,7 @@ import {
   InfoCircleOutlined,
   SettingOutlined,
   TeamOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import {
@@ -124,7 +124,7 @@ const CreateProject: React.FC = () => {
     try {
       await form.validateFields();
       setCurrentStep(currentStep + 1);
-    } catch (error) {
+    } catch (_error) {
       message.error("请完善当前步骤的信息");
     }
   };
@@ -145,7 +145,7 @@ const CreateProject: React.FC = () => {
 
       message.success("项目创建成功！");
       router.push("/dashboard/projects/list");
-    } catch (error) {
+    } catch (_error) {
       message.error("创建失败，请检查信息");
     } finally {
       setLoading(false);

@@ -79,7 +79,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className={`${isMobile
             ? "px-2" // 移动端更小的内边距
             : "container-responsive" // 桌面端使用响应式容器
-            }`}>
+          }`}>
             {children}
           </div>
         </Content>

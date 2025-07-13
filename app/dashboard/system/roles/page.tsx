@@ -7,7 +7,7 @@ import {
   SafetyOutlined,
   SettingOutlined,
   TeamOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -18,7 +18,6 @@ import {
   Form,
   Input,
   List,
-  message,
   Modal,
   Row,
   Select,
@@ -26,7 +25,8 @@ import {
   Tag,
   Tooltip,
   Tree,
-  Typography
+  Typography,
+  message,
 } from "antd";
 import React, { useState } from "react";
 
@@ -50,7 +50,7 @@ interface Role {
   isSystem: boolean;
   createdAt: string;
   updatedAt: string;
-  status: 'active' | 'inactive';
+  status: "active" | "inactive";
 }
 
 const RolesPage: React.FC = () => {
@@ -64,74 +64,74 @@ const RolesPage: React.FC = () => {
   // 权限树数据
   const permissionTree: Permission[] = [
     {
-      key: 'annotation',
-      title: '标注管理',
-      description: '数据标注相关功能',
+      key: "annotation",
+      title: "标注管理",
+      description: "数据标注相关功能",
       children: [
-        { key: 'annotation.create', title: '创建标注任务', description: '创建新的标注任务' },
-        { key: 'annotation.edit', title: '编辑标注任务', description: '修改标注任务信息' },
-        { key: 'annotation.delete', title: '删除标注任务', description: '删除标注任务' },
-        { key: 'annotation.assign', title: '分配标注任务', description: '将任务分配给标注员' },
-        { key: 'annotation.review', title: '标注审核', description: '审核标注结果' },
-      ]
+        { key: "annotation.create", title: "创建标注任务", description: "创建新的标注任务" },
+        { key: "annotation.edit", title: "编辑标注任务", description: "修改标注任务信息" },
+        { key: "annotation.delete", title: "删除标注任务", description: "删除标注任务" },
+        { key: "annotation.assign", title: "分配标注任务", description: "将任务分配给标注员" },
+        { key: "annotation.review", title: "标注审核", description: "审核标注结果" },
+      ],
     },
     {
-      key: 'project',
-      title: '项目管理',
-      description: '项目相关管理功能',
+      key: "project",
+      title: "项目管理",
+      description: "项目相关管理功能",
       children: [
-        { key: 'project.create', title: '创建项目', description: '创建新项目' },
-        { key: 'project.edit', title: '编辑项目', description: '修改项目信息' },
-        { key: 'project.delete', title: '删除项目', description: '删除项目' },
-        { key: 'project.member', title: '成员管理', description: '管理项目成员' },
-        { key: 'project.settings', title: '项目设置', description: '配置项目参数' },
-      ]
+        { key: "project.create", title: "创建项目", description: "创建新项目" },
+        { key: "project.edit", title: "编辑项目", description: "修改项目信息" },
+        { key: "project.delete", title: "删除项目", description: "删除项目" },
+        { key: "project.member", title: "成员管理", description: "管理项目成员" },
+        { key: "project.settings", title: "项目设置", description: "配置项目参数" },
+      ],
     },
     {
-      key: 'quality',
-      title: '质量控制',
-      description: '质量管理相关功能',
+      key: "quality",
+      title: "质量控制",
+      description: "质量管理相关功能",
       children: [
-        { key: 'quality.review', title: '质量审核', description: '审核标注质量' },
-        { key: 'quality.metrics', title: '质量指标', description: '查看质量统计' },
-        { key: 'quality.standards', title: '标准管理', description: '管理质量标准' },
-        { key: 'quality.sampling', title: '抽样检查', description: '执行抽样质检' },
-      ]
+        { key: "quality.review", title: "质量审核", description: "审核标注质量" },
+        { key: "quality.metrics", title: "质量指标", description: "查看质量统计" },
+        { key: "quality.standards", title: "标准管理", description: "管理质量标准" },
+        { key: "quality.sampling", title: "抽样检查", description: "执行抽样质检" },
+      ],
     },
     {
-      key: 'dataset',
-      title: '数据管理',
-      description: '数据集管理功能',
+      key: "dataset",
+      title: "数据管理",
+      description: "数据集管理功能",
       children: [
-        { key: 'dataset.upload', title: '上传数据', description: '上传数据集' },
-        { key: 'dataset.edit', title: '编辑数据', description: '修改数据集' },
-        { key: 'dataset.delete', title: '删除数据', description: '删除数据集' },
-        { key: 'dataset.export', title: '导出数据', description: '导出标注结果' },
-        { key: 'dataset.preprocess', title: '数据预处理', description: '数据预处理功能' },
-      ]
+        { key: "dataset.upload", title: "上传数据", description: "上传数据集" },
+        { key: "dataset.edit", title: "编辑数据", description: "修改数据集" },
+        { key: "dataset.delete", title: "删除数据", description: "删除数据集" },
+        { key: "dataset.export", title: "导出数据", description: "导出标注结果" },
+        { key: "dataset.preprocess", title: "数据预处理", description: "数据预处理功能" },
+      ],
     },
     {
-      key: 'system',
-      title: '系统管理',
-      description: '系统管理功能',
+      key: "system",
+      title: "系统管理",
+      description: "系统管理功能",
       children: [
-        { key: 'system.users', title: '用户管理', description: '管理系统用户' },
-        { key: 'system.roles', title: '角色管理', description: '管理用户角色' },
-        { key: 'system.permissions', title: '权限管理', description: '管理系统权限' },
-        { key: 'system.settings', title: '系统设置', description: '系统参数配置' },
-        { key: 'system.logs', title: '日志管理', description: '查看系统日志' },
-      ]
+        { key: "system.users", title: "用户管理", description: "管理系统用户" },
+        { key: "system.roles", title: "角色管理", description: "管理用户角色" },
+        { key: "system.permissions", title: "权限管理", description: "管理系统权限" },
+        { key: "system.settings", title: "系统设置", description: "系统参数配置" },
+        { key: "system.logs", title: "日志管理", description: "查看系统日志" },
+      ],
     },
     {
-      key: 'analytics',
-      title: '数据分析',
-      description: '数据分析和报表功能',
+      key: "analytics",
+      title: "数据分析",
+      description: "数据分析和报表功能",
       children: [
-        { key: 'analytics.dashboard', title: '数据看板', description: '查看数据看板' },
-        { key: 'analytics.reports', title: '报表管理', description: '生成和管理报表' },
-        { key: 'analytics.export', title: '数据导出', description: '导出分析数据' },
-      ]
-    }
+        { key: "analytics.dashboard", title: "数据看板", description: "查看数据看板" },
+        { key: "analytics.reports", title: "报表管理", description: "生成和管理报表" },
+        { key: "analytics.export", title: "数据导出", description: "导出分析数据" },
+      ],
+    },
   ];
 
   // 模拟角色数据
@@ -142,17 +142,17 @@ const RolesPage: React.FC = () => {
       description: "拥有系统所有权限，负责系统维护和用户管理",
       userCount: 3,
       permissions: [
-        'annotation.create', 'annotation.edit', 'annotation.delete', 'annotation.assign', 'annotation.review',
-        'project.create', 'project.edit', 'project.delete', 'project.member', 'project.settings',
-        'quality.review', 'quality.metrics', 'quality.standards', 'quality.sampling',
-        'dataset.upload', 'dataset.edit', 'dataset.delete', 'dataset.export', 'dataset.preprocess',
-        'system.users', 'system.roles', 'system.permissions', 'system.settings', 'system.logs',
-        'analytics.dashboard', 'analytics.reports', 'analytics.export'
+        "annotation.create", "annotation.edit", "annotation.delete", "annotation.assign", "annotation.review",
+        "project.create", "project.edit", "project.delete", "project.member", "project.settings",
+        "quality.review", "quality.metrics", "quality.standards", "quality.sampling",
+        "dataset.upload", "dataset.edit", "dataset.delete", "dataset.export", "dataset.preprocess",
+        "system.users", "system.roles", "system.permissions", "system.settings", "system.logs",
+        "analytics.dashboard", "analytics.reports", "analytics.export",
       ],
       isSystem: true,
       createdAt: "2023-09-01",
       updatedAt: "2024-01-10",
-      status: 'active'
+      status: "active",
     },
     {
       id: "role_002",
@@ -160,16 +160,16 @@ const RolesPage: React.FC = () => {
       description: "负责项目管理、任务分配和进度跟踪",
       userCount: 8,
       permissions: [
-        'annotation.create', 'annotation.edit', 'annotation.assign', 'annotation.review',
-        'project.create', 'project.edit', 'project.member', 'project.settings',
-        'quality.review', 'quality.metrics',
-        'dataset.upload', 'dataset.edit', 'dataset.export',
-        'analytics.dashboard', 'analytics.reports'
+        "annotation.create", "annotation.edit", "annotation.assign", "annotation.review",
+        "project.create", "project.edit", "project.member", "project.settings",
+        "quality.review", "quality.metrics",
+        "dataset.upload", "dataset.edit", "dataset.export",
+        "analytics.dashboard", "analytics.reports",
       ],
       isSystem: false,
       createdAt: "2023-10-15",
       updatedAt: "2024-01-08",
-      status: 'active'
+      status: "active",
     },
     {
       id: "role_003",
@@ -177,15 +177,15 @@ const RolesPage: React.FC = () => {
       description: "负责质量控制、标准制定和质量审核",
       userCount: 5,
       permissions: [
-        'annotation.review',
-        'quality.review', 'quality.metrics', 'quality.standards', 'quality.sampling',
-        'dataset.export',
-        'analytics.dashboard', 'analytics.reports'
+        "annotation.review",
+        "quality.review", "quality.metrics", "quality.standards", "quality.sampling",
+        "dataset.export",
+        "analytics.dashboard", "analytics.reports",
       ],
       isSystem: false,
       createdAt: "2023-11-01",
       updatedAt: "2024-01-05",
-      status: 'active'
+      status: "active",
     },
     {
       id: "role_004",
@@ -193,14 +193,14 @@ const RolesPage: React.FC = () => {
       description: "执行数据标注任务，提交标注结果",
       userCount: 45,
       permissions: [
-        'annotation.create', 'annotation.edit',
-        'dataset.upload',
-        'analytics.dashboard'
+        "annotation.create", "annotation.edit",
+        "dataset.upload",
+        "analytics.dashboard",
       ],
       isSystem: false,
       createdAt: "2023-12-01",
       updatedAt: "2024-01-12",
-      status: 'active'
+      status: "active",
     },
     {
       id: "role_005",
@@ -208,21 +208,21 @@ const RolesPage: React.FC = () => {
       description: "负责数据分析、报表生成和数据洞察",
       userCount: 6,
       permissions: [
-        'quality.metrics',
-        'dataset.export',
-        'analytics.dashboard', 'analytics.reports', 'analytics.export'
+        "quality.metrics",
+        "dataset.export",
+        "analytics.dashboard", "analytics.reports", "analytics.export",
       ],
       isSystem: false,
       createdAt: "2023-12-15",
       updatedAt: "2024-01-03",
-      status: 'active'
-    }
+      status: "active",
+    },
   ]);
 
   // 筛选角色
   const filteredRoles = roles.filter(role =>
     role.name.toLowerCase().includes(searchText.toLowerCase()) ||
-    role.description.toLowerCase().includes(searchText.toLowerCase())
+    role.description.toLowerCase().includes(searchText.toLowerCase()),
   );
 
   const handleEdit = (role: Role) => {
@@ -231,18 +231,18 @@ const RolesPage: React.FC = () => {
     form.setFieldsValue({
       name: role.name,
       description: role.description,
-      status: role.status
+      status: role.status,
     });
     setRoleModalVisible(true);
   };
 
   const handleDelete = (role: Role) => {
     if (role.isSystem) {
-      message.warning('系统角色不能删除');
+      message.warning("系统角色不能删除");
       return;
     }
     Modal.confirm({
-      title: '确认删除',
+      title: "确认删除",
       content: `确定要删除角色 "${role.name}" 吗？此操作不可恢复。`,
       onOk: () => {
         message.success(`角色 "${role.name}" 已删除`);
@@ -268,7 +268,7 @@ const RolesPage: React.FC = () => {
         </div>
       ),
       key: perm.key,
-      children: perm.children ? renderPermissionTree(perm.children) : undefined
+      children: perm.children ? renderPermissionTree(perm.children) : undefined,
     }));
   };
 
@@ -320,7 +320,7 @@ const RolesPage: React.FC = () => {
             <Card
               hoverable
               styles={{
-                body: { padding: "20px" }
+                body: { padding: "20px" },
               }}
               actions={[
                 <Tooltip title="查看详情" key="view">
@@ -331,24 +331,24 @@ const RolesPage: React.FC = () => {
                 </Tooltip>,
                 <Tooltip title={role.isSystem ? "系统角色不可删除" : "删除角色"} key="delete">
                   <DeleteOutlined
-                    style={{ color: role.isSystem ? '#d9d9d9' : '#ff4d4f' }}
+                    style={{ color: role.isSystem ? "#d9d9d9" : "#ff4d4f" }}
                     onClick={() => !role.isSystem && handleDelete(role)}
                   />
                 </Tooltip>,
               ]}
             >
-              <div style={{ textAlign: 'center', marginBottom: 16 }}>
+              <div style={{ textAlign: "center", marginBottom: 16 }}>
                 <div style={{
                   width: 48,
                   height: 48,
-                  borderRadius: '50%',
-                  background: role.isSystem ? '#722ed1' : '#1890ff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 12px',
-                  color: 'white',
-                  fontSize: 20
+                  borderRadius: "50%",
+                  background: role.isSystem ? "#722ed1" : "#1890ff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 12px",
+                  color: "white",
+                  fontSize: 20,
                 }}>
                   {role.isSystem ? <SettingOutlined /> : <TeamOutlined />}
                 </div>
@@ -360,28 +360,28 @@ const RolesPage: React.FC = () => {
                 </Title>
                 <Badge
                   count={role.userCount}
-                  style={{ backgroundColor: '#52c41a' }}
+                  style={{ backgroundColor: "#52c41a" }}
                   title={`${role.userCount} 个用户`}
                 >
-                  <UserOutlined style={{ color: '#666', marginRight: 4 }} />
+                  <UserOutlined style={{ color: "#666", marginRight: 4 }} />
                 </Badge>
               </div>
 
               <Paragraph
                 ellipsis={{ rows: 2 }}
-                style={{ textAlign: 'center', color: '#666', minHeight: 40 }}
+                style={{ textAlign: "center", color: "#666", minHeight: 40 }}
               >
                 {role.description}
               </Paragraph>
 
-              <Divider style={{ margin: '16px 0' }} />
+              <Divider style={{ margin: "16px 0" }} />
 
               <div>
                 <Text type="secondary" style={{ fontSize: 12 }}>权限数量</Text>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <Text strong>{role.permissions.length} 项</Text>
-                  <Tag color={role.status === 'active' ? 'success' : 'default'}>
-                    {role.status === 'active' ? '启用' : '停用'}
+                  <Tag color={role.status === "active" ? "success" : "default"}>
+                    {role.status === "active" ? "启用" : "停用"}
                   </Tag>
                 </div>
               </div>
@@ -401,8 +401,8 @@ const RolesPage: React.FC = () => {
         onCancel={() => setRoleModalVisible(false)}
         onOk={() => {
           form.validateFields().then(values => {
-            console.log('Role values:', { ...values, permissions: selectedPermissions });
-            message.success(editingRole ? '角色信息已更新' : '角色创建成功');
+            console.log("Role values:", { ...values, permissions: selectedPermissions });
+            message.success(editingRole ? "角色信息已更新" : "角色创建成功");
             setRoleModalVisible(false);
           });
         }}
@@ -428,7 +428,7 @@ const RolesPage: React.FC = () => {
             <Input.TextArea rows={3} placeholder="请输入角色描述" />
           </Form.Item>
           <Form.Item label="权限配置" required>
-            <div style={{ border: '1px solid #d9d9d9', borderRadius: 6, padding: 16, maxHeight: 300, overflow: 'auto' }}>
+            <div style={{ border: "1px solid #d9d9d9", borderRadius: 6, padding: 16, maxHeight: 300, overflow: "auto" }}>
               <Tree
                 checkable
                 checkedKeys={selectedPermissions}
@@ -449,16 +449,16 @@ const RolesPage: React.FC = () => {
         footer={[
           <Button key="close" onClick={() => setPermissionModalVisible(false)}>
             关闭
-          </Button>
+          </Button>,
         ]}
         width={800}
       >
-        <div style={{ maxHeight: 500, overflow: 'auto' }}>
+        <div style={{ maxHeight: 500, overflow: "auto" }}>
           <List
             dataSource={permissionTree}
             renderItem={(category) => (
               <List.Item>
-                <Card size="small" style={{ width: '100%' }}>
+                <Card size="small" style={{ width: "100%" }}>
                   <Title level={5}>{category.title}</Title>
                   <Text type="secondary">{category.description}</Text>
                   {category.children && (
@@ -466,7 +466,7 @@ const RolesPage: React.FC = () => {
                       <Row gutter={[8, 8]}>
                         {category.children.map(perm => (
                           <Col span={12} key={perm.key}>
-                            <div style={{ padding: 8, border: '1px solid #f0f0f0', borderRadius: 4 }}>
+                            <div style={{ padding: 8, border: "1px solid #f0f0f0", borderRadius: 4 }}>
                               <Text strong style={{ fontSize: 12 }}>{perm.title}</Text>
                               <br />
                               <Text type="secondary" style={{ fontSize: 11 }}>{perm.description}</Text>

@@ -9,7 +9,7 @@ import {
   PlusOutlined,
   StarOutlined,
   TagOutlined,
-  VideoCameraOutlined
+  VideoCameraOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -25,7 +25,7 @@ import {
   Space,
   Tag,
   Tree,
-  Typography
+  Typography,
 } from "antd";
 import React, { useState } from "react";
 
@@ -37,7 +37,7 @@ interface KnowledgeItem {
   id: string;
   title: string;
   description: string;
-  type: 'document' | 'video' | 'template' | 'guideline';
+  type: "document" | "video" | "template" | "guideline";
   category: string;
   tags: string[];
   author: {
@@ -52,14 +52,14 @@ interface KnowledgeItem {
   downloads: number;
   fileSize?: string;
   duration?: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty: "beginner" | "intermediate" | "advanced";
   isRecommended: boolean;
   isFavorite: boolean;
 }
 
 const KnowledgeBasePage: React.FC = () => {
   const [searchText, setSearchText] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [categoryFilter, _setCategoryFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
@@ -70,13 +70,13 @@ const KnowledgeBasePage: React.FC = () => {
       id: "kb_001",
       title: "医疗影像标注规范指南",
       description: "详细介绍医疗影像标注的标准流程、质量要求和常见问题处理方法，包含大量实例和最佳实践。",
-      type: 'document',
+      type: "document",
       category: "标注规范",
       tags: ["医疗影像", "标注规范", "质量控制"],
       author: {
         name: "张医生",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
-        role: "医疗专家"
+        role: "医疗专家",
       },
       createdAt: "2024-01-10",
       updatedAt: "2024-01-15",
@@ -84,21 +84,21 @@ const KnowledgeBasePage: React.FC = () => {
       likes: 89,
       downloads: 234,
       fileSize: "2.3 MB",
-      difficulty: 'intermediate',
+      difficulty: "intermediate",
       isRecommended: true,
-      isFavorite: false
+      isFavorite: false,
     },
     {
       id: "kb_002",
       title: "文本标注工具使用教程",
       description: "从基础操作到高级功能的完整视频教程，帮助新手快速掌握文本标注工具的使用方法。",
-      type: 'video',
+      type: "video",
       category: "工具教程",
       tags: ["文本标注", "工具使用", "新手教程"],
       author: {
         name: "李老师",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
-        role: "培训师"
+        role: "培训师",
       },
       createdAt: "2024-01-08",
       updatedAt: "2024-01-12",
@@ -106,21 +106,21 @@ const KnowledgeBasePage: React.FC = () => {
       likes: 156,
       downloads: 0,
       duration: "45分钟",
-      difficulty: 'beginner',
+      difficulty: "beginner",
       isRecommended: true,
-      isFavorite: true
+      isFavorite: true,
     },
     {
       id: "kb_003",
       title: "目标检测标注模板",
       description: "标准化的目标检测标注模板，包含常用类别定义、标注格式和导出规范。",
-      type: 'template',
+      type: "template",
       category: "标注模板",
       tags: ["目标检测", "标注模板", "标准化"],
       author: {
         name: "王工程师",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
-        role: "算法工程师"
+        role: "算法工程师",
       },
       createdAt: "2024-01-05",
       updatedAt: "2024-01-10",
@@ -128,21 +128,21 @@ const KnowledgeBasePage: React.FC = () => {
       likes: 67,
       downloads: 189,
       fileSize: "1.2 MB",
-      difficulty: 'intermediate',
+      difficulty: "intermediate",
       isRecommended: false,
-      isFavorite: false
+      isFavorite: false,
     },
     {
       id: "kb_004",
       title: "数据质量评估标准",
       description: "建立统一的数据质量评估体系，包含评估指标、评分标准和改进建议。",
-      type: 'guideline',
+      type: "guideline",
       category: "质量标准",
       tags: ["质量评估", "评估标准", "数据质量"],
       author: {
         name: "赵专家",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhao",
-        role: "质量专家"
+        role: "质量专家",
       },
       createdAt: "2024-01-03",
       updatedAt: "2024-01-08",
@@ -150,21 +150,21 @@ const KnowledgeBasePage: React.FC = () => {
       likes: 123,
       downloads: 298,
       fileSize: "3.1 MB",
-      difficulty: 'advanced',
+      difficulty: "advanced",
       isRecommended: true,
-      isFavorite: true
+      isFavorite: true,
     },
     {
       id: "kb_005",
       title: "语音标注最佳实践",
       description: "语音数据标注的完整流程和技巧分享，包含多语言处理和质量控制方法。",
-      type: 'document',
+      type: "document",
       category: "最佳实践",
       tags: ["语音标注", "最佳实践", "多语言"],
       author: {
         name: "孙研究员",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=sun",
-        role: "研究员"
+        role: "研究员",
       },
       createdAt: "2024-01-01",
       updatedAt: "2024-01-05",
@@ -172,10 +172,10 @@ const KnowledgeBasePage: React.FC = () => {
       likes: 45,
       downloads: 156,
       fileSize: "1.8 MB",
-      difficulty: 'intermediate',
+      difficulty: "intermediate",
       isRecommended: false,
-      isFavorite: false
-    }
+      isFavorite: false,
+    },
   ]);
 
   // 分类树数据
@@ -187,7 +187,7 @@ const KnowledgeBasePage: React.FC = () => {
         { title: "图像标注", key: "图像标注" },
         { title: "文本标注", key: "文本标注" },
         { title: "音频标注", key: "音频标注" },
-      ]
+      ],
     },
     {
       title: "工具教程",
@@ -196,7 +196,7 @@ const KnowledgeBasePage: React.FC = () => {
         { title: "标注工具", key: "标注工具" },
         { title: "管理工具", key: "管理工具" },
         { title: "质量工具", key: "质量工具" },
-      ]
+      ],
     },
     {
       title: "标注模板",
@@ -205,7 +205,7 @@ const KnowledgeBasePage: React.FC = () => {
         { title: "分类模板", key: "分类模板" },
         { title: "检测模板", key: "检测模板" },
         { title: "分割模板", key: "分割模板" },
-      ]
+      ],
     },
     {
       title: "质量标准",
@@ -213,7 +213,7 @@ const KnowledgeBasePage: React.FC = () => {
       children: [
         { title: "评估标准", key: "评估标准" },
         { title: "验收标准", key: "验收标准" },
-      ]
+      ],
     },
     {
       title: "最佳实践",
@@ -221,8 +221,8 @@ const KnowledgeBasePage: React.FC = () => {
       children: [
         { title: "效率提升", key: "效率提升" },
         { title: "质量改进", key: "质量改进" },
-      ]
-    }
+      ],
+    },
   ];
 
   const typeOptions = [
@@ -253,39 +253,39 @@ const KnowledgeBasePage: React.FC = () => {
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'document': return <FileTextOutlined style={{ color: '#1890ff' }} />;
-      case 'video': return <VideoCameraOutlined style={{ color: '#722ed1' }} />;
-      case 'template': return <FolderOutlined style={{ color: '#52c41a' }} />;
-      case 'guideline': return <BookOutlined style={{ color: '#fa8c16' }} />;
+      case "document": return <FileTextOutlined style={{ color: "#1890ff" }} />;
+      case "video": return <VideoCameraOutlined style={{ color: "#722ed1" }} />;
+      case "template": return <FolderOutlined style={{ color: "#52c41a" }} />;
+      case "guideline": return <BookOutlined style={{ color: "#fa8c16" }} />;
       default: return <FileTextOutlined />;
     }
   };
 
   const getTypeText = (type: string) => {
     switch (type) {
-      case 'document': return '文档';
-      case 'video': return '视频';
-      case 'template': return '模板';
-      case 'guideline': return '指南';
-      default: return '未知';
+      case "document": return "文档";
+      case "video": return "视频";
+      case "template": return "模板";
+      case "guideline": return "指南";
+      default: return "未知";
     }
   };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'beginner': return 'green';
-      case 'intermediate': return 'blue';
-      case 'advanced': return 'red';
-      default: return 'default';
+      case "beginner": return "green";
+      case "intermediate": return "blue";
+      case "advanced": return "red";
+      default: return "default";
     }
   };
 
   const getDifficultyText = (difficulty: string) => {
     switch (difficulty) {
-      case 'beginner': return '入门';
-      case 'intermediate': return '中级';
-      case 'advanced': return '高级';
-      default: return '未知';
+      case "beginner": return "入门";
+      case "intermediate": return "中级";
+      case "advanced": return "高级";
+      default: return "未知";
     }
   };
 
@@ -352,7 +352,7 @@ const KnowledgeBasePage: React.FC = () => {
             size="small"
             style={{ marginBottom: 16 }}
             styles={{
-              body: { padding: "12px" }
+              body: { padding: "12px" },
             }}
           >
             <Tree
@@ -375,7 +375,7 @@ const KnowledgeBasePage: React.FC = () => {
                   style={{ marginBottom: 16 }}
                   hoverable
                   styles={{
-                    body: { padding: "20px 24px" }
+                    body: { padding: "20px 24px" },
                   }}
                 >
                   <div style={{ display: "flex", gap: 16 }}>
@@ -397,7 +397,7 @@ const KnowledgeBasePage: React.FC = () => {
                           {item.title}
                         </Title>
                         {item.isFavorite && (
-                          <HeartOutlined style={{ color: '#ff4d4f', fontSize: 16 }} />
+                          <HeartOutlined style={{ color: "#ff4d4f", fontSize: 16 }} />
                         )}
                       </div>
 
@@ -456,7 +456,7 @@ const KnowledgeBasePage: React.FC = () => {
                             <Button type="text" icon={<EyeOutlined />} size="small">
                               查看
                             </Button>
-                            {item.type !== 'video' && (
+                            {item.type !== "video" && (
                               <Button type="text" icon={<DownloadOutlined />} size="small">
                                 下载
                               </Button>

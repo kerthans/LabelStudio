@@ -9,7 +9,7 @@ import {
   PlusOutlined,
   UnlockOutlined,
   UserAddOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -27,7 +27,7 @@ import {
   Table,
   Tag,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -45,12 +45,12 @@ interface User {
   avatar: string;
   role: string;
   department: string;
-  status: 'active' | 'inactive' | 'locked';
+  status: "active" | "inactive" | "locked";
   lastLogin: string;
   createdAt: string;
   annotationCount: number;
   qualityScore: number;
-  level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  level: "beginner" | "intermediate" | "advanced" | "expert";
   permissions: string[];
 }
 
@@ -75,13 +75,13 @@ const UsersPage: React.FC = () => {
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhang",
       role: "标注员",
       department: "医疗AI部",
-      status: 'active',
+      status: "active",
       lastLogin: "2024-01-15 14:30",
       createdAt: "2023-12-01",
       annotationCount: 15680,
       qualityScore: 96.8,
-      level: 'expert',
-      permissions: ["标注任务", "质量检查"]
+      level: "expert",
+      permissions: ["标注任务", "质量检查"],
     },
     {
       id: "user_002",
@@ -92,13 +92,13 @@ const UsersPage: React.FC = () => {
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=li",
       role: "项目经理",
       department: "项目管理部",
-      status: 'active',
+      status: "active",
       lastLogin: "2024-01-15 16:45",
       createdAt: "2023-11-15",
       annotationCount: 8920,
       qualityScore: 94.2,
-      level: 'advanced',
-      permissions: ["项目管理", "任务分配", "质量审核"]
+      level: "advanced",
+      permissions: ["项目管理", "任务分配", "质量审核"],
     },
     {
       id: "user_003",
@@ -109,13 +109,13 @@ const UsersPage: React.FC = () => {
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=wang",
       role: "质量专家",
       department: "质量控制部",
-      status: 'active',
+      status: "active",
       lastLogin: "2024-01-15 09:20",
       createdAt: "2023-10-20",
       annotationCount: 12450,
       qualityScore: 98.1,
-      level: 'expert',
-      permissions: ["质量审核", "标准制定", "培训管理"]
+      level: "expert",
+      permissions: ["质量审核", "标准制定", "培训管理"],
     },
     {
       id: "user_004",
@@ -126,13 +126,13 @@ const UsersPage: React.FC = () => {
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=zhao",
       role: "标注员",
       department: "数据标注部",
-      status: 'inactive',
+      status: "inactive",
       lastLogin: "2024-01-10 17:30",
       createdAt: "2024-01-05",
       annotationCount: 2340,
       qualityScore: 89.5,
-      level: 'beginner',
-      permissions: ["标注任务"]
+      level: "beginner",
+      permissions: ["标注任务"],
     },
     {
       id: "user_005",
@@ -143,14 +143,14 @@ const UsersPage: React.FC = () => {
       avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=sun",
       role: "系统管理员",
       department: "技术部",
-      status: 'locked',
+      status: "locked",
       lastLogin: "2024-01-12 11:15",
       createdAt: "2023-09-01",
       annotationCount: 0,
       qualityScore: 0,
-      level: 'advanced',
-      permissions: ["系统管理", "用户管理", "权限配置"]
-    }
+      level: "advanced",
+      permissions: ["系统管理", "用户管理", "权限配置"],
+    },
   ]);
 
   const statusOptions = [
@@ -190,39 +190,39 @@ const UsersPage: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'success';
-      case 'inactive': return 'default';
-      case 'locked': return 'error';
-      default: return 'default';
+      case "active": return "success";
+      case "inactive": return "default";
+      case "locked": return "error";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'active': return '正常';
-      case 'inactive': return '停用';
-      case 'locked': return '锁定';
-      default: return '未知';
+      case "active": return "正常";
+      case "inactive": return "停用";
+      case "locked": return "锁定";
+      default: return "未知";
     }
   };
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case 'expert': return 'gold';
-      case 'advanced': return 'blue';
-      case 'intermediate': return 'green';
-      case 'beginner': return 'default';
-      default: return 'default';
+      case "expert": return "gold";
+      case "advanced": return "blue";
+      case "intermediate": return "green";
+      case "beginner": return "default";
+      default: return "default";
     }
   };
 
   const getLevelText = (level: string) => {
     switch (level) {
-      case 'expert': return '专家';
-      case 'advanced': return '高级';
-      case 'intermediate': return '中级';
-      case 'beginner': return '初级';
-      default: return '未知';
+      case "expert": return "专家";
+      case "advanced": return "高级";
+      case "intermediate": return "中级";
+      case "beginner": return "初级";
+      default: return "未知";
     }
   };
 
@@ -234,7 +234,7 @@ const UsersPage: React.FC = () => {
 
   const handleDelete = (user: User) => {
     Modal.confirm({
-      title: '确认删除',
+      title: "确认删除",
       content: `确定要删除用户 "${user.realName}" 吗？此操作不可恢复。`,
       onOk: () => {
         message.success(`用户 "${user.realName}" 已删除`);
@@ -249,22 +249,22 @@ const UsersPage: React.FC = () => {
 
   const columns: ColumnsType<User> = [
     {
-      title: '用户信息',
-      key: 'userInfo',
+      title: "用户信息",
+      key: "userInfo",
       width: 280,
       render: (_, user) => (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Badge
             dot
-            color={user.status === 'active' ? '#52c41a' : user.status === 'locked' ? '#ff4d4f' : '#d9d9d9'}
+            color={user.status === "active" ? "#52c41a" : user.status === "locked" ? "#ff4d4f" : "#d9d9d9"}
             offset={[-2, 32]}
           >
             <Avatar src={user.avatar} size={40} />
           </Badge>
           <div>
             <div style={{ fontWeight: 500, marginBottom: 2 }}>{user.realName}</div>
-            <div style={{ fontSize: 12, color: '#666' }}>@{user.username}</div>
-            <div style={{ fontSize: 12, color: '#666' }}>
+            <div style={{ fontSize: 12, color: "#666" }}>@{user.username}</div>
+            <div style={{ fontSize: 12, color: "#666" }}>
               <MailOutlined style={{ marginRight: 4 }} />
               {user.email}
             </div>
@@ -273,13 +273,13 @@ const UsersPage: React.FC = () => {
       ),
     },
     {
-      title: '角色部门',
-      key: 'roleInfo',
+      title: "角色部门",
+      key: "roleInfo",
       width: 200,
       render: (_, user) => (
         <div>
           <Tag color="blue" style={{ marginBottom: 4 }}>{user.role}</Tag>
-          <div style={{ fontSize: 12, color: '#666' }}>{user.department}</div>
+          <div style={{ fontSize: 12, color: "#666" }}>{user.department}</div>
           <Tag color={getLevelColor(user.level)} className="small-tag">
             {getLevelText(user.level)}
           </Tag>
@@ -287,8 +287,8 @@ const UsersPage: React.FC = () => {
       ),
     },
     {
-      title: '联系方式',
-      key: 'contact',
+      title: "联系方式",
+      key: "contact",
       width: 150,
       render: (_, user) => (
         <div>
@@ -300,8 +300,8 @@ const UsersPage: React.FC = () => {
       ),
     },
     {
-      title: '工作统计',
-      key: 'stats',
+      title: "工作统计",
+      key: "stats",
       width: 150,
       render: (_, user) => (
         <div>
@@ -313,8 +313,8 @@ const UsersPage: React.FC = () => {
       ),
     },
     {
-      title: '状态',
-      key: 'status',
+      title: "状态",
+      key: "status",
       width: 100,
       render: (_, user) => (
         <Tag color={getStatusColor(user.status)}>
@@ -323,53 +323,53 @@ const UsersPage: React.FC = () => {
       ),
     },
     {
-      title: '最后登录',
-      key: 'lastLogin',
+      title: "最后登录",
+      key: "lastLogin",
       width: 150,
       render: (_, user) => (
-        <div style={{ fontSize: 12, color: '#666' }}>
+        <div style={{ fontSize: 12, color: "#666" }}>
           {user.lastLogin}
         </div>
       ),
     },
     {
-      title: '操作',
-      key: 'actions',
+      title: "操作",
+      key: "actions",
       width: 200,
       render: (_, user) => {
         const menuItems = [
           {
-            key: 'view',
-            label: '查看详情',
+            key: "view",
+            label: "查看详情",
             icon: <EyeOutlined />,
           },
           {
-            key: 'edit',
-            label: '编辑用户',
+            key: "edit",
+            label: "编辑用户",
             icon: <EditOutlined />,
             onClick: () => handleEdit(user),
           },
           {
-            type: 'divider' as const,
+            type: "divider" as const,
           },
           {
-            key: 'activate',
-            label: user.status === 'active' ? '停用用户' : '激活用户',
-            icon: user.status === 'active' ? <LockOutlined /> : <UnlockOutlined />,
-            onClick: () => handleStatusChange(user, user.status === 'active' ? 'inactive' : 'active'),
+            key: "activate",
+            label: user.status === "active" ? "停用用户" : "激活用户",
+            icon: user.status === "active" ? <LockOutlined /> : <UnlockOutlined />,
+            onClick: () => handleStatusChange(user, user.status === "active" ? "inactive" : "active"),
           },
           {
-            key: 'lock',
-            label: user.status === 'locked' ? '解锁用户' : '锁定用户',
-            icon: user.status === 'locked' ? <UnlockOutlined /> : <LockOutlined />,
-            onClick: () => handleStatusChange(user, user.status === 'locked' ? 'active' : 'locked'),
+            key: "lock",
+            label: user.status === "locked" ? "解锁用户" : "锁定用户",
+            icon: user.status === "locked" ? <UnlockOutlined /> : <LockOutlined />,
+            onClick: () => handleStatusChange(user, user.status === "locked" ? "active" : "locked"),
           },
           {
-            type: 'divider' as const,
+            type: "divider" as const,
           },
           {
-            key: 'delete',
-            label: '删除用户',
+            key: "delete",
+            label: "删除用户",
             icon: <DeleteOutlined />,
             danger: true,
             onClick: () => handleDelete(user),
@@ -381,7 +381,7 @@ const UsersPage: React.FC = () => {
             <Button type="text" icon={<EyeOutlined />} size="small">
               查看
             </Button>
-            <Dropdown menu={{ items: menuItems }} trigger={['click']}>
+            <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
               <Button type="text" size="small">
                 更多
               </Button>
@@ -472,7 +472,7 @@ const UsersPage: React.FC = () => {
 
         {/* 批量操作 */}
         {selectedRowKeys.length > 0 && (
-          <div style={{ marginTop: 16, padding: 16, background: '#f0f2f5', borderRadius: 8 }}>
+          <div style={{ marginTop: 16, padding: 16, background: "#f0f2f5", borderRadius: 8 }}>
             <Space>
               <Text>已选择 {selectedRowKeys.length} 个用户</Text>
               <Button size="small">批量激活</Button>
@@ -508,8 +508,8 @@ const UsersPage: React.FC = () => {
         onCancel={() => setUserModalVisible(false)}
         onOk={() => {
           form.validateFields().then(values => {
-            console.log('Form values:', values);
-            message.success(editingUser ? '用户信息已更新' : '用户创建成功');
+            console.log("Form values:", values);
+            message.success(editingUser ? "用户信息已更新" : "用户创建成功");
             setUserModalVisible(false);
           });
         }}
@@ -530,7 +530,7 @@ const UsersPage: React.FC = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="email" label="邮箱" rules={[{ required: true, type: 'email' }]}>
+              <Form.Item name="email" label="邮箱" rules={[{ required: true, type: "email" }]}>
                 <Input placeholder="请输入邮箱" />
               </Form.Item>
             </Col>

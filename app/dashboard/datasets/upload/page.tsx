@@ -7,7 +7,7 @@ import {
   FileTextOutlined,
   FolderOpenOutlined,
   InboxOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -25,7 +25,7 @@ import {
   Tag,
   Typography,
   Upload,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import type { UploadFile, UploadProps } from "antd/es/upload";
@@ -60,25 +60,25 @@ const DataUpload: React.FC = () => {
     totalFiles: 1248,
     totalSize: "15.6 GB",
     todayUploads: 89,
-    processingFiles: 12
+    processingFiles: 12,
   };
 
   // 支持的文件类型
   const supportedTypes = {
-    image: ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'],
-    text: ['.txt', '.csv', '.json', '.xml'],
-    audio: ['.mp3', '.wav', '.flac', '.aac'],
-    video: ['.mp4', '.avi', '.mov', '.wmv']
+    image: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"],
+    text: [".txt", ".csv", ".json", ".xml"],
+    audio: [".mp3", ".wav", ".flac", ".aac"],
+    video: [".mp4", ".avi", ".mov", ".wmv"],
   };
 
   // 上传配置
   const uploadProps: UploadProps = {
-    name: 'file',
+    name: "file",
     multiple: true,
     fileList,
     beforeUpload: (file) => {
       const isValidType = Object.values(supportedTypes).flat().some(ext =>
-        file.name.toLowerCase().endsWith(ext)
+        file.name.toLowerCase().endsWith(ext),
       );
       if (!isValidType) {
         message.error(`不支持的文件类型: ${file.name}`);
@@ -86,7 +86,7 @@ const DataUpload: React.FC = () => {
       }
       const isLt100M = file.size / 1024 / 1024 < 100;
       if (!isLt100M) {
-        message.error('文件大小不能超过 100MB!');
+        message.error("文件大小不能超过 100MB!");
         return false;
       }
       return false; // 阻止自动上传
@@ -95,14 +95,14 @@ const DataUpload: React.FC = () => {
       setFileList(info.fileList);
     },
     onDrop: (e) => {
-      console.log('Dropped files', e.dataTransfer.files);
+      console.log("Dropped files", e.dataTransfer.files);
     },
   };
 
   // 开始上传
   const handleUpload = async () => {
     if (fileList.length === 0) {
-      message.warning('请先选择文件');
+      message.warning("请先选择文件");
       return;
     }
 
@@ -115,11 +115,11 @@ const DataUpload: React.FC = () => {
           id: `file_${Date.now()}_${i}`,
           name: file.name,
           size: file.size || 0,
-          type: file.type || '',
-          status: 'uploading',
+          type: file.type || "",
+          status: "uploading",
           progress: 0,
           uploadTime: new Date().toLocaleString(),
-          dataType: getDataType(file.name)
+          dataType: getDataType(file.name),
         };
 
         setUploadedFiles(prev => [...prev, uploadData]);
@@ -130,17 +130,17 @@ const DataUpload: React.FC = () => {
           setUploadedFiles(prev =>
             prev.map(f =>
               f.id === uploadData.id
-                ? { ...f, progress, status: progress === 100 ? 'done' : 'uploading' }
-                : f
-            )
+                ? { ...f, progress, status: progress === 100 ? "done" : "uploading" }
+                : f,
+            ),
           );
         }
       }
 
-      message.success('文件上传成功!');
+      message.success("文件上传成功!");
       setFileList([]);
-    } catch (error) {
-      message.error('上传失败');
+    } catch (_error) {
+      message.error("上传失败");
     } finally {
       setUploading(false);
     }
@@ -148,21 +148,21 @@ const DataUpload: React.FC = () => {
 
   // 获取数据类型
   const getDataType = (filename: string): "image" | "text" | "audio" | "video" => {
-    const ext = filename.toLowerCase().split('.').pop() || '';
-    if (supportedTypes.image.some(type => type.includes(ext))) return 'image';
-    if (supportedTypes.text.some(type => type.includes(ext))) return 'text';
-    if (supportedTypes.audio.some(type => type.includes(ext))) return 'audio';
-    if (supportedTypes.video.some(type => type.includes(ext))) return 'video';
-    return 'text';
+    const ext = filename.toLowerCase().split(".").pop() || "";
+    if (supportedTypes.image.some(type => type.includes(ext))) return "image";
+    if (supportedTypes.text.some(type => type.includes(ext))) return "text";
+    if (supportedTypes.audio.some(type => type.includes(ext))) return "audio";
+    if (supportedTypes.video.some(type => type.includes(ext))) return "video";
+    return "text";
   };
 
   // 获取文件图标
   const getFileIcon = (dataType: string) => {
     switch (dataType) {
-      case 'image': return <FileImageOutlined style={{ color: '#52c41a' }} />;
-      case 'text': return <FileTextOutlined style={{ color: '#1890ff' }} />;
-      case 'audio': return <FileTextOutlined style={{ color: '#722ed1' }} />;
-      case 'video': return <FileTextOutlined style={{ color: '#fa8c16' }} />;
+      case "image": return <FileImageOutlined style={{ color: "#52c41a" }} />;
+      case "text": return <FileTextOutlined style={{ color: "#1890ff" }} />;
+      case "audio": return <FileTextOutlined style={{ color: "#722ed1" }} />;
+      case "video": return <FileTextOutlined style={{ color: "#fa8c16" }} />;
       default: return <FileTextOutlined />;
     }
   };
@@ -170,7 +170,7 @@ const DataUpload: React.FC = () => {
   // 删除文件
   const handleDeleteFile = (fileId: string) => {
     setUploadedFiles(prev => prev.filter(f => f.id !== fileId));
-    message.success('文件已删除');
+    message.success("文件已删除");
   };
 
   // 预览文件
@@ -181,9 +181,9 @@ const DataUpload: React.FC = () => {
   // 上传文件表格列
   const fileColumns: ColumnsType<UploadFileData> = [
     {
-      title: '文件名',
-      dataIndex: 'name',
-      key: 'name',
+      title: "文件名",
+      dataIndex: "name",
+      key: "name",
       render: (name, record) => (
         <Space>
           {getFileIcon(record.dataType)}
@@ -192,49 +192,49 @@ const DataUpload: React.FC = () => {
       ),
     },
     {
-      title: '类型',
-      dataIndex: 'dataType',
-      key: 'dataType',
+      title: "类型",
+      dataIndex: "dataType",
+      key: "dataType",
       render: (type) => {
         const colorMap = {
-          image: 'green',
-          text: 'blue',
-          audio: 'purple',
-          video: 'orange'
+          image: "green",
+          text: "blue",
+          audio: "purple",
+          video: "orange",
         };
         return <Tag color={colorMap[type as keyof typeof colorMap]}>{type}</Tag>;
       },
     },
     {
-      title: '大小',
-      dataIndex: 'size',
-      key: 'size',
+      title: "大小",
+      dataIndex: "size",
+      key: "size",
       render: (size) => `${(size / 1024 / 1024).toFixed(2)} MB`,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status',
+      title: "状态",
+      dataIndex: "status",
+      key: "status",
       render: (status, record) => {
-        if (status === 'uploading') {
+        if (status === "uploading") {
           return <Progress percent={record.progress} size="small" />;
         }
         const statusMap = {
-          done: { color: 'success', text: '已完成' },
-          error: { color: 'error', text: '失败' }
+          done: { color: "success", text: "已完成" },
+          error: { color: "error", text: "失败" },
         };
         const config = statusMap[status as keyof typeof statusMap];
         return <Tag color={config.color}>{config.text}</Tag>;
       },
     },
     {
-      title: '上传时间',
-      dataIndex: 'uploadTime',
-      key: 'uploadTime',
+      title: "上传时间",
+      dataIndex: "uploadTime",
+      key: "uploadTime",
     },
     {
-      title: '操作',
-      key: 'action',
+      title: "操作",
+      key: "action",
       render: (_, record) => (
         <Space>
           <Button
@@ -256,7 +256,7 @@ const DataUpload: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: '24px', background: '#f5f5f5', minHeight: '100vh' }}>
+    <div style={{ padding: "24px", background: "#f5f5f5", minHeight: "100vh" }}>
       {/* 页面标题 */}
       <div style={{ marginBottom: 24 }}>
         <Title level={2} style={{ margin: 0, marginBottom: 8 }}>
@@ -275,7 +275,7 @@ const DataUpload: React.FC = () => {
               title="总文件数"
               value={stats.totalFiles}
               prefix={<FolderOpenOutlined />}
-              valueStyle={{ color: '#1890ff' }}
+              valueStyle={{ color: "#1890ff" }}
             />
           </Card>
         </Col>
@@ -285,7 +285,7 @@ const DataUpload: React.FC = () => {
               title="总存储量"
               value={stats.totalSize}
               prefix={<CloudUploadOutlined />}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: "#52c41a" }}
             />
           </Card>
         </Col>
@@ -295,7 +295,7 @@ const DataUpload: React.FC = () => {
               title="今日上传"
               value={stats.todayUploads}
               prefix={<UploadOutlined />}
-              valueStyle={{ color: '#722ed1' }}
+              valueStyle={{ color: "#722ed1" }}
             />
           </Card>
         </Col>
@@ -305,7 +305,7 @@ const DataUpload: React.FC = () => {
               title="处理中"
               value={stats.processingFiles}
               prefix={<InboxOutlined />}
-              valueStyle={{ color: '#fa8c16' }}
+              valueStyle={{ color: "#fa8c16" }}
             />
           </Card>
         </Col>
@@ -355,7 +355,7 @@ const DataUpload: React.FC = () => {
                         {getFileIcon(getDataType(file.name))}
                         <Text>{file.name}</Text>
                         <Text type="secondary">
-                          {file.size ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : ''}
+                          {file.size ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : ""}
                         </Text>
                       </Space>
                     </List.Item>
@@ -388,14 +388,14 @@ const DataUpload: React.FC = () => {
               form={form}
               layout="vertical"
               onFinish={(values) => {
-                console.log('Dataset config:', values);
-                message.success('配置已保存');
+                console.log("Dataset config:", values);
+                message.success("配置已保存");
               }}
             >
               <Form.Item
                 name="name"
                 label="数据集名称"
-                rules={[{ required: true, message: '请输入数据集名称' }]}
+                rules={[{ required: true, message: "请输入数据集名称" }]}
               >
                 <Input placeholder="输入数据集名称" />
               </Form.Item>
@@ -413,7 +413,7 @@ const DataUpload: React.FC = () => {
               <Form.Item
                 name="dataType"
                 label="数据类型"
-                rules={[{ required: true, message: '请选择数据类型' }]}
+                rules={[{ required: true, message: "请选择数据类型" }]}
               >
                 <Select placeholder="选择数据类型">
                   <Option value="image">图像数据</Option>
@@ -426,7 +426,7 @@ const DataUpload: React.FC = () => {
               <Form.Item
                 name="labelType"
                 label="标注类型"
-                rules={[{ required: true, message: '请选择标注类型' }]}
+                rules={[{ required: true, message: "请选择标注类型" }]}
               >
                 <Select placeholder="选择标注类型">
                   <Option value="classification">分类标注</Option>
@@ -444,7 +444,7 @@ const DataUpload: React.FC = () => {
                 <Select
                   mode="tags"
                   placeholder="添加标签"
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                 >
                   <Option value="医疗">医疗</Option>
                   <Option value="金融">金融</Option>
@@ -465,16 +465,16 @@ const DataUpload: React.FC = () => {
           <Card title="支持格式" size="small" style={{ marginTop: 16 }}>
             <div style={{ fontSize: 12 }}>
               <div style={{ marginBottom: 8 }}>
-                <Text strong>图像:</Text> {supportedTypes.image.join(', ')}
+                <Text strong>图像:</Text> {supportedTypes.image.join(", ")}
               </div>
               <div style={{ marginBottom: 8 }}>
-                <Text strong>文本:</Text> {supportedTypes.text.join(', ')}
+                <Text strong>文本:</Text> {supportedTypes.text.join(", ")}
               </div>
               <div style={{ marginBottom: 8 }}>
-                <Text strong>音频:</Text> {supportedTypes.audio.join(', ')}
+                <Text strong>音频:</Text> {supportedTypes.audio.join(", ")}
               </div>
               <div>
-                <Text strong>视频:</Text> {supportedTypes.video.join(', ')}
+                <Text strong>视频:</Text> {supportedTypes.video.join(", ")}
               </div>
             </div>
           </Card>

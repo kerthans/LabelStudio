@@ -10,7 +10,7 @@ import {
   SettingOutlined,
   StarFilled,
   StarOutlined,
-  TagOutlined
+  TagOutlined,
 } from "@ant-design/icons";
 import {
   Badge,

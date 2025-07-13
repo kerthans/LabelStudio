@@ -8,7 +8,7 @@ import {
   FilterOutlined,
   InfoCircleOutlined,
   LineChartOutlined,
-  PieChartOutlined
+  PieChartOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -22,7 +22,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -52,7 +52,7 @@ const QualityMetrics: React.FC = () => {
     overallAccuracy: { value: 94.2, change: 2.1, trend: "up" },
     avgConsistency: { value: 91.8, change: -0.5, trend: "down" },
     completenessRate: { value: 97.5, change: 1.3, trend: "up" },
-    efficiencyScore: { value: 88.9, change: 3.2, trend: "up" }
+    efficiencyScore: { value: 88.9, change: 3.2, trend: "up" },
   };
 
   // 标注员表现数据
@@ -65,7 +65,7 @@ const QualityMetrics: React.FC = () => {
       avgConsistency: 94.8,
       avgSpeed: 12.5,
       qualityTrend: "up",
-      level: "expert"
+      level: "expert",
     },
     {
       id: "ann_002",
@@ -75,7 +75,7 @@ const QualityMetrics: React.FC = () => {
       avgConsistency: 92.3,
       avgSpeed: 15.2,
       qualityTrend: "stable",
-      level: "senior"
+      level: "senior",
     },
     {
       id: "ann_003",
@@ -85,8 +85,8 @@ const QualityMetrics: React.FC = () => {
       avgConsistency: 89.7,
       avgSpeed: 18.9,
       qualityTrend: "down",
-      level: "intermediate"
-    }
+      level: "intermediate",
+    },
   ];
 
   const getLevelColor = (level: string) => {
@@ -94,7 +94,7 @@ const QualityMetrics: React.FC = () => {
       expert: "#722ed1",
       senior: "#1890ff",
       intermediate: "#52c41a",
-      junior: "#faad14"
+      junior: "#faad14",
     };
     return colors[level as keyof typeof colors] || "#d9d9d9";
   };
@@ -104,7 +104,7 @@ const QualityMetrics: React.FC = () => {
       expert: "专家",
       senior: "高级",
       intermediate: "中级",
-      junior: "初级"
+      junior: "初级",
     };
     return texts[level as keyof typeof texts] || "未知";
   };
@@ -130,14 +130,14 @@ const QualityMetrics: React.FC = () => {
             {getLevelText(record.level)}
           </Tag>
         </div>
-      )
+      ),
     },
     {
       title: "完成任务",
       dataIndex: "tasksCompleted",
       key: "tasksCompleted",
       width: 100,
-      render: (value) => <Text strong>{value}</Text>
+      render: (value) => <Text strong>{value}</Text>,
     },
     {
       title: "准确率",
@@ -153,7 +153,7 @@ const QualityMetrics: React.FC = () => {
           />
           <Text style={{ fontSize: 12 }}>{value}%</Text>
         </div>
-      )
+      ),
     },
     {
       title: "一致性",
@@ -169,14 +169,14 @@ const QualityMetrics: React.FC = () => {
           />
           <Text style={{ fontSize: 12 }}>{value}%</Text>
         </div>
-      )
+      ),
     },
     {
       title: "效率 (项/小时)",
       dataIndex: "avgSpeed",
       key: "avgSpeed",
       width: 120,
-      render: (value) => <Text>{value}</Text>
+      render: (value) => <Text>{value}</Text>,
     },
     {
       title: "趋势",
@@ -187,11 +187,11 @@ const QualityMetrics: React.FC = () => {
         const icons = {
           up: <ArrowUpOutlined style={{ color: "#52c41a" }} />,
           down: <ArrowDownOutlined style={{ color: "#ff4d4f" }} />,
-          stable: <span style={{ color: "#1890ff" }}>—</span>
+          stable: <span style={{ color: "#1890ff" }}>—</span>,
         };
         return icons[trend as keyof typeof icons];
-      }
-    }
+      },
+    },
   ];
 
   return (

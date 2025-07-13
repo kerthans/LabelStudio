@@ -13,7 +13,7 @@ import {
   PlusOutlined,
   ReloadOutlined,
   SearchOutlined,
-  StopOutlined
+  StopOutlined,
 } from "@ant-design/icons";
 import {
   Badge,
@@ -36,7 +36,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
@@ -262,7 +262,7 @@ const DataPreprocessing: React.FC = () => {
       message.success("预处理任务已创建，开始执行...");
       setTaskModalVisible(false);
       taskForm.resetFields();
-    } catch (error) {
+    } catch (_error) {
       message.error("创建任务失败");
     } finally {
       setLoading(false);
@@ -277,25 +277,25 @@ const DataPreprocessing: React.FC = () => {
     switch (action) {
       case "pause":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "paused" as any } : t
+          t.id === taskId ? { ...t, status: "paused" as any } : t,
         ));
         message.success("任务已暂停");
         break;
       case "resume":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "running" as any } : t
+          t.id === taskId ? { ...t, status: "running" as any } : t,
         ));
         message.success("任务已恢复");
         break;
       case "stop":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "failed" as any } : t
+          t.id === taskId ? { ...t, status: "failed" as any } : t,
         ));
         message.success("任务已停止");
         break;
       case "retry":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "running" as any, progress: 0 } : t
+          t.id === taskId ? { ...t, status: "running" as any, progress: 0 } : t,
         ));
         message.success("任务已重新开始");
         break;

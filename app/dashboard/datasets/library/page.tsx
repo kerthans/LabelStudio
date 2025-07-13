@@ -9,7 +9,7 @@ import {
   FilterOutlined,
   FolderOpenOutlined,
   ShareAltOutlined,
-  TagOutlined
+  TagOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -29,7 +29,7 @@ import {
   Tag,
   Tooltip,
   Typography,
-  message
+  message,
 } from "antd";
 import React, { useState } from "react";
 
@@ -79,7 +79,7 @@ const DataLibrary: React.FC = () => {
       status: "active",
       tags: ["医疗", "影像", "分类"],
       progress: 100,
-      thumbnail: "https://via.placeholder.com/200x150/52c41a/fff?text=Medical"
+      thumbnail: "https://via.placeholder.com/200x150/52c41a/fff?text=Medical",
     },
     {
       id: "ds_002",
@@ -95,7 +95,7 @@ const DataLibrary: React.FC = () => {
       status: "active",
       tags: ["文本", "情感", "电商"],
       progress: 85,
-      thumbnail: "https://via.placeholder.com/200x150/1890ff/fff?text=Text"
+      thumbnail: "https://via.placeholder.com/200x150/1890ff/fff?text=Text",
     },
     {
       id: "ds_003",
@@ -111,7 +111,7 @@ const DataLibrary: React.FC = () => {
       status: "processing",
       tags: ["自动驾驶", "检测", "道路"],
       progress: 45,
-      thumbnail: "https://via.placeholder.com/200x150/fa8c16/fff?text=Auto"
+      thumbnail: "https://via.placeholder.com/200x150/fa8c16/fff?text=Auto",
     },
     {
       id: "ds_004",
@@ -127,8 +127,8 @@ const DataLibrary: React.FC = () => {
       status: "archived",
       tags: ["语音", "识别", "多语言"],
       progress: 100,
-      thumbnail: "https://via.placeholder.com/200x150/722ed1/fff?text=Audio"
-    }
+      thumbnail: "https://via.placeholder.com/200x150/722ed1/fff?text=Audio",
+    },
   ]);
 
   // 统计数据
@@ -136,7 +136,7 @@ const DataLibrary: React.FC = () => {
     totalDatasets: datasets.length,
     totalFiles: datasets.reduce((sum, ds) => sum + ds.fileCount, 0),
     totalSize: "9.5 GB",
-    activeDatasets: datasets.filter(ds => ds.status === "active").length
+    activeDatasets: datasets.filter(ds => ds.status === "active").length,
   };
 
   // 获取类型图标
@@ -199,13 +199,13 @@ const DataLibrary: React.FC = () => {
   // 删除数据集
   const handleDelete = (dataset: Dataset) => {
     Modal.confirm({
-      title: '确认删除',
+      title: "确认删除",
       content: `确定要删除数据集 "${dataset.name}" 吗？此操作不可恢复。`,
-      okText: '确认',
-      cancelText: '取消',
+      okText: "确认",
+      cancelText: "取消",
       onOk: () => {
-        message.success('数据集已删除');
-      }
+        message.success("数据集已删除");
+      },
     });
   };
 
@@ -222,11 +222,11 @@ const DataLibrary: React.FC = () => {
           <Card
             hoverable
             cover={
-              <div style={{ height: 150, background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ height: 150, background: "#f5f5f5", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {dataset.thumbnail ? (
-                  <img src={dataset.thumbnail} alt={dataset.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={dataset.thumbnail} alt={dataset.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
-                  <div style={{ fontSize: 48, color: '#d9d9d9' }}>
+                  <div style={{ fontSize: 48, color: "#d9d9d9" }}>
                     {getTypeIcon(dataset.type)}
                   </div>
                 )}
@@ -247,23 +247,23 @@ const DataLibrary: React.FC = () => {
                 menu={{
                   items: [
                     {
-                      key: 'share',
-                      label: '分享',
+                      key: "share",
+                      label: "分享",
                       icon: <ShareAltOutlined />,
-                      onClick: () => handleShare(dataset)
+                      onClick: () => handleShare(dataset),
                     },
                     {
-                      key: 'delete',
-                      label: '删除',
+                      key: "delete",
+                      label: "删除",
                       icon: <DeleteOutlined />,
                       danger: true,
-                      onClick: () => handleDelete(dataset)
-                    }
-                  ]
+                      onClick: () => handleDelete(dataset),
+                    },
+                  ],
                 }}
               >
                 <Button type="text" size="small">更多</Button>
-              </Dropdown>
+              </Dropdown>,
             ]}
           >
             <Card.Meta
@@ -279,7 +279,7 @@ const DataLibrary: React.FC = () => {
               }
               description={
                 <div>
-                  <Text type="secondary" style={{ fontSize: 12, display: 'block', marginBottom: 8 }}>
+                  <Text type="secondary" style={{ fontSize: 12, display: "block", marginBottom: 8 }}>
                     {dataset.description.length > 50 ? `${dataset.description.substring(0, 50)}...` : dataset.description}
                   </Text>
                   <div style={{ marginBottom: 8 }}>
@@ -289,7 +289,7 @@ const DataLibrary: React.FC = () => {
                       ))}
                     </Space>
                   </div>
-                  <div style={{ fontSize: 12, color: '#666' }}>
+                  <div style={{ fontSize: 12, color: "#666" }}>
                     <div>文件数: {dataset.fileCount}</div>
                     <div>大小: {dataset.size}</div>
                     <div>创建者: {dataset.creator}</div>
@@ -322,23 +322,23 @@ const DataLibrary: React.FC = () => {
               menu={{
                 items: [
                   {
-                    key: 'share',
-                    label: '分享',
+                    key: "share",
+                    label: "分享",
                     icon: <ShareAltOutlined />,
-                    onClick: () => handleShare(dataset)
+                    onClick: () => handleShare(dataset),
                   },
                   {
-                    key: 'delete',
-                    label: '删除',
+                    key: "delete",
+                    label: "删除",
                     icon: <DeleteOutlined />,
                     danger: true,
-                    onClick: () => handleDelete(dataset)
-                  }
-                ]
+                    onClick: () => handleDelete(dataset),
+                  },
+                ],
               }}
             >
               <Button type="text">更多</Button>
-            </Dropdown>
+            </Dropdown>,
           ]}
         >
           <List.Item.Meta
@@ -355,7 +355,7 @@ const DataLibrary: React.FC = () => {
             }
             description={
               <div>
-                <Text type="secondary" style={{ display: 'block', marginBottom: 8 }}>
+                <Text type="secondary" style={{ display: "block", marginBottom: 8 }}>
                   {dataset.description}
                 </Text>
                 <Space size={16}>
@@ -384,7 +384,7 @@ const DataLibrary: React.FC = () => {
   );
 
   return (
-    <div style={{ padding: '24px', background: '#f5f5f5', minHeight: '100vh' }}>
+    <div style={{ padding: "24px", background: "#f5f5f5", minHeight: "100vh" }}>
       {/* 页面标题 */}
       <div style={{ marginBottom: 24 }}>
         <Title level={2} style={{ margin: 0, marginBottom: 8 }}>
@@ -403,7 +403,7 @@ const DataLibrary: React.FC = () => {
               title="数据集总数"
               value={stats.totalDatasets}
               prefix={<FolderOpenOutlined />}
-              valueStyle={{ color: '#1890ff' }}
+              valueStyle={{ color: "#1890ff" }}
             />
           </Card>
         </Col>
@@ -413,7 +413,7 @@ const DataLibrary: React.FC = () => {
               title="文件总数"
               value={stats.totalFiles}
               prefix={<FileTextOutlined />}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: "#52c41a" }}
             />
           </Card>
         </Col>
@@ -423,7 +423,7 @@ const DataLibrary: React.FC = () => {
               title="存储总量"
               value={stats.totalSize}
               prefix={<TagOutlined />}
-              valueStyle={{ color: '#722ed1' }}
+              valueStyle={{ color: "#722ed1" }}
             />
           </Card>
         </Col>
@@ -433,7 +433,7 @@ const DataLibrary: React.FC = () => {
               title="活跃数据集"
               value={stats.activeDatasets}
               prefix={<FileImageOutlined />}
-              valueStyle={{ color: '#fa8c16' }}
+              valueStyle={{ color: "#fa8c16" }}
             />
           </Card>
         </Col>
@@ -455,7 +455,7 @@ const DataLibrary: React.FC = () => {
               placeholder="数据类型"
               value={typeFilter}
               onChange={setTypeFilter}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
             >
               <Option value="all">全部类型</Option>
               <Option value="image">图像</Option>
@@ -469,7 +469,7 @@ const DataLibrary: React.FC = () => {
               placeholder="状态"
               value={statusFilter}
               onChange={setStatusFilter}
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
             >
               <Option value="all">全部状态</Option>
               <Option value="active">活跃</Option>
@@ -481,14 +481,14 @@ const DataLibrary: React.FC = () => {
             <Space>
               <Button.Group>
                 <Button
-                  type={viewMode === 'grid' ? 'primary' : 'default'}
-                  onClick={() => setViewMode('grid')}
+                  type={viewMode === "grid" ? "primary" : "default"}
+                  onClick={() => setViewMode("grid")}
                 >
                   网格视图
                 </Button>
                 <Button
-                  type={viewMode === 'list' ? 'primary' : 'default'}
-                  onClick={() => setViewMode('list')}
+                  type={viewMode === "list" ? "primary" : "default"}
+                  onClick={() => setViewMode("list")}
                 >
                   列表视图
                 </Button>
@@ -501,12 +501,12 @@ const DataLibrary: React.FC = () => {
 
       {/* 数据集列表 */}
       <Card>
-        {viewMode === 'grid' ? renderGridView() : renderListView()}
+        {viewMode === "grid" ? renderGridView() : renderListView()}
 
-        <div style={{ marginTop: 16, textAlign: 'center' }}>
+        <div style={{ marginTop: 16, textAlign: "center" }}>
           <Pagination
             total={filteredDatasets.length}
-            pageSize={viewMode === 'grid' ? 12 : 10}
+            pageSize={viewMode === "grid" ? 12 : 10}
             showSizeChanger
             showQuickJumper
             showTotal={(total, range) => `第 ${range[0]}-${range[1]} 条/共 ${total} 条`}
@@ -525,7 +525,7 @@ const DataLibrary: React.FC = () => {
           </Button>,
           <Button key="close" onClick={() => setPreviewVisible(false)}>
             关闭
-          </Button>
+          </Button>,
         ]}
         width={800}
       >
@@ -533,11 +533,11 @@ const DataLibrary: React.FC = () => {
           <div>
             <Row gutter={16}>
               <Col span={8}>
-                <div style={{ height: 200, background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <div style={{ height: 200, background: "#f5f5f5", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8 }}>
                   {currentDataset.thumbnail ? (
-                    <img src={currentDataset.thumbnail} alt={currentDataset.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8 }} />
+                    <img src={currentDataset.thumbnail} alt={currentDataset.name} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }} />
                   ) : (
-                    <div style={{ fontSize: 64, color: '#d9d9d9' }}>
+                    <div style={{ fontSize: 64, color: "#d9d9d9" }}>
                       {getTypeIcon(currentDataset.type)}
                     </div>
                   )}
@@ -545,7 +545,7 @@ const DataLibrary: React.FC = () => {
               </Col>
               <Col span={16}>
                 <Title level={4}>{currentDataset.name}</Title>
-                <Text type="secondary" style={{ display: 'block', marginBottom: 16 }}>
+                <Text type="secondary" style={{ display: "block", marginBottom: 16 }}>
                   {currentDataset.description}
                 </Text>
                 <Row gutter={[16, 8]}>

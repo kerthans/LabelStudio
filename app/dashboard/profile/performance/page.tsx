@@ -8,7 +8,7 @@ import {
   FireOutlined,
   RiseOutlined,
   StarOutlined,
-  TrophyOutlined
+  TrophyOutlined,
 } from "@ant-design/icons";
 import {
   Card,
@@ -22,7 +22,7 @@ import {
   Table,
   Tag,
   Timeline,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -47,7 +47,7 @@ interface Achievement {
   description: string;
   icon: React.ReactNode;
   date: string;
-  level: 'bronze' | 'silver' | 'gold' | 'platinum';
+  level: "bronze" | "silver" | "gold" | "platinum";
 }
 
 interface TaskRecord {
@@ -57,14 +57,14 @@ interface TaskRecord {
   completedAt: string;
   duration: number;
   qualityScore: number;
-  status: 'completed' | 'reviewed' | 'approved';
+  status: "completed" | "reviewed" | "approved";
 }
 
 const PersonalPerformancePage: React.FC = () => {
-  const [timeRange, setTimeRange] = useState<'week' | 'month' | 'quarter' | 'year'>('month');
+  const [timeRange, setTimeRange] = useState<"week" | "month" | "quarter" | "year">("month");
   const [dateRange, setDateRange] = useState<[dayjs.Dayjs, dayjs.Dayjs]>([
-    dayjs().subtract(30, 'day'),
-    dayjs()
+    dayjs().subtract(30, "day"),
+    dayjs(),
   ]);
 
   // 模拟绩效数据
@@ -75,7 +75,7 @@ const PersonalPerformancePage: React.FC = () => {
       qualityScore: 96.8,
       efficiency: 94.2,
       accuracy: 98.1,
-      speed: 92.5
+      speed: 92.5,
     },
     {
       period: "2023-12",
@@ -83,7 +83,7 @@ const PersonalPerformancePage: React.FC = () => {
       qualityScore: 95.2,
       efficiency: 91.8,
       accuracy: 97.3,
-      speed: 89.7
+      speed: 89.7,
     },
     {
       period: "2023-11",
@@ -91,8 +91,8 @@ const PersonalPerformancePage: React.FC = () => {
       qualityScore: 94.6,
       efficiency: 90.1,
       accuracy: 96.8,
-      speed: 88.2
-    }
+      speed: 88.2,
+    },
   ]);
 
   // 成就数据
@@ -103,7 +103,7 @@ const PersonalPerformancePage: React.FC = () => {
       description: "连续30天质量评分超过95%",
       icon: <StarOutlined />,
       date: "2024-01-10",
-      level: "gold"
+      level: "gold",
     },
     {
       id: "2",
@@ -111,7 +111,7 @@ const PersonalPerformancePage: React.FC = () => {
       description: "单日完成任务数量超过20个",
       icon: <FireOutlined />,
       date: "2024-01-05",
-      level: "silver"
+      level: "silver",
     },
     {
       id: "3",
@@ -119,8 +119,8 @@ const PersonalPerformancePage: React.FC = () => {
       description: "累计完成1000个标注任务",
       icon: <TrophyOutlined />,
       date: "2023-12-20",
-      level: "platinum"
-    }
+      level: "platinum",
+    },
   ]);
 
   // 任务记录
@@ -132,7 +132,7 @@ const PersonalPerformancePage: React.FC = () => {
       completedAt: "2024-01-15 14:30",
       duration: 45,
       qualityScore: 98.5,
-      status: "approved"
+      status: "approved",
     },
     {
       id: "task_002",
@@ -141,7 +141,7 @@ const PersonalPerformancePage: React.FC = () => {
       completedAt: "2024-01-15 13:20",
       duration: 32,
       qualityScore: 96.2,
-      status: "reviewed"
+      status: "reviewed",
     },
     {
       id: "task_003",
@@ -150,54 +150,54 @@ const PersonalPerformancePage: React.FC = () => {
       completedAt: "2024-01-15 11:45",
       duration: 67,
       qualityScore: 94.8,
-      status: "completed"
-    }
+      status: "completed",
+    },
   ]);
 
   const currentData = performanceData[0];
 
   const getAchievementColor = (level: string) => {
     switch (level) {
-      case 'platinum': return '#e6f7ff';
-      case 'gold': return '#fff7e6';
-      case 'silver': return '#f6f6f6';
-      case 'bronze': return '#fff2e8';
-      default: return '#f0f0f0';
+      case "platinum": return "#e6f7ff";
+      case "gold": return "#fff7e6";
+      case "silver": return "#f6f6f6";
+      case "bronze": return "#fff2e8";
+      default: return "#f0f0f0";
     }
   };
 
   const getAchievementBorderColor = (level: string) => {
     switch (level) {
-      case 'platinum': return '#1890ff';
-      case 'gold': return '#faad14';
-      case 'silver': return '#8c8c8c';
-      case 'bronze': return '#fa8c16';
-      default: return '#d9d9d9';
+      case "platinum": return "#1890ff";
+      case "gold": return "#faad14";
+      case "silver": return "#8c8c8c";
+      case "bronze": return "#fa8c16";
+      default: return "#d9d9d9";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'approved': return 'success';
-      case 'reviewed': return 'processing';
-      case 'completed': return 'default';
-      default: return 'default';
+      case "approved": return "success";
+      case "reviewed": return "processing";
+      case "completed": return "default";
+      default: return "default";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'approved': return '已通过';
-      case 'reviewed': return '审核中';
-      case 'completed': return '已完成';
-      default: return '未知';
+      case "approved": return "已通过";
+      case "reviewed": return "审核中";
+      case "completed": return "已完成";
+      default: return "未知";
     }
   };
 
   const taskColumns: ColumnsType<TaskRecord> = [
     {
-      title: '任务信息',
-      key: 'taskInfo',
+      title: "任务信息",
+      key: "taskInfo",
       render: (_, record) => (
         <div>
           <div style={{ fontWeight: 500, marginBottom: 4 }}>{record.taskName}</div>
@@ -206,41 +206,41 @@ const PersonalPerformancePage: React.FC = () => {
       ),
     },
     {
-      title: '完成时间',
-      dataIndex: 'completedAt',
-      key: 'completedAt',
+      title: "完成时间",
+      dataIndex: "completedAt",
+      key: "completedAt",
       render: (time) => (
         <Text type="secondary">{time}</Text>
       ),
     },
     {
-      title: '用时',
-      dataIndex: 'duration',
-      key: 'duration',
+      title: "用时",
+      dataIndex: "duration",
+      key: "duration",
       render: (duration) => (
         <Text>{duration} 分钟</Text>
       ),
     },
     {
-      title: '质量评分',
-      dataIndex: 'qualityScore',
-      key: 'qualityScore',
+      title: "质量评分",
+      dataIndex: "qualityScore",
+      key: "qualityScore",
       render: (score) => (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <Progress
             type="circle"
             size={40}
             percent={score}
             format={() => `${score}%`}
-            strokeColor={score >= 95 ? '#52c41a' : score >= 90 ? '#faad14' : '#ff4d4f'}
+            strokeColor={score >= 95 ? "#52c41a" : score >= 90 ? "#faad14" : "#ff4d4f"}
           />
         </div>
       ),
     },
     {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status',
+      title: "状态",
+      dataIndex: "status",
+      key: "status",
       render: (status) => (
         <Tag color={getStatusColor(status)}>
           {getStatusText(status)}
@@ -295,8 +295,8 @@ const PersonalPerformancePage: React.FC = () => {
                   title="完成任务"
                   value={currentData.tasksCompleted}
                   suffix="个"
-                  prefix={<CheckCircleOutlined style={{ color: '#52c41a' }} />}
-                  valueStyle={{ color: '#52c41a' }}
+                  prefix={<CheckCircleOutlined style={{ color: "#52c41a" }} />}
+                  valueStyle={{ color: "#52c41a" }}
                 />
               </Card>
             </Col>
@@ -307,8 +307,8 @@ const PersonalPerformancePage: React.FC = () => {
                   value={currentData.qualityScore}
                   suffix="%"
                   precision={1}
-                  prefix={<StarOutlined style={{ color: '#faad14' }} />}
-                  valueStyle={{ color: '#faad14' }}
+                  prefix={<StarOutlined style={{ color: "#faad14" }} />}
+                  valueStyle={{ color: "#faad14" }}
                 />
               </Card>
             </Col>
@@ -319,8 +319,8 @@ const PersonalPerformancePage: React.FC = () => {
                   value={currentData.efficiency}
                   suffix="%"
                   precision={1}
-                  prefix={<RiseOutlined style={{ color: '#1890ff' }} />}
-                  valueStyle={{ color: '#1890ff' }}
+                  prefix={<RiseOutlined style={{ color: "#1890ff" }} />}
+                  valueStyle={{ color: "#1890ff" }}
                 />
               </Card>
             </Col>
@@ -331,8 +331,8 @@ const PersonalPerformancePage: React.FC = () => {
                   value={currentData.accuracy}
                   suffix="%"
                   precision={1}
-                  prefix={<AuditOutlined style={{ color: '#722ed1' }} />}
-                  valueStyle={{ color: '#722ed1' }}
+                  prefix={<AuditOutlined style={{ color: "#722ed1" }} />}
+                  valueStyle={{ color: "#722ed1" }}
                 />
               </Card>
             </Col>
@@ -342,17 +342,17 @@ const PersonalPerformancePage: React.FC = () => {
         {/* 绩效趋势 */}
         <Col xs={24} lg={16}>
           <Card title="绩效趋势" className="performance-chart-card">
-            <div style={{ padding: '20px 0' }}>
+            <div style={{ padding: "20px 0" }}>
               <Row gutter={[16, 16]}>
                 <Col span={12}>
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: "center" }}>
                     <Progress
                       type="dashboard"
                       percent={currentData.qualityScore}
                       format={(percent) => `${percent}%`}
                       strokeColor={{
-                        '0%': '#108ee9',
-                        '100%': '#87d068',
+                        "0%": "#108ee9",
+                        "100%": "#87d068",
                       }}
                       size={120}
                     />
@@ -362,14 +362,14 @@ const PersonalPerformancePage: React.FC = () => {
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: "center" }}>
                     <Progress
                       type="dashboard"
                       percent={currentData.efficiency}
                       format={(percent) => `${percent}%`}
                       strokeColor={{
-                        '0%': '#faad14',
-                        '100%': '#52c41a',
+                        "0%": "#faad14",
+                        "100%": "#52c41a",
                       }}
                       size={120}
                     />
@@ -383,27 +383,27 @@ const PersonalPerformancePage: React.FC = () => {
               <div style={{ marginTop: 24 }}>
                 <Row gutter={16}>
                   <Col span={8}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: 24, fontWeight: 'bold', color: '#1890ff' }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 24, fontWeight: "bold", color: "#1890ff" }}>
                         {currentData.speed}%
                       </div>
-                      <div style={{ color: '#666' }}>标注速度</div>
+                      <div style={{ color: "#666" }}>标注速度</div>
                     </div>
                   </Col>
                   <Col span={8}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: 24, fontWeight: 'bold', color: '#52c41a' }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 24, fontWeight: "bold", color: "#52c41a" }}>
                         {currentData.accuracy}%
                       </div>
-                      <div style={{ color: '#666' }}>准确率</div>
+                      <div style={{ color: "#666" }}>准确率</div>
                     </div>
                   </Col>
                   <Col span={8}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: 24, fontWeight: 'bold', color: '#722ed1' }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 24, fontWeight: "bold", color: "#722ed1" }}>
                         {currentData.tasksCompleted}
                       </div>
-                      <div style={{ color: '#666' }}>完成任务</div>
+                      <div style={{ color: "#666" }}>完成任务</div>
                     </div>
                   </Col>
                 </Row>
@@ -415,32 +415,32 @@ const PersonalPerformancePage: React.FC = () => {
         {/* 成就徽章 */}
         <Col xs={24} lg={8}>
           <Card title="成就徽章" className="achievement-card">
-            <div style={{ maxHeight: 300, overflowY: 'auto' }}>
+            <div style={{ maxHeight: 300, overflowY: "auto" }}>
               {achievements.map((achievement) => (
                 <div
                   key={achievement.id}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: '12px',
-                    marginBottom: '8px',
-                    borderRadius: '8px',
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "12px",
+                    marginBottom: "8px",
+                    borderRadius: "8px",
                     backgroundColor: getAchievementColor(achievement.level),
-                    border: `1px solid ${getAchievementBorderColor(achievement.level)}`
+                    border: `1px solid ${getAchievementBorderColor(achievement.level)}`,
                   }}
                 >
                   <div
                     style={{
                       width: 40,
                       height: 40,
-                      borderRadius: '50%',
+                      borderRadius: "50%",
                       backgroundColor: getAchievementBorderColor(achievement.level),
-                      color: '#fff',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      color: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       fontSize: 16,
-                      marginRight: 12
+                      marginRight: 12,
                     }}
                   >
                     {achievement.icon}
@@ -449,10 +449,10 @@ const PersonalPerformancePage: React.FC = () => {
                     <div style={{ fontWeight: 500, marginBottom: 2 }}>
                       {achievement.title}
                     </div>
-                    <div style={{ fontSize: 12, color: '#666', marginBottom: 2 }}>
+                    <div style={{ fontSize: 12, color: "#666", marginBottom: 2 }}>
                       {achievement.description}
                     </div>
-                    <div style={{ fontSize: 11, color: '#999' }}>
+                    <div style={{ fontSize: 11, color: "#999" }}>
                       {achievement.date}
                     </div>
                   </div>
@@ -486,38 +486,38 @@ const PersonalPerformancePage: React.FC = () => {
             <Timeline
               items={[
                 {
-                  dot: <ClockCircleOutlined style={{ fontSize: '16px', color: '#1890ff' }} />,
+                  dot: <ClockCircleOutlined style={{ fontSize: "16px", color: "#1890ff" }} />,
                   children: (
                     <div>
                       <div style={{ fontWeight: 500 }}>完成医疗影像分类任务</div>
-                      <div style={{ color: '#666', fontSize: 12 }}>2024-01-15 14:30 · 质量评分: 98.5%</div>
+                      <div style={{ color: "#666", fontSize: 12 }}>2024-01-15 14:30 · 质量评分: 98.5%</div>
                     </div>
                   ),
                 },
                 {
-                  dot: <CheckCircleOutlined style={{ fontSize: '16px', color: '#52c41a' }} />,
+                  dot: <CheckCircleOutlined style={{ fontSize: "16px", color: "#52c41a" }} />,
                   children: (
                     <div>
-                      <div style={{ fontWeight: 500 }}>获得"质量专家"成就</div>
-                      <div style={{ color: '#666', fontSize: 12 }}>2024-01-10 09:00 · 连续30天质量评分超过95%</div>
+                      <div style={{ fontWeight: 500 }}>{"获得\"质量专家\"成就"}</div>
+                      <div style={{ color: "#666", fontSize: 12 }}>2024-01-10 09:00 · 连续30天质量评分超过95%</div>
                     </div>
                   ),
                 },
                 {
-                  dot: <StarOutlined style={{ fontSize: '16px', color: '#faad14' }} />,
+                  dot: <StarOutlined style={{ fontSize: "16px", color: "#faad14" }} />,
                   children: (
                     <div>
                       <div style={{ fontWeight: 500 }}>月度绩效评估</div>
-                      <div style={{ color: '#666', fontSize: 12 }}>2024-01-01 · 综合评分: A+</div>
+                      <div style={{ color: "#666", fontSize: 12 }}>2024-01-01 · 综合评分: A+</div>
                     </div>
                   ),
                 },
                 {
-                  dot: <TrophyOutlined style={{ fontSize: '16px', color: '#722ed1' }} />,
+                  dot: <TrophyOutlined style={{ fontSize: "16px", color: "#722ed1" }} />,
                   children: (
                     <div>
                       <div style={{ fontWeight: 500 }}>达成1000任务里程碑</div>
-                      <div style={{ color: '#666', fontSize: 12 }}>2023-12-20 · 累计完成标注任务1000个</div>
+                      <div style={{ color: "#666", fontSize: 12 }}>2023-12-20 · 累计完成标注任务1000个</div>
                     </div>
                   ),
                 },

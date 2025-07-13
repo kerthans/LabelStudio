@@ -13,7 +13,7 @@ import {
   PrinterOutlined,
   ShareAltOutlined,
   TrophyOutlined,
-  WarningOutlined
+  WarningOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -28,7 +28,7 @@ import {
   Table,
   Tag,
   Tooltip,
-  Typography
+  Typography,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import dayjs from "dayjs";
@@ -80,7 +80,7 @@ const QualityReportsPage: React.FC = () => {
     pendingReports: 14,
     avgQualityScore: 92.8,
     criticalIssuesResolved: 23,
-    improvementRate: 15.6
+    improvementRate: 15.6,
   };
 
   // 质量报告列表数据
@@ -99,7 +99,7 @@ const QualityReportsPage: React.FC = () => {
       avgConsistency: 92.3,
       criticalIssues: 3,
       status: "completed",
-      generatedBy: "系统自动生成"
+      generatedBy: "系统自动生成",
     },
     {
       id: "qr_002",
@@ -115,7 +115,7 @@ const QualityReportsPage: React.FC = () => {
       avgConsistency: 96.8,
       criticalIssues: 1,
       status: "completed",
-      generatedBy: "张质量经理"
+      generatedBy: "张质量经理",
     },
     {
       id: "qr_003",
@@ -131,8 +131,8 @@ const QualityReportsPage: React.FC = () => {
       avgConsistency: 89.6,
       criticalIssues: 8,
       status: "pending",
-      generatedBy: "系统自动生成"
-    }
+      generatedBy: "系统自动生成",
+    },
   ];
 
   // 质量问题数据
@@ -146,7 +146,7 @@ const QualityReportsPage: React.FC = () => {
       detectedDate: "2024-01-20",
       assignedTo: "张医师",
       status: "in-progress",
-      resolution: "正在重新标注相关任务"
+      resolution: "正在重新标注相关任务",
     },
     {
       id: "qi_002",
@@ -157,7 +157,7 @@ const QualityReportsPage: React.FC = () => {
       detectedDate: "2024-01-19",
       assignedTo: "李质量专员",
       status: "resolved",
-      resolution: "已更新标注指南并进行培训"
+      resolution: "已更新标注指南并进行培训",
     },
     {
       id: "qi_003",
@@ -167,8 +167,8 @@ const QualityReportsPage: React.FC = () => {
       affectedTasks: 67,
       detectedDate: "2024-01-18",
       assignedTo: "王标注员",
-      status: "open"
-    }
+      status: "open",
+    },
   ];
 
   const getReportTypeColor = (type: string) => {
@@ -176,7 +176,7 @@ const QualityReportsPage: React.FC = () => {
       daily: "#1890ff",
       weekly: "#52c41a",
       monthly: "#722ed1",
-      custom: "#fa8c16"
+      custom: "#fa8c16",
     };
     return colors[type as keyof typeof colors] || "#d9d9d9";
   };
@@ -186,7 +186,7 @@ const QualityReportsPage: React.FC = () => {
       daily: "日报",
       weekly: "周报",
       monthly: "月报",
-      custom: "专项"
+      custom: "专项",
     };
     return texts[type as keyof typeof texts] || "未知";
   };
@@ -195,7 +195,7 @@ const QualityReportsPage: React.FC = () => {
     const colors = {
       completed: "#52c41a",
       pending: "#faad14",
-      draft: "#d9d9d9"
+      draft: "#d9d9d9",
     };
     return colors[status as keyof typeof colors] || "#d9d9d9";
   };
@@ -204,7 +204,7 @@ const QualityReportsPage: React.FC = () => {
     const texts = {
       completed: "已完成",
       pending: "待处理",
-      draft: "草稿"
+      draft: "草稿",
     };
     return texts[status as keyof typeof texts] || "未知";
   };
@@ -214,7 +214,7 @@ const QualityReportsPage: React.FC = () => {
       critical: "#ff4d4f",
       high: "#fa8c16",
       medium: "#faad14",
-      low: "#52c41a"
+      low: "#52c41a",
     };
     return colors[severity as keyof typeof colors] || "#d9d9d9";
   };
@@ -224,7 +224,7 @@ const QualityReportsPage: React.FC = () => {
       critical: "严重",
       high: "高",
       medium: "中",
-      low: "低"
+      low: "低",
     };
     return texts[severity as keyof typeof texts] || "未知";
   };
@@ -234,7 +234,7 @@ const QualityReportsPage: React.FC = () => {
       accuracy: <ExclamationCircleOutlined style={{ color: "#ff4d4f" }} />,
       consistency: <WarningOutlined style={{ color: "#fa8c16" }} />,
       completeness: <InfoCircleOutlined style={{ color: "#1890ff" }} />,
-      guideline: <FileTextOutlined style={{ color: "#722ed1" }} />
+      guideline: <FileTextOutlined style={{ color: "#722ed1" }} />,
     };
     return icons[type as keyof typeof icons] || <InfoCircleOutlined />;
   };
@@ -259,7 +259,7 @@ const QualityReportsPage: React.FC = () => {
             覆盖期间: {record.coveragePeriod}
           </Text>
         </div>
-      )
+      ),
     },
     {
       title: "质量评分",
@@ -275,7 +275,7 @@ const QualityReportsPage: React.FC = () => {
             format={() => `${record.overallScore}%`}
           />
         </div>
-      )
+      ),
     },
     {
       title: "任务统计",
@@ -304,7 +304,7 @@ const QualityReportsPage: React.FC = () => {
             />
           </div>
         );
-      }
+      },
     },
     {
       title: "质量指标",
@@ -331,7 +331,7 @@ const QualityReportsPage: React.FC = () => {
             </Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "生成信息",
@@ -350,7 +350,7 @@ const QualityReportsPage: React.FC = () => {
             <Text>{record.generatedBy}</Text>
           </div>
         </div>
-      )
+      ),
     },
     {
       title: "操作",
@@ -368,8 +368,8 @@ const QualityReportsPage: React.FC = () => {
             分享
           </Button>
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   const issueColumns: ColumnsType<QualityIssue> = [
@@ -387,7 +387,7 @@ const QualityReportsPage: React.FC = () => {
             {getSeverityText(record.severity)}
           </Tag>
         </div>
-      )
+      ),
     },
     {
       title: "问题描述",
@@ -398,7 +398,7 @@ const QualityReportsPage: React.FC = () => {
         <Tooltip title={description}>
           <Text ellipsis style={{ maxWidth: 280 }}>{description}</Text>
         </Tooltip>
-      )
+      ),
     },
     {
       title: "影响范围",
@@ -409,13 +409,13 @@ const QualityReportsPage: React.FC = () => {
         <Text strong style={{ color: count > 100 ? "#ff4d4f" : count > 50 ? "#faad14" : "#52c41a" }}>
           {count} 个任务
         </Text>
-      )
+      ),
     },
     {
       title: "负责人",
       dataIndex: "assignedTo",
       key: "assignedTo",
-      width: 100
+      width: 100,
     },
     {
       title: "状态",
@@ -427,19 +427,19 @@ const QualityReportsPage: React.FC = () => {
           open: { color: "#ff4d4f", text: "待处理" },
           "in-progress": { color: "#faad14", text: "处理中" },
           resolved: { color: "#52c41a", text: "已解决" },
-          closed: { color: "#d9d9d9", text: "已关闭" }
+          closed: { color: "#d9d9d9", text: "已关闭" },
         };
         const config = statusConfig[status as keyof typeof statusConfig] || { color: "#d9d9d9", text: "未知" };
         return <Tag color={config.color}>{config.text}</Tag>;
-      }
+      },
     },
     {
       title: "检测日期",
       dataIndex: "detectedDate",
       key: "detectedDate",
       width: 120,
-      render: (date) => dayjs(date).format("MM-DD")
-    }
+      render: (date) => dayjs(date).format("MM-DD"),
+    },
   ];
 
   return (
@@ -632,7 +632,7 @@ const QualityReportsPage: React.FC = () => {
             pageSize: 10,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total) => `共 ${total} 条记录`
+            showTotal: (total) => `共 ${total} 条记录`,
           }}
           size="middle"
         />
