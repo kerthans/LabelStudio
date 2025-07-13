@@ -1,5 +1,5 @@
-import React from "react";
 import { ConfigProvider, theme } from "antd";
+import React from "react";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -49,24 +49,29 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed px-4">
                 登录即表示您同意我们的
                 <a
-                  href="#"
+                  href="/terms-of-service"
                   className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 mx-1 font-medium transition-colors"
                 >
                   服务条款
                 </a>
-                和
+                |
                 <a
-                  href="#"
+                  href="/privacy-policy"
                   className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 mx-1 font-medium transition-colors"
                 >
                   隐私政策
+                </a>
+                |
+                <a
+                  href="/license-agreement"
+                  className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 mx-1 font-medium transition-colors"
+                >
+                  许可协议
                 </a>
               </p>
             </div>
           </div>
         </div>
-
-        {/* 底部渐变延伸 - 确保长内容时背景完整 */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 via-blue-50/50 to-transparent dark:from-slate-900 dark:via-slate-800/50 dark:to-transparent pointer-events-none" />
       </div>
     </ConfigProvider>
