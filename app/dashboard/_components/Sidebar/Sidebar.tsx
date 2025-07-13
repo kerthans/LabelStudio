@@ -324,13 +324,13 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
       }
     >
       <div
-        className={`enterprise-logo ${logoAnimating ? 'morphing' : ''}`}
+        className={`enterprise-logo ${logoAnimating ? "morphing" : ""}`}
         style={logoStyle}
       >
         {collapsed ? (
           <span className="text-sm font-bold" style={{
             transition: "opacity 0.4s ease-in-out",
-            opacity: logoAnimating ? 0.3 : 1
+            opacity: logoAnimating ? 0.3 : 1,
           }}>
             <span className="bg-gradient-to-r from-slate-200 via-gray-100 to-slate-200 bg-clip-text text-transparent">
               L
@@ -342,7 +342,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
         ) : (
           <span className="text-base font-bold" style={{
             transition: "opacity 0.4s ease-in-out",
-            opacity: logoAnimating ? 0.3 : 1
+            opacity: logoAnimating ? 0.3 : 1,
           }}>
             <span className="bg-gradient-to-r from-slate-200 via-gray-100 to-slate-200 bg-clip-text text-transparent">
               Label
