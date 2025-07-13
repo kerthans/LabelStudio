@@ -29,31 +29,31 @@ const AntiDebug: React.FC<AntiDebugProps> = ({
       // F12
       if (e.keyCode === 123) {
         e.preventDefault();
-        return false;
+        return;
       }
 
       // Ctrl+Shift+I
       if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
         e.preventDefault();
-        return false;
+        return;
       }
 
       // Ctrl+Shift+C
       if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
         e.preventDefault();
-        return false;
+        return;
       }
 
       // Ctrl+Shift+J
       if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
         e.preventDefault();
-        return false;
+        return;
       }
 
       // Ctrl+U (查看源代码)
       if (e.ctrlKey && e.keyCode === 85) {
         e.preventDefault();
-        return false;
+        return;
       }
     };
 

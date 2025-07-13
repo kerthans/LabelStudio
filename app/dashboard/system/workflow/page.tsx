@@ -64,14 +64,32 @@ interface WorkflowConfig {
   successRate: number;
 }
 
+// Add these type definitions at the top of the file
+interface AssigneeConfig {
+  role?: string;
+  algorithm?: string;
+  count?: number;
+  format?: string;
+  users?: string[];
+}
+
+interface StepConditions {
+  accuracy?: string;
+  confidence?: string;
+  completion?: string;
+  agreement?: string;
+  conflict?: string;
+  [key: string]: string | undefined;
+}
+
 interface WorkflowStep {
   id: string;
   name: string;
   type: "annotation" | "review" | "quality_check" | "approval" | "export";
   order: number;
   assigneeType: "auto" | "manual" | "role";
-  assigneeConfig: any;
-  conditions: any;
+  assigneeConfig: AssigneeConfig;
+  conditions: StepConditions;
   timeLimit?: number;
   isRequired: boolean;
 }
@@ -246,12 +264,17 @@ const WorkflowPage: React.FC = () => {
   };
 
   // 获取状态配置
-  const getStatusConfig = (status: string) => {
+  // Update the getStatusConfig function
+  const getStatusConfig = (status: string): {
+    color: "success" | "processing" | "default" | "error" | "warning";
+    text: string;
+    icon: React.ReactNode;
+  } => {
     const configs = {
-      active: { color: "success", text: "运行中", icon: <PlayCircleOutlined /> },
-      draft: { color: "warning", text: "草稿", icon: <SyncOutlined /> },
-      paused: { color: "processing", text: "已暂停", icon: <PauseCircleOutlined /> },
-      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> },
+      active: { color: "success" as const, text: "运行中", icon: <PlayCircleOutlined /> },
+      draft: { color: "warning" as const, text: "草稿", icon: <SyncOutlined /> },
+      paused: { color: "processing" as const, text: "已暂停", icon: <PauseCircleOutlined /> },
+      archived: { color: "default" as const, text: "已归档", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.draft;
   };
@@ -372,7 +395,7 @@ const WorkflowPage: React.FC = () => {
         const config = getStatusConfig(status);
         return (
           <Badge
-            status={config.color as any}
+            status={config.color}
             text={config.text}
           />
         );

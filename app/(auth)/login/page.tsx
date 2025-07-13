@@ -14,7 +14,7 @@ import {
   message,
 } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import LoginForm from "../_components/LoginForm";
 import RegisterForm from "../_components/RegisterForm";
 
@@ -40,7 +40,8 @@ interface AuthError {
   details?: string;
 }
 
-export default function AuthPage() {
+// 将使用 useSearchParams 的逻辑提取到单独的组件中
+function AuthPageContent() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("login");
   const [authError, setAuthError] = useState<AuthError | null>(null);
@@ -231,5 +232,14 @@ export default function AuthPage() {
         </Space>
       </div>
     </div>
+  );
+}
+
+// 主组件用 Suspense 包装
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<div className="p-4 sm:p-6">加载中...</div>}>
+      <AuthPageContent />
+    </Suspense>
   );
 }

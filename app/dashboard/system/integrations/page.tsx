@@ -41,14 +41,38 @@ interface Integration {
   endpoint: string;
   apiKey: string;
   secretKey?: string;
-  config: Record<string, any>;
+  config: IntegrationConfig;
   lastSync: string;
   syncCount: number;
   errorCount: number;
   createdAt: string;
   updatedAt: string;
 }
+interface WebhookConfig {
+  timeout: number;
+  retryCount: number;
+  batchSize: number;
+}
 
+interface DatabaseConfig {
+  syncInterval: number;
+  tableName: string;
+  batchSize: number;
+}
+
+interface StorageConfig {
+  region: string;
+  encryption: boolean;
+  compressionLevel: number;
+}
+
+interface NotificationConfig {
+  schedule: string;
+  recipients: string[];
+  template: string;
+}
+
+type IntegrationConfig = WebhookConfig | DatabaseConfig | StorageConfig | NotificationConfig;
 const IntegrationsPage: React.FC = () => {
   const [searchText, setSearchText] = useState("");
   const [typeFilter, setTypeFilter] = useState<string>("all");

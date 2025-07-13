@@ -62,6 +62,26 @@ interface PreprocessingTask {
   outputCount?: number;
   errorCount?: number;
 }
+interface PreprocessingParameters {
+  // 图像变换参数
+  angle_range?: [number, number];
+  probability?: number;
+
+  // 图像增强参数
+  brightness_range?: [number, number];
+
+  // 文本处理参数
+  remove_html?: boolean;
+  remove_urls?: boolean;
+  normalize_whitespace?: boolean;
+
+  // 文本过滤参数
+  language?: string;
+  custom_stopwords?: string[];
+
+  // 通用参数
+  [key: string]: string | number | boolean | string[] | [number, number] | undefined;
+}
 
 // 预处理操作接口
 interface PreprocessingOperation {
@@ -70,10 +90,10 @@ interface PreprocessingOperation {
   type: string;
   category: string;
   description: string;
-  parameters: Record<string, any>;
+  parameters: PreprocessingParameters;
   enabled: boolean;
 }
-
+type BadgeStatus = "success" | "processing" | "error" | "warning" | "default";
 // 预处理统计接口
 interface PreprocessingStats {
   totalTasks: number;
@@ -194,7 +214,7 @@ const DataPreprocessing: React.FC = () => {
   ]);
 
   // 获取状态颜色
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string): BadgeStatus => {
     switch (status) {
       case "completed":
         return "success";
@@ -277,25 +297,25 @@ const DataPreprocessing: React.FC = () => {
     switch (action) {
       case "pause":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "paused" as any } : t,
+          t.id === taskId ? { ...t, status: "paused" as PreprocessingTask["status"] } : t,
         ));
         message.success("任务已暂停");
         break;
       case "resume":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "running" as any } : t,
+          t.id === taskId ? { ...t, status: "running" as PreprocessingTask["status"] } : t,
         ));
         message.success("任务已恢复");
         break;
       case "stop":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "failed" as any } : t,
+          t.id === taskId ? { ...t, status: "failed" as PreprocessingTask["status"] } : t,
         ));
         message.success("任务已停止");
         break;
       case "retry":
         setTasks(prev => prev.map(t =>
-          t.id === taskId ? { ...t, status: "running" as any, progress: 0 } : t,
+          t.id === taskId ? { ...t, status: "running" as PreprocessingTask["status"], progress: 0 } : t,
         ));
         message.success("任务已重新开始");
         break;
@@ -347,7 +367,7 @@ const DataPreprocessing: React.FC = () => {
       width: 100,
       render: (status) => (
         <Badge
-          status={getStatusColor(status) as any}
+          status={getStatusColor(status)}
           text={getStatusText(status)}
         />
       ),
@@ -713,7 +733,7 @@ const DataPreprocessing: React.FC = () => {
               </Descriptions.Item>
               <Descriptions.Item label="状态">
                 <Badge
-                  status={getStatusColor(selectedTask.status) as any}
+                  status={getStatusColor(selectedTask.status)}
                   text={getStatusText(selectedTask.status)}
                 />
               </Descriptions.Item>

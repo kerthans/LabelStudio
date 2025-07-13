@@ -174,8 +174,8 @@ const TaskMonitor: React.FC = () => {
     },
   ]);
 
-  // 获取状态颜色
-  const getStatusColor = (status: string) => {
+  // 获取状态颜色 - 修改返回类型
+  const getStatusColor = (status: string): "success" | "processing" | "default" | "error" | "warning" => {
     switch (status) {
       case "running":
         return "processing";
@@ -264,7 +264,7 @@ const TaskMonitor: React.FC = () => {
 
     setTasks(prev =>
       prev.map(task =>
-        task.id === taskId ? { ...task, status: newStatus as any } : task,
+        task.id === taskId ? { ...task, status: newStatus } : task,
       ),
     );
 
@@ -275,7 +275,7 @@ const TaskMonitor: React.FC = () => {
   const handleStopTask = (taskId: string) => {
     setTasks(prev =>
       prev.map(task =>
-        task.id === taskId ? { ...task, status: "paused" as any } : task,
+        task.id === taskId ? { ...task, status: "paused" } : task,
       ),
     );
     message.success("任务已停止");
@@ -312,7 +312,7 @@ const TaskMonitor: React.FC = () => {
       width: 100,
       render: (status) => (
         <Badge
-          status={getStatusColor(status) as any}
+          status={getStatusColor(status)}
           text={getStatusText(status)}
         />
       ),

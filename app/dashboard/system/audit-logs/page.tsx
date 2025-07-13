@@ -32,6 +32,44 @@ const { Search } = Input;
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
+// 定义审计日志详情的具体类型
+interface AuditLogDetails {
+  // 创建标注任务相关
+  taskName?: string;
+  datasetId?: string;
+  assignedUsers?: string[];
+
+  // 用户权限修改相关
+  targetUser?: string;
+  operation?: string;
+
+  // 数据集删除相关
+  datasetName?: string;
+  reason?: string;
+  backupCreated?: boolean;
+
+  // 登录相关
+  loginMethod?: string;
+  sessionDuration?: number;
+
+  // 错误相关
+  errorCode?: string;
+
+  // 通用字段
+  [key: string]: string | number | boolean | string[] | undefined;
+}
+
+// 定义权限变更记录类型
+interface PermissionChanges {
+  permissions: string[];
+  [key: string]: string | number | boolean | string[] | undefined;
+}
+
+interface AuditLogChanges {
+  before: PermissionChanges;
+  after: PermissionChanges;
+}
+
 interface AuditLog {
   id: string;
   timestamp: string;
@@ -46,11 +84,8 @@ interface AuditLog {
   userAgent: string;
   status: "success" | "failed" | "warning";
   duration: number;
-  details: Record<string, any>;
-  changes?: {
-    before: Record<string, any>;
-    after: Record<string, any>;
-  };
+  details: AuditLogDetails;
+  changes?: AuditLogChanges;
 }
 
 const AuditLogsPage: React.FC = () => {

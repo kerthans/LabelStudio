@@ -281,7 +281,7 @@ const TaskAssign: React.FC = () => {
         };
         return (
           <Badge
-            status={getStatusColor(status) as any}
+            status={getStatusColor(status)}
             text={statusMap[status as keyof typeof statusMap]}
           />
         );

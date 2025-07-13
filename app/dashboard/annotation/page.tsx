@@ -295,7 +295,7 @@ const AnnotationPage: React.FC = () => {
       key: "status",
       width: 100,
       render: (status: string) => (
-        <Badge status={getStatusColor(status) as any} text={status} />
+        <Badge status={getStatusColor(status)} text={status} />
       ),
     },
     {

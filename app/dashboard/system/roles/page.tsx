@@ -28,6 +28,7 @@ import {
   Typography,
   message,
 } from "antd";
+import type { DataNode } from "antd/es/tree";
 import React, { useState } from "react";
 
 const { Title, Text, Paragraph } = Typography;
@@ -41,6 +42,12 @@ interface Permission {
   children?: Permission[];
 }
 
+// 使用 Ant Design 的 DataNode 类型
+interface TreeNode extends DataNode {
+  title: React.ReactNode;
+  key: string;
+  children?: TreeNode[];
+}
 interface Role {
   id: string;
   name: string;
@@ -258,18 +265,26 @@ const RolesPage: React.FC = () => {
     setSelectedPermissions(checkedKeys.map(key => String(key)));
   };
 
-  const renderPermissionTree = (permissions: Permission[]): any[] => {
-    return permissions.map(perm => ({
-      title: (
-        <div>
-          <Text strong>{perm.title}</Text>
-          <br />
-          <Text type="secondary" style={{ fontSize: 12 }}>{perm.description}</Text>
-        </div>
-      ),
-      key: perm.key,
-      children: perm.children ? renderPermissionTree(perm.children) : undefined,
-    }));
+  const renderPermissionTree = (permissions: Permission[]): TreeNode[] => {
+    return permissions.map(perm => {
+      const node: TreeNode = {
+        title: (
+          <div>
+            <Text strong>{perm.title}</Text>
+            <br />
+            <Text type="secondary" style={{ fontSize: 12 }}>{perm.description}</Text>
+          </div>
+        ),
+        key: perm.key,
+      };
+
+      // 只有当 children 存在时才添加 children 属性
+      if (perm.children) {
+        node.children = renderPermissionTree(perm.children);
+      }
+
+      return node;
+    });
   };
 
   return (

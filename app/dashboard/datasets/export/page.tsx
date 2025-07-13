@@ -286,7 +286,7 @@ const DataExport: React.FC = () => {
       width: 120,
       render: (status) => (
         <Badge
-          status={getStatusColor(status) as any}
+          status={getStatusColor(status)}
           text={getStatusText(status)}
         />
       ),

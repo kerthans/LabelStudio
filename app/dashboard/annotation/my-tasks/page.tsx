@@ -36,10 +36,10 @@ import {
 import type { ColumnsType } from "antd/es/table";
 import React, { useState } from "react";
 
+type BadgeStatus = "success" | "processing" | "error" | "warning" | "default";
 const { Title, Text } = Typography;
 const { Search } = Input;
 const { RangePicker } = DatePicker;
-
 const MyTasks: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
@@ -124,15 +124,14 @@ const MyTasks: React.FC = () => {
       estimatedTime: 32,
     },
   ];
-
-  const getStatusColor = (status: AnnotationTaskStatus) => {
+  const getStatusColor = (status: AnnotationTaskStatus): BadgeStatus => {
     const colors = {
-      pending: "default",
-      in_progress: "processing",
-      completed: "success",
-      paused: "warning",
-      cancelled: "error",
-      review: "purple",
+      pending: "default" as const,
+      in_progress: "processing" as const,
+      completed: "success" as const,
+      paused: "warning" as const,
+      cancelled: "error" as const,
+      review: "default" as const, // 注意：Badge 组件没有 "purple" 状态，使用 "default"
     };
     return colors[status];
   };
@@ -219,7 +218,7 @@ const MyTasks: React.FC = () => {
       width: 100,
       render: (status: AnnotationTaskStatus) => (
         <Badge
-          status={getStatusColor(status) as any}
+          status={getStatusColor(status)}
           text={getStatusText(status)}
         />
       ),

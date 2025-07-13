@@ -67,7 +67,7 @@ interface LabelItem {
   parentId?: string;
   order: number;
 }
-
+type BadgeStatus = "success" | "processing" | "default" | "error" | "warning";
 const LabelSchemaPage: React.FC = () => {
   const [searchText, setSearchText] = useState("");
   const [typeFilter, setTypeFilter] = useState<string>("all");
@@ -157,11 +157,11 @@ const LabelSchemaPage: React.FC = () => {
   };
 
   // 获取状态配置
-  const getStatusConfig = (status: string) => {
+  const getStatusConfig = (status: string): { color: BadgeStatus; text: string; icon: React.ReactNode } => {
     const configs = {
-      active: { color: "success", text: "活跃", icon: <CheckCircleOutlined /> },
-      draft: { color: "warning", text: "草稿", icon: <SyncOutlined /> },
-      archived: { color: "default", text: "已归档", icon: <CloseCircleOutlined /> },
+      active: { color: "success" as BadgeStatus, text: "活跃", icon: <CheckCircleOutlined /> },
+      draft: { color: "warning" as BadgeStatus, text: "草稿", icon: <SyncOutlined /> },
+      archived: { color: "default" as BadgeStatus, text: "已归档", icon: <CloseCircleOutlined /> },
     };
     return configs[status as keyof typeof configs] || configs.draft;
   };
@@ -264,7 +264,7 @@ const LabelSchemaPage: React.FC = () => {
         const config = getStatusConfig(status);
         return (
           <Badge
-            status={config.color as any}
+            status={config.color}
             text={config.text}
           />
         );
