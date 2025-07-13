@@ -1,10 +1,12 @@
 "use client";
 import type { DashboardFooterProps } from "@/types/dashboard/dashboard";
 import { CopyrightOutlined } from "@ant-design/icons";
-import { Layout, theme } from "antd";
+import { Divider, Layout, Space, theme, Typography } from "antd";
+import Link from "next/link";
 import React from "react";
 
 const { Footer } = Layout;
+const { Text } = Typography;
 
 const DashboardFooter: React.FC<DashboardFooterProps> = ({
   companyName = "LabelStudio",
@@ -29,9 +31,23 @@ const DashboardFooter: React.FC<DashboardFooterProps> = ({
         ...style,
       }}
     >
-      <span style={{ color: colorTextSecondary, fontSize: "14px" }}>
-        <CopyrightOutlined /> {currentYear} {companyName} | 由 {teamName} 开发运营
-      </span>
+      <div style={{ color: colorTextSecondary, fontSize: "12px" }}>
+        <Space split={<Divider type="vertical" />}>
+          <span>
+            <CopyrightOutlined /> {currentYear} {companyName}. 保留所有权利.
+          </span>
+          <Link href="/privacy-policy" style={{ color: colorTextSecondary }}>
+            <Text style={{ color: 'inherit', fontSize: '12px' }}>隐私政策</Text>
+          </Link>
+          <Link href="/terms-of-service" style={{ color: colorTextSecondary }}>
+            <Text style={{ color: 'inherit', fontSize: '12px' }}>服务条款</Text>
+          </Link>
+          <Link href="/license-agreement" style={{ color: colorTextSecondary }}>
+            <Text style={{ color: 'inherit', fontSize: '12px' }}>许可协议</Text>
+          </Link>
+          <span>由 {teamName} 开发运营</span>
+        </Space>
+      </div>
     </Footer>
   );
 };
