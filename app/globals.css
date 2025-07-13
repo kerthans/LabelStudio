@@ -342,6 +342,219 @@ body {
   }
 }
 
+/* 企业级侧边栏动画样式 */
+:root {
+  --sidebar-transition-duration: 0.4s;
+  --sidebar-transition-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --logo-transition-duration: 0.4s;
+  --logo-transition-timing: ease-in-out;
+}
+
+/* 侧边栏主体动画 */
+.enterprise-sidebar {
+  transition: all var(--sidebar-transition-duration) var(--sidebar-transition-timing) !important;
+  will-change: width, transform;
+  transform-origin: left center;
+}
+
+.enterprise-sidebar.collapsing {
+  animation: sidebar-collapse var(--sidebar-transition-duration) var(--sidebar-transition-timing) forwards;
+}
+
+.enterprise-sidebar.expanding {
+  animation: sidebar-expand var(--sidebar-transition-duration) var(--sidebar-transition-timing) forwards;
+}
+
+@keyframes sidebar-collapse {
+  0% {
+    width: 200px;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scaleX(0.98);
+  }
+  100% {
+    width: 80px;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sidebar-expand {
+  0% {
+    width: 80px;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scaleX(1.02);
+  }
+  100% {
+    width: 200px;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Logo 动画效果 - 优化时序 */
+.enterprise-logo {
+  transition: opacity var(--logo-transition-duration) var(--logo-transition-timing) !important;
+  will-change: opacity;
+  position: relative;
+  overflow: hidden;
+}
+
+.enterprise-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.enterprise-logo:hover::before {
+  left: 100%;
+}
+
+.enterprise-logo.morphing {
+  animation: logo-fade-transition var(--logo-transition-duration) var(--logo-transition-timing);
+}
+
+@keyframes logo-fade-transition {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 侧边栏展开动画优化 */
+.enterprise-sidebar {
+  transition: all var(--sidebar-transition-duration) var(--sidebar-transition-timing) !important;
+  will-change: width;
+}
+
+/* 触发器动画 */
+.enterprise-trigger {
+  transition: all var(--sidebar-transition-duration) var(--sidebar-transition-timing) !important;
+  will-change: transform, background-color, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+
+.enterprise-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.enterprise-trigger:hover::before {
+  transform: translateX(100%);
+}
+
+.enterprise-trigger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.enterprise-trigger:active {
+  transform: translateY(0px);
+  transition-duration: 0.1s;
+}
+
+.enterprise-trigger .anticon {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  will-change: transform;
+}
+
+.enterprise-trigger:hover .anticon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 菜单项动画 */
+.enterprise-menu {
+  transition: all var(--sidebar-transition-duration) var(--sidebar-transition-timing) !important;
+}
+
+.enterprise-menu .ant-menu-item {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform, background-color;
+  position: relative;
+  overflow: hidden;
+}
+
+.enterprise-menu .ant-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.4s ease;
+}
+
+.enterprise-menu .ant-menu-item:hover::before {
+  left: 100%;
+}
+
+.enterprise-menu .ant-menu-item:hover {
+  transform: translateX(4px);
+}
+
+.enterprise-menu .ant-menu-item .anticon {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.enterprise-menu .ant-menu-item:hover .anticon {
+  transform: scale(1.1);
+}
+
+/* 抽屉动画优化 */
+.enterprise-drawer .ant-drawer-content {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.enterprise-drawer .ant-drawer-body {
+  transition: all 0.3s ease !important;
+}
+
+/* 响应式动画优化 */
+@media (max-width: 767px) {
+  .enterprise-sidebar {
+    --sidebar-transition-duration: 0.3s;
+  }
+
+  .enterprise-logo {
+    --logo-transition-duration: 0.25s;
+  }
+}
+
+/* 减少动画对性能的影响 */
+@media (prefers-reduced-motion: reduce) {
+  .enterprise-sidebar,
+  .enterprise-logo,
+  .enterprise-trigger,
+  .enterprise-menu .ant-menu-item {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 /* 平板端优化 */
 @media (min-width: 768px) and (max-width: 1023px) {
   .main-layout {
