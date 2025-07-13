@@ -1,6 +1,3 @@
-// 标注任务相关类型定义
-import React from 'react';
-
 // 标注任务状态
 export type AnnotationTaskStatus = 'pending' | 'in_progress' | 'completed' | 'paused' | 'cancelled' | 'review';
 
