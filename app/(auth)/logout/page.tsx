@@ -1,15 +1,15 @@
 "use client";
 
-import { 
-  HomeOutlined, 
-  LoginOutlined,
+import {
   CheckCircleOutlined,
+  HomeOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
-import { 
-  Button, 
-  Space, 
-  Typography,
+import {
+  Button,
   Divider,
+  Space,
+  Typography,
 } from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -24,7 +24,7 @@ export default function LogoutPage() {
     // 这里可以添加实际的登出逻辑
     // 比如清除 token、清除本地存储等
     console.log("用户已登出");
-    
+
     // 清除可能的认证信息
     if (typeof window !== 'undefined') {
       localStorage.removeItem('token');
@@ -108,7 +108,7 @@ export default function LogoutPage() {
               安全提示
             </Text>
           </Divider>
-          
+
           <Text type="secondary" className="text-xs sm:text-sm">
             为了您的账户安全，我们已清除了本地存储的登录信息
           </Text>
